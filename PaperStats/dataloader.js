@@ -5,10 +5,37 @@ Http.open("GET", url);
 Http.send();
 
 Http.onload = e => {
-  console.log(JSON.parse(Http.responseText));
-  //   eval(Http.responseText);
+  let dataStream = JSON.parse(Http.responseText).feed.entry;
+  fieldInitializer(dataStream, 37, 10);
 };
 
-function doData(json) {
-  console.log(json);
+//Initializing the field
+//Input consists of the data and the dimensions of the data
+//This function organizes data in a usable format.
+//The data wrangling will aim to organize information in a map, where each id will store the information related to an object
+function fieldInitializer(data, row, col) {
+  let inputArray = [];
+  let createdData = [];
+  let localCreatedData = {};
+
+  for (let i = 0; i < row; i++) {
+    if (Object.keys(localCreatedData).length != 0) {
+      createdData.push(localCreatedData);
+      localCreatedData = {};
+    }
+    for (let j = 0; j < col; j++) {
+      let cell = data[i * 10 + j]["gs$cell"];
+      let row = cell["row"];
+      let col = cell["col"];
+      if (row == 1) {
+        inputArray.push(cell["$t"]);
+      } else {
+        localCreatedData[inputArray[col - 1]] = cell["$t"];
+      }
+    }
+  }
+  createdData.push(localCreatedData);
+  let paper = new PaperInformation(createdData);
 }
+
+function createYearFrequencyChartData() {}

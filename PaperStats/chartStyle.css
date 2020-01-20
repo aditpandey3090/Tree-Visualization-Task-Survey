@@ -1,0 +1,15 @@
+/* Style the dots by assigning a fill and stroke */
+.dot {
+  fill: black;
+  stroke: #fff;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+.line {
+  stroke: black;
+  fill: none;
+}
