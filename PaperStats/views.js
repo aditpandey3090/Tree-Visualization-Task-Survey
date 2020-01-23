@@ -1,0 +1,119 @@
+function createTable(data) {
+  let localInstanceofData = getAllFilesData();
+
+  var table1 = d3
+    .select("body")
+    .append("table")
+    .attr("id", "myTable")
+    .attr("transform", `translate(${margin.left},0)`);
+
+  // For each column we have to add values
+  var theader = table1.append("tr").attr("class", "header");
+
+  theader
+    .selectAll("th")
+    .data(Object.keys(data[0]))
+    .join("th")
+    .text(function(d) {
+      return d;
+    });
+
+  var tr = table1
+    .selectAll("tr.data")
+    .data(data)
+    .join("tr")
+    .attr("class", "datarow")
+    .attr("id", d => {
+      return "rowId_" + d["year"]; //ToDo Change the id here
+    });
+
+  Object.keys(data[0]).forEach(element => {
+    tr.append("td")
+      .attr("class", element)
+      .text(function(d) {
+        return d[element];
+      });
+  });
+}
+//=====================================================================================================//
+
+function createLineChart(data, dimension) {
+  let visualizationData = createFrequencyData(data, dimension);
+  drawLineChart(visualizationData, 600, 500, "Id", "count");
+}
+
+function drawLineChart(data, width, height, dimension, attribute) {
+  var svg1 = d3
+    .select("body")
+    .append("svg")
+    .attr("class", "chart2") //ToDo:Add a more descriptive classname
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  let x = d3
+    .scaleBand()
+    .domain(data.map(d => d[dimension]))
+    .range([margin.left, width - margin.right])
+    .padding(0.1);
+
+  let y = d3
+    .scaleLinear()
+    .domain([0, d3.max(data, d => d[attribute])])
+    .nice()
+    .range([height - margin.bottom, margin.top]);
+
+  let line = d3
+    .line()
+    .x(function(d, i) {
+      return x(d[dimension]);
+    }) // set the x values for the line generator
+    .y(function(d) {
+      return y(d[attribute]);
+    }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX); // apply smoothing to the line
+
+  xAxis = g =>
+    g
+      .attr("transform", `translate(0,${height - margin.bottom})`)
+      .attr("class", "xaxis")
+      .call(d3.axisBottom(x).tickSizeOuter(0));
+
+  yAxis = g =>
+    g
+      .attr("transform", `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y))
+      .attr("class", "yaxis")
+      .call(g => g.select(".domain").remove());
+
+  const gx = svg1.append("g").call(xAxis);
+  const gy = svg1.append("g").call(yAxis);
+
+  svg1
+    .append("path")
+    .datum(data) // 10. Binds data to the line
+    .attr("class", "line") // Assign a class for styling
+    .attr("transform", `translate(${margin.left},0)`)
+    .attr("d", line); // 11. Calls the line generator
+
+  svg1
+    .selectAll(".dot")
+    .data(data)
+    .join("circle") // Uses the enter().append() method
+    .attr("class", "dot") // Assign a class for styling
+    .attr("cx", function(d, i) {
+      return x(d[dimension]);
+    })
+    .attr("cy", function(d) {
+      return y(d[attribute]);
+    })
+    .attr("r", 5)
+    .attr("transform", `translate(${margin.left},0)`)
+    .on("mouseover", function(a, b, c) {
+      this.attr("class", "focus");
+    })
+    .on("mouseout", function() {});
+}
+
+//=====================================================================================================//

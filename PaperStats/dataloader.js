@@ -6,7 +6,7 @@ Http.send();
 
 Http.onload = e => {
   let dataStream = JSON.parse(Http.responseText).feed.entry;
-  fieldInitializer(dataStream, 37, 10);
+  fieldInitializer(dataStream, 38, 10);
 };
 
 //Initializing the field
@@ -34,8 +34,12 @@ function fieldInitializer(data, row, col) {
       }
     }
   }
+  //Setting all files data in the current session
   createdData.push(localCreatedData);
-  let paper = new PaperInformation(createdData);
-}
+  setAllFilesData(createdData);
 
-function createYearFrequencyChartData() {}
+  //After dataloading create views
+  //Creating real
+  createLineChart(createdData, "Year");
+  createTable(createdData);
+}

@@ -2,10 +2,13 @@
 <html>
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="views.js"></script>
     <script src="dataModel.js"></script>
     <script src="dataloader.js"></script>
+    <script src="utility.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
     <link rel="stylesheet" type="text/css" href="chartStyle.css" />
+    <link rel="stylesheet" type="text/css" href="tableStyle.css" />
 
     <!-- <script src="https://spreadsheets.google.com/feeds/cells/1hbHqrnYa4oMUquZcq8WkTJk0kI0t9scGBwro-EH-ALA/1/public/values?alt=json-in-script&callback=doData"></script> -->
     <!-- <script src="https://spreadsheets.google.com/feeds/cells/19TCHAcFTNa_Va6UankLiZiHxvwUmfXnJyJA7B5hsuIs/1/public/values?alt=json-in-script&callback=doData"></script> -->
@@ -92,86 +95,50 @@
     }
     drawBarChart();
     //================================================================================================================//
-    var svg1 = d3
+
+    var svg2 = d3
       .select("body")
       .append("svg")
-      .attr("class", "chart2") //ToDo:Add a more descriptive classname
+      .attr("class", "chart3") //ToDo:Add a more descriptive classname
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .append("g");
 
-    function drawLineChart() {
-      let x = d3
-        .scaleBand()
-        .domain(data.map(d => d.year))
-        .range([margin.left, width - margin.right])
-        .padding(0.1);
+    function drawPieChart(data) {
+      let pie = d3
+        .pie()
+        .padAngle(0.005)
+        .sort(null)
+        .value(d => d.val);
 
-      let y = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, d => d.val)])
-        .nice()
-        .range([height - margin.bottom, margin.top]);
+      const radius = Math.min(width, height) / 2;
+      let arcGenerator = d3
+        .arc()
+        .innerRadius(radius * 0.67)
+        .outerRadius(radius - 1)
+        .padAngle(0.02)
+        .padRadius(100)
+        .cornerRadius(4);
 
-      let line = d3
-        .line()
-        .x(function(d, i) {
-          return x(d.year);
-        }) // set the x values for the line generator
-        .y(function(d) {
-          return y(d.val);
-        }) // set the y values for the line generator
-        .curve(d3.curveMonotoneX); // apply smoothing to the line
+      let arcs = pie(data);
 
-      xAxis = g =>
-        g
-          .attr("transform", `translate(0,${height - margin.bottom})`)
-          .attr("class", "xaxis")
-          .call(d3.axisBottom(x).tickSizeOuter(0));
-
-      yAxis = g =>
-        g
-          .attr("transform", `translate(${margin.left},0)`)
-          .call(d3.axisLeft(y))
-          .attr("class", "yaxis")
-          .call(g => g.select(".domain").remove());
-
-      const gx = svg1.append("g").call(xAxis);
-      const gy = svg1.append("g").call(yAxis);
-
-      svg1
-        .append("path")
-        .datum(data) // 10. Binds data to the line
-        .attr("class", "line") // Assign a class for styling
-        .attr("transform", `translate(${margin.left},0)`)
-        .attr("d", line); // 11. Calls the line generator
-
-      svg1
-        .selectAll(".dot")
-        .data(data)
-        .join("circle") // Uses the enter().append() method
-        .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) {
-          return x(d.year);
-        })
-        .attr("cy", function(d) {
-          return y(d.val);
-        })
-        .attr("r", 5)
-        .attr("transform", `translate(${margin.left},0)`)
-        .on("mouseover", function(a, b, c) {
-          console.log(a);
-          this.attr("class", "focus");
-        })
-        .on("mouseout", function() {});
+      console.log(arcs);
+      svg2
+        .selectAll("path")
+        .data(arcs)
+        .join("path")
+        .attr("d", arcGenerator)
+        .attr("transform", `translate(${width / 2},${height / 2})`);
     }
 
-    drawLineChart(data);
-    data.push({ year: 2013, val: 5 });
-    setTimeout(function() {
-      drawLineChart(data);
-    }, 2000);
+    drawPieChart(data);
+
     //================================================================================================================//
+
+    // }
+    // data.push({ year: 2013, val: 5 });
+    // setTimeout(function() {
+    //   drawTable(data);
+    // }, 2000);
   </script>
 </html>
