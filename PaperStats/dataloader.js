@@ -43,5 +43,53 @@ function fieldInitializer(data, row, col) {
   //Creating real
   createLineChart(createdData, "Year");
   createBarChart(createdData, "Evaluation_Type (O/S/M/EX/ET/I/C)");
-  createTable(createdData);
+  // createTable(createdData);
+  appendTable();
+  createSearchableTable(createdData);
+  
+}
+
+
+function appendTable() {
+  $("body").append('<table id="vizDataTable" class="display" width="100%"></table>');
+}
+
+function createSearchableTable(dataSet) {
+  $(document).ready(function() {
+    $("#vizDataTable").DataTable({
+      data: dataSet,
+      order: [[ 1, "desc" ]],
+      columns: [
+        { title: "Paper", data: "Paper_Title" },
+        { title: "Year", data: "Year" },
+        { title: "Type (S/E/D)", data: "Type (S/E/D)" },
+        {
+          title: "Evaluation Type (O/S/M/EX/ET/I/C)",
+          data: "Evaluation_Type (O/S/M/EX/ET/I/C)"
+        },
+        { title: "Stimuli Description", data: "Stimuli_Description" },
+        { title: "Layouts Considered", data: "Layouts_Considered" },
+        {
+          title: "More Information",
+          data: "DOI",
+          render: function(data, type, row, meta) {
+            data = '<a href="' + data + '" target="_blank">' + data + "</a>";
+            return data;
+          }
+        }
+      ],
+      initComplete: function(settings){
+        $('#vizDataTable thead th').each(function () {
+           var $td = $(this);
+           $td.attr('title', $td.text());
+        });
+
+        /* Apply the tooltips */
+        $('#vizDataTable thead th[title]').tooltip(
+        {
+           "container": 'body'
+        });          
+    } 
+    });
+  });
 }
