@@ -117,3 +117,108 @@ function drawLineChart(data, width, height, dimension, attribute) {
 }
 
 //=====================================================================================================//
+
+function createBarChart(data, dimension) {
+  let visualizationData = createFrequencyData(data, dimension);
+  console.log(visualizationData);
+  drawBarChart(visualizationData, 500, 500, "Id", "count");
+}
+
+function drawBarChart(data, width, height, dimension, attribute) {
+  //Setup the svg for chart drawing
+  var svg = d3
+    .select("body")
+    .append("svg")
+    .attr("class", "chart1") //ToDo:Add a more descriptive classname
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  const t = svg.transition().duration(750);
+
+  // var data = [
+  //   { year: 2010, val: 3 },
+  //   { year: 2011, val: 4 },
+  //   { year: 2012, val: 5 }
+  // ];
+
+  var x = d3
+    .scaleBand()
+    .domain(data.map(d => d[dimension]))
+    .range([margin.left, width - margin.right])
+    .padding(0.1);
+
+  var y = d3
+    .scaleLinear()
+    .domain([0, d3.max(data, d => d[attribute])])
+    .nice()
+    .range([height - margin.bottom, margin.top]);
+
+  xAxis = g =>
+    g
+      .attr("transform", `translate(0,${height - margin.bottom})`)
+      .attr("class", "xaxis")
+      .call(d3.axisBottom(x).tickSizeOuter(0));
+
+  yAxis = g =>
+    g
+      .attr("transform", `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y))
+      .attr("class", "yaxis")
+      .call(g => g.select(".domain").remove());
+
+  const bar = svg
+    .selectAll("rect")
+    .data(data)
+    .join("rect")
+    .transition(t)
+    .attr("x", d => x(d[dimension]))
+    .attr("y", d => y(d[attribute]))
+    .attr("height", d => y(0) - y(d[attribute]))
+    .attr("width", x.bandwidth());
+
+  const gx = svg.append("g").call(xAxis);
+  const gy = svg.append("g").call(yAxis);
+}
+
+//=====================================================================================================//
+
+var svg2 = d3
+  .select("body")
+  .append("svg")
+  .attr("class", "chart3") //ToDo:Add a more descriptive classname
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g");
+
+function drawPieChart(data) {
+  let pie = d3
+    .pie()
+    .padAngle(0.005)
+    .sort(null)
+    .value(d => d.val);
+
+  const radius = Math.min(width, height) / 2;
+  let arcGenerator = d3
+    .arc()
+    .innerRadius(radius * 0.67)
+    .outerRadius(radius - 1)
+    .padAngle(0.02)
+    .padRadius(100)
+    .cornerRadius(4);
+
+  let arcs = pie(data);
+
+  console.log(arcs);
+  svg2
+    .selectAll("path")
+    .data(arcs)
+    .join("path")
+    .attr("d", arcGenerator)
+    .attr("transform", `translate(${width / 2},${height / 2})`);
+}
+
+drawPieChart(data);
+
+//================================================================================================================//

@@ -8,5 +8,3 @@ function setAllFilesData(data) {
 function getAllFilesData() {
   return allFilesData;
 }
-
-let;
