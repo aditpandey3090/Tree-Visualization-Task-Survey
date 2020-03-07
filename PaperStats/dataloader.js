@@ -41,21 +41,22 @@ function fieldInitializer(data, row, col) {
 
   //After dataloading create views
   //Creating real
-  createLineChart(createdData, "Year");
+  let visualizationData = createFrequencyData(createdData, "Year");
+  drawLineChart(visualizationData, 600, 500, "Id", "count", "yearofpub");
 
   //Bar chart data wrangling and visualization creation
   let visualizationDataBC1 = createFrequencyData(
     createdData,
     "Evaluation_Type (O/S/M/EX/ET/I/C)"
   );
-  drawBarChart(visualizationDataBC1, 500, 500, "Id", "count", "chart1");
+  drawBarChart(visualizationDataBC1, 500, 500, "Id", "count", "evaluationType");
 
   //Bar chart data wrangling and visualization creation
   let visualizationDataBC2 = createMultiValueFreqData(
     createdData,
     "Layouts_Considered"
   );
-  drawBarChart(visualizationDataBC2, 500, 500, "Id", "count", "chart2");
+  drawBarChart(visualizationDataBC2, 500, 500, "Id", "count", "vistypechart");
 
   //Moving the code to views.js
   appendTable();

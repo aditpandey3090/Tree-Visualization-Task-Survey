@@ -37,26 +37,31 @@ function createTable(data) {
 }
 //=====================================================================================================//
 
-function createLineChart(data, dimension) {
-  let visualizationData = createFrequencyData(data, dimension);
-  drawLineChart(visualizationData, 600, 500, "Id", "count");
-}
-
-function drawLineChart(data, width, height, dimension, attribute) {
+function drawLineChart(data, width, height, dimension, attribute, classname) {
   var svg1 = d3
     .select("body")
     .append("svg")
-    .attr("class", "chart2") //ToDo:Add a more descriptive classname
+    .attr("class", classname) //ToDo:Add a more descriptive classname
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  var parseTime = d3.timeParse("%Y");
+
+  data.forEach(function(d) {
+    d.dimension = parseTime(d[dimension]);
+    d.attribute = +d[attribute];
+  });
+
   let x = d3
-    .scaleBand()
-    .domain(data.map(d => d[dimension]))
-    .range([margin.left, width - margin.right])
-    .padding(0.1);
+    .scaleTime()
+    .domain(
+      d3.extent(data, function(d) {
+        return d[dimension];
+      })
+    )
+    .range([margin.left, width - margin.right]);
 
   let y = d3
     .scaleLinear()
@@ -78,7 +83,7 @@ function drawLineChart(data, width, height, dimension, attribute) {
     g
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .attr("class", "xaxis")
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
   yAxis = g =>
     g
@@ -94,7 +99,7 @@ function drawLineChart(data, width, height, dimension, attribute) {
     .append("path")
     .datum(data) // 10. Binds data to the line
     .attr("class", "line") // Assign a class for styling
-    .attr("transform", `translate(${margin.left},0)`)
+    .attr("transform", `translate(0,0)`)
     .attr("d", line); // 11. Calls the line generator
 
   svg1
@@ -109,7 +114,7 @@ function drawLineChart(data, width, height, dimension, attribute) {
       return y(d[attribute]);
     })
     .attr("r", 5)
-    .attr("transform", `translate(${margin.left},0)`)
+    .attr("transform", `translate(0,0)`)
     .on("mouseover", function(a, b, c) {
       this.attr("class", "focus");
     })
