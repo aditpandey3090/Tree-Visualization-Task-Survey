@@ -37,13 +37,25 @@ function fieldInitializer(data, row, col) {
   //Setting all files data in the current session
   createdData.push(localCreatedData);
   setAllFilesData(createdData);
-  console.log(createdData);
+  // console.log(createdData);
 
   //After dataloading create views
   //Creating real
   createLineChart(createdData, "Year");
-  createBarChart(createdData, "Evaluation_Type (O/S/M/EX/ET/I/C)");
-  // createTable(createdData);
+
+  //Bar chart data wrangling and visualization creation
+  let visualizationDataBC1 = createFrequencyData(
+    createdData,
+    "Evaluation_Type (O/S/M/EX/ET/I/C)"
+  );
+  drawBarChart(visualizationDataBC1, 500, 500, "Id", "count", "chart1");
+
+  //Bar chart data wrangling and visualization creation
+  let visualizationDataBC2 = createMultiValueFreqData(
+    createdData,
+    "Layouts_Considered"
+  );
+  drawBarChart(visualizationDataBC2, 500, 500, "Id", "count", "chart2");
 
   //Moving the code to views.js
   appendTable();

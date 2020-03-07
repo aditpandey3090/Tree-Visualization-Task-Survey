@@ -17,3 +17,26 @@ function createFrequencyData(data, dimension) {
     return parseInt(data1.Id) - parseInt(data2.Id);
   });
 }
+
+//Special version of frequency Chart for columns with commma-seperated value
+function createMultiValueFreqData(data, dimension) {
+  var result = [];
+  // var res = {};
+  data.reduce(function(res, value) {
+    let vizTypes = value[dimension].split(",");
+    vizTypes.forEach(element => {
+      if (!res[element]) {
+        res[element] = {
+          Id: element,
+          count: 0,
+          entireData: value
+        };
+        result.push(res[element]);
+      }
+      res[element].count += 1;
+    });
+    return res;
+  }, {});
+
+  return result;
+}

@@ -118,18 +118,12 @@ function drawLineChart(data, width, height, dimension, attribute) {
 
 //=====================================================================================================//
 
-function createBarChart(data, dimension) {
-  let visualizationData = createFrequencyData(data, dimension);
-  console.log(visualizationData);
-  drawBarChart(visualizationData, 500, 500, "Id", "count");
-}
-
-function drawBarChart(data, width, height, dimension, attribute) {
+function drawBarChart(data, width, height, dimension, attribute, classname) {
   //Setup the svg for chart drawing
   var svg = d3
     .select("body")
     .append("svg")
-    .attr("class", "chart1") //ToDo:Add a more descriptive classname
+    .attr("class", classname) //ToDo:Add a more descriptive classname
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -184,13 +178,15 @@ function drawBarChart(data, width, height, dimension, attribute) {
 
 //=====================================================================================================//
 
-var svg2 = d3
-  .select("body")
-  .append("svg")
-  .attr("class", "chart3") //ToDo:Add a more descriptive classname
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g");
+// Code to draw a pie chart
+
+// var svg2 = d3
+//   .select("body")
+//   .append("svg")
+//   .attr("class", "chart3") //ToDo:Add a more descriptive classname
+//   .attr("width", width + margin.left + margin.right)
+//   .attr("height", height + margin.top + margin.bottom)
+//   .append("g");
 
 function drawPieChart(data) {
   let pie = d3
@@ -219,10 +215,10 @@ function drawPieChart(data) {
     .attr("transform", `translate(${width / 2},${height / 2})`);
 }
 
-drawPieChart(data);
+//drawPieChart(data);
 
 //================================================================================================================//
-
+// Latest Table Code
 function appendTable() {
   $("body").append(
     '<table id="vizDataTable" class="display" width="100%"></table>'
