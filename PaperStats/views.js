@@ -236,17 +236,17 @@ function createSearchableTable(dataSet) {
       data: dataSet,
       order: [[1, "desc"]],
       columns: [
-        { title: "Paper", data: "Paper_Title" },
-        { title: "Year", data: "Year" },
-        { title: "Type (S/E/D)", data: "Type (S/E/D)" },
+        { title: 'Paper   <span><i class="fa fa-info-circle"></i></span>', data: "Paper_Title" },
+        { title: 'Year    <span><i class="fa fa-info-circle"></i></span>', data: "Year" },
+        { title: 'Type (S/E/D)    <span><i class="fa fa-info-circle"></i></span>', data: "Type (S/E/D)" },
         {
-          title: "Evaluation Type (O/S/M/EX/ET/I/C)",
+          title: 'Evaluation Type (O/S/M/EX/ET/I/C)     <i class="fa fa-info-circle"></i>',
           data: "Evaluation_Type (O/S/M/EX/ET/I/C)"
         },
-        { title: "Stimuli Description", data: "Stimuli_Description" },
-        { title: "Layouts Considered", data: "Layouts_Considered" },
+        { title: 'Stimuli Description      <i class="fa fa-info-circle"></i> ', data: "Stimuli_Description" },
+        { title: 'Layouts Considered       <i class="fa fa-info-circle"></i> ', data: "Layouts_Considered" },
         {
-          title: "More Information",
+          title: 'More Information       <i class="fa fa-info-circle"></i>',
           data: "DOI",
           render: function(data, type, row, meta) {
             data = '<a href="' + data + '" target="_blank">' + data + "</a>";
