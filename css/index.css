@@ -3,3 +3,21 @@
   width: 200px;
   margin: 20px;
 }
+
+#randomSelection {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.btn {
+  width: 10rem;
+}
+
+#randomIcon {
+  font-size: 2rem;
+  padding-top: 2px;
+}
+
+#randomSelection:hover{
+  background-color: #dee2e6;
+}
