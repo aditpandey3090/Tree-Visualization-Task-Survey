@@ -40,3 +40,17 @@ function createMultiValueFreqData(data, dimension) {
 
   return result;
 }
+
+/**
+ * Filter DataTable's given column
+ * 
+ * @param {number} columnNumber 
+ * @param {String} query 
+ */
+function filterColumn(columnNumber, query) {
+  $("#vizDataTable")
+                .DataTable()
+                .columns(columnNumber)
+                .search(query)
+                .draw();
+}
