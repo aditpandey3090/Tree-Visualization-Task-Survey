@@ -134,14 +134,6 @@ function drawBarChart(data, width, height, dimension, attribute, classname) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  const t = svg.transition().duration(750);
-
-  // var data = [
-  //   { year: 2010, val: 3 },
-  //   { year: 2011, val: 4 },
-  //   { year: 2012, val: 5 }
-  // ];
-
   var x = d3
     .scaleBand()
     .domain(data.map(d => d[dimension]))
@@ -167,15 +159,46 @@ function drawBarChart(data, width, height, dimension, attribute, classname) {
       .attr("class", "yaxis")
       .call(g => g.select(".domain").remove());
 
+  var click = false;
   const bar = svg
     .selectAll("rect")
     .data(data)
     .join("rect")
-    .transition(t)
+    .attr("class", "bar")
     .attr("x", d => x(d[dimension]))
     .attr("y", d => y(d[attribute]))
     .attr("height", d => y(0) - y(d[attribute]))
-    .attr("width", x.bandwidth());
+    .attr("width", x.bandwidth())
+    .on("click", function(d) {
+      if (!click) {
+        //Change Style
+        d3.select(this).attr("class", "selected");
+
+        //Change Data
+        filterCol = columnLookup[classname];
+        console.log(filterCol);
+        filterColumn(filterCol, d[dimension]);
+
+        //Change Click Toggle
+        click = true;
+      } else {
+        //Change Style
+        d3.select(".selected").classed("selected", false);
+        d3.select(this).attr("class", "selected");
+
+        //Change Data
+        filterCol = columnLookup[classname];
+        console.log(filterCol);
+        filterColumn(filterCol, d[dimension]);
+
+        //Change Click Toggle
+        click = true;
+      }
+    })
+    .on("dblclick", function(d) {
+      d3.selectAll(".selected").classed("selected", false);
+      filterColumn();
+    });
 
   const gx = svg.append("g").call(xAxis);
   const gy = svg.append("g").call(yAxis);
@@ -236,15 +259,32 @@ function createSearchableTable(dataSet) {
       data: dataSet,
       order: [[1, "desc"]],
       columns: [
-        { title: 'Paper   <span><i class="fa fa-info-circle"></i></span>', data: "Paper_Title" },
-        { title: 'Year    <span><i class="fa fa-info-circle"></i></span>', data: "Year" },
-        { title: 'Type (S/E/D)    <span><i class="fa fa-info-circle"></i></span>', data: "Type (S/E/D)" },
         {
-          title: 'Evaluation Type (O/S/M/EX/ET/I/C)     <i class="fa fa-info-circle"></i>',
+          title: 'Paper   <span><i class="fa fa-info-circle"></i></span>',
+          data: "Paper_Title"
+        },
+        {
+          title: 'Year    <span><i class="fa fa-info-circle"></i></span>',
+          data: "Year"
+        },
+        {
+          title:
+            'Type (S/E/D)    <span><i class="fa fa-info-circle"></i></span>',
+          data: "Type (S/E/D)"
+        },
+        {
+          title:
+            'Evaluation Type (O/S/M/EX/ET/I/C)     <i class="fa fa-info-circle"></i>',
           data: "Evaluation_Type (O/S/M/EX/ET/I/C)"
         },
-        { title: 'Stimuli Description      <i class="fa fa-info-circle"></i> ', data: "Stimuli_Description" },
-        { title: 'Layouts Considered       <i class="fa fa-info-circle"></i> ', data: "Layouts_Considered" },
+        {
+          title: 'Stimuli Description      <i class="fa fa-info-circle"></i> ',
+          data: "Stimuli_Description"
+        },
+        {
+          title: 'Layouts Considered       <i class="fa fa-info-circle"></i> ',
+          data: "Layouts_Considered"
+        },
         {
           title: 'More Information       <i class="fa fa-info-circle"></i>',
           data: "DOI",

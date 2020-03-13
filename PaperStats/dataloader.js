@@ -6,7 +6,7 @@ Http.send();
 
 Http.onload = e => {
   let dataStream = JSON.parse(Http.responseText).feed.entry;
-  fieldInitializer(dataStream, 55, 8); //ToDo: We have to dynamically insert the final file list count
+  fieldInitializer(dataStream, 54, 8); //ToDo: We have to dynamically insert the final file list count
 };
 
 //Initializing the field
@@ -49,14 +49,14 @@ function fieldInitializer(data, row, col) {
     createdData,
     "Evaluation_Type (O/S/M/EX/ET/I/C)"
   );
-  drawBarChart(visualizationDataBC1, 500, 500, "Id", "count", "evaluationType");
+  drawBarChart(visualizationDataBC1, 500, 500, "Id", "count", "EvaluationType");
 
   //Bar chart data wrangling and visualization creation
   let visualizationDataBC2 = createMultiValueFreqData(
     createdData,
     "Layouts_Considered"
   );
-  drawBarChart(visualizationDataBC2, 500, 500, "Id", "count", "vistypechart");
+  drawBarChart(visualizationDataBC2, 500, 500, "Id", "count", "VisType");
 
   //Moving the code to views.js
   appendTable();

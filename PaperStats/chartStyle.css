@@ -13,3 +13,7 @@
   stroke: black;
   fill: none;
 }
+
+.selected {
+  fill: red;
+}

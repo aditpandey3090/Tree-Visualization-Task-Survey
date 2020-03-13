@@ -8,3 +8,9 @@ function setAllFilesData(data) {
 function getAllFilesData() {
   return allFilesData;
 }
+
+columnLookup = {
+  year: 2,
+  EvaluationType: 3,
+  VisType: 6
+};

@@ -43,14 +43,14 @@ function createMultiValueFreqData(data, dimension) {
 
 /**
  * Filter DataTable's given column
- * 
- * @param {number} columnNumber 
- * @param {String} query 
+ *
+ * @param {number} columnNumber
+ * @param {String} query
  */
 function filterColumn(columnNumber, query) {
   $("#vizDataTable")
-                .DataTable()
-                .columns(columnNumber)
-                .search(query)
-                .draw();
+    .DataTable()
+    .columns(columnNumber)
+    .search(query)
+    .draw();
 }
