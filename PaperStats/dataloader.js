@@ -6,7 +6,7 @@ Http.send();
 
 Http.onload = e => {
   let dataStream = JSON.parse(Http.responseText).feed.entry;
-  fieldInitializer(dataStream, 54, 8); //ToDo: We have to dynamically insert the final file list count
+  fieldInitializer(dataStream, 55, 10); //ToDo: We have to dynamically insert the final file list count
 };
 
 //Initializing the field
@@ -24,7 +24,7 @@ function fieldInitializer(data, row, col) {
       localCreatedData = {};
     }
     for (let j = 0; j < col; j++) {
-      let cell = data[i * 8 + j]["gs$cell"];
+      let cell = data[i * 10 + j]["gs$cell"];
       let row = cell["row"];
       let col = cell["col"];
       if (row == 1) {
@@ -37,7 +37,7 @@ function fieldInitializer(data, row, col) {
   //Setting all files data in the current session
   createdData.push(localCreatedData);
   setAllFilesData(createdData);
-  // console.log(createdData);
+  console.log(createdData);
 
   //After dataloading create views
   //Creating real

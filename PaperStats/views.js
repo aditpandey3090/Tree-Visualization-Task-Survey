@@ -177,6 +177,7 @@ function drawBarChart(data, width, height, dimension, attribute, classname) {
         //Change Data
         filterCol = columnLookup[classname];
         console.log(filterCol);
+        console.log(d[dimension]);
         filterColumn(filterCol, d[dimension]);
 
         //Change Click Toggle
@@ -197,7 +198,7 @@ function drawBarChart(data, width, height, dimension, attribute, classname) {
     })
     .on("dblclick", function(d) {
       d3.selectAll(".selected").classed("selected", false);
-      filterColumn();
+      filterColumn(3, "");
     });
 
   const gx = svg.append("g").call(xAxis);
