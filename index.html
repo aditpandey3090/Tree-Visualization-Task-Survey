@@ -12,7 +12,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="utils/fetchData.js"></script>
+    <script src="js/utils/fetchData.js"></script>
 </head>
 
 <body>
@@ -29,14 +29,16 @@
         </div>
         <div id="body" class="container-fluid mt-5">
             <div class="row">
-                <div class="col-md">
-                    <div class="col-md-4 ">
-                        <div class="option border border-dark rounded"></div>
+                <a style="display:block" href="/surveyed-papers/">
+                    <div class="col-md">
+                        <div class="col-md-4 ">
+                            <div class="option border border-dark rounded"></div>
+                        </div>
+                        <div class="col-md-8 offset-sm-2">
+                            <p>Surveyed Papers</p>
+                        </div>
                     </div>
-                    <div class="col-md-8 offset-sm-2">
-                        <p>Surveyed Papers</p>
-                    </div>
-                </div>
+                </a>
                 <div class="col-md">
                     <div class="col-md-4 offset-sm-1">
                         <div class="option border border-dark rounded "></div>
@@ -56,7 +58,7 @@
             </div>
         </div>
         <div class="container">
-            <div id="randomSelection" class="row justify-content-md-center mt-5">
+            <div id="randomSelection" class="row justify-content-md-center mt-5" onclick="randomizeSurveyPaper()">
                 <div class="col-sm-1 offset-sm-3 text-right">
                     <i id="randomIcon" class="fa fa-random"></i> 
                 </div>
@@ -71,21 +73,22 @@
                     <tbody>
                         <tr>
                           <th scope="row">Paper Title</th>
-                          <td>Paper Title goes here</td>
+                          <td id="randomPaperTitle">Paper Title goes here</td>
                         </tr>
                         <tr>
-                          <th scope="row">Year</th>
-                          <td>2020</td>
+                          <th scope="row">Author</th>
+                          <td id="randomPaperAuthor">2020</td>
                         </tr>
                         <tr>
-                          <th scope="row">Link</th>
-                          <td>https://papertitle.com</td>
+                          <th scope="row">Abstract</th>
+                          <td id="randomPaperAbstract">https://papertitle.com</td>
                         </tr>
                       </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script src="js/home/landing.js"></script>
 </body>
 
 </html>

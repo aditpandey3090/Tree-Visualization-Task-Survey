@@ -16,8 +16,10 @@ function loadDataFromAPI() {
  * Pulls data from the API and returns it wrapped within a Promise.
  * How to use the data?
  * 
- * fetchData().then(data => console.log(data),
- * error => console.log(error));
+ * fetchData().then(
+ *  data => console.log(data),
+ *  error => console.log(error)
+ * );
  */
 async function fetchData() {
   let data = await loadDataFromAPI();
