@@ -37,13 +37,16 @@ function createTable(data) {
 }
 //=====================================================================================================//
 
-function drawLineChart(data, width, height, dimension, attribute, classname) {
+function drawLineChart(data, height, dimension, attribute, classname, id) {
+  margin = { left: 15, top: 10, right: 40, bottom: 40 };
+  width = document.getElementById(id).clientWidth / 2;
+  height = height / 2;
+
   var svg1 = d3
-    .select("body")
+    .select("#" + id)
     .append("svg")
     .attr("class", classname) //ToDo:Add a more descriptive classname
-    // .attr("width", width + margin.left + margin.right)
-    // .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", "0 0 " + width + " " + height)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -123,14 +126,19 @@ function drawLineChart(data, width, height, dimension, attribute, classname) {
 
 //=====================================================================================================//
 
-function drawBarChart(data, width, height, dimension, attribute, classname) {
+function drawBarChart(data, height, dimension, attribute, classname, id) {
+  margin = { left: 15, top: 10, right: 40, bottom: 40 };
+  width = document.getElementById(id).clientWidth / 2;
+  height = height / 2;
+
   //Setup the svg for chart drawing
   var svg = d3
-    .select("body")
+    .select("#" + id)
     .append("svg")
     .attr("class", classname) //ToDo:Add a more descriptive classname
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", "0 0 " + width + " " + height)
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
