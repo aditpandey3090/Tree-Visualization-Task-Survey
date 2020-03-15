@@ -24,7 +24,7 @@ function randomizeSurveyPaper() {
 
     const randomlySelectedPaperId = getRandomPaper();
 
-    document.getElementById(FIELD_ID.random_title).innerHTML = randomlySelectedPaperId.Paper_Title
-    document.getElementById(FIELD_ID.random_author).innerHTML = randomlySelectedPaperId.Author
-    document.getElementById(FIELD_ID.random_abstract).innerHTML = randomlySelectedPaperId.Abstract
+    document.getElementById(FIELD_ID.random_title).innerHTML = randomlySelectedPaperId.Paper_Title || ''
+    document.getElementById(FIELD_ID.random_author).innerHTML = randomlySelectedPaperId.Author || ''
+    document.getElementById(FIELD_ID.random_abstract).innerHTML = randomlySelectedPaperId.Abstract || ''
 }

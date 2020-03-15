@@ -42,8 +42,8 @@ function drawLineChart(data, width, height, dimension, attribute, classname) {
     .select("body")
     .append("svg")
     .attr("class", classname) //ToDo:Add a more descriptive classname
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

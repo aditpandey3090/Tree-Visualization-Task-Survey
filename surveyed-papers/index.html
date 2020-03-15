@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
-    <script src="../js/utils/fetchData.js"></script>
-    <script src="views.js"></script>
-    <script src="dataModel.js"></script>
-    <script src="dataloader.js"></script>
-    <script src="utility.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
-    <link rel="stylesheet" type="text/css" href="chartStyle.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="tableStyle.css" /> -->
-
-    <!-- <script src="https://spreadsheets.google.com/feeds/cells/1hbHqrnYa4oMUquZcq8WkTJk0kI0t9scGBwro-EH-ALA/1/public/values?alt=json-in-script&callback=doData"></script> -->
-    <!-- <script src="https://spreadsheets.google.com/feeds/cells/19TCHAcFTNa_Va6UankLiZiHxvwUmfXnJyJA7B5hsuIs/1/public/values?alt=json-in-script&callback=doData"></script> -->
-  </head>
-
+  <title>Tree Visualization Survey</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
+  />
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+  />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/utils/fetchData.js"></script>
+  <script src="views.js"></script>
+  <script src="dataModel.js"></script>
+  <script src="dataloader.js"></script>
+  <script src="utility.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
+  <link rel="stylesheet" type="text/css" href="chartStyle.css" />
   <body>
-    <h1>First Chart</h1>
+    <div class="w3-row-padding w3-center w3-margin-top">
+      <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:200px">
+          <br />
+          <h3>Add your Visualization here</h3>
+          <br />
+        </div>
+      </div>
+
+      <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:200px">
+          <br />
+          <h3>Add your Visualization here</h3>
+          <br />
+        </div>
+      </div>
+
+      <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:200px">
+          <br />
+          <h3>Add your Visualization here</h3>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <br />
+
+    <hr />
+
+    <div class="w3-responsive w3-card-4"></div>
   </body>
-  <script>
-    //Test Dataset, this should be replaced with real data
-    let data = [
-      { year: 2010, val: 3 },
-      { year: 2011, val: 4 },
-      { year: 2012, val: 5 }
-    ];
-
-    //Initialize the dimensions of the chart
-    var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-      width = 500 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
-
-    //================================================================================================================//
-
-    // }
-    // data.push({ year: 2013, val: 5 });
-    // setTimeout(function() {
-    //   drawTable(data);
-    // }, 2000);
-  </script>
 </html>

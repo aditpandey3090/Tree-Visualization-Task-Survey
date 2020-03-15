@@ -1,94 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <title>Tree Visualization Survey</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
+  <script src="js/utils/fetchData.js"></script>
+  <body>
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+      <div class="w3-center">
+        <h1 class="w3-xxxlarge w3-animate-bottom">Tree Visualization Survey</h1>
+      </div>
+    </header>
 
-<head>
-    <title>Tree Visualization Survey</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/index.css" />
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/utils/fetchData.js"></script>
-</head>
+    <div class="w3-row-padding w3-center w3-margin-top">
+      <a style="display:block" href="/surveyed-papers/"
+        ><div class="w3-third">
+          <div class="w3-card w3-container" style="min-height:200px">
+            <br />
+            <i
+              class="fa fa-line-chart w3-margin-bottom w3-text-theme"
+              style="font-size:120px"
+            ></i>
+            <h3>Surveyed Papers</h3>
+            <br />
+          </div></div
+      ></a>
 
-<body>
-    <div class="container">
-        <div id="heading" class="container">
-            <div class="row mt-5">
-                <div class="col-md-8">
-                    <h1 id="heading">Tree Visualization Survey</h1>
-                </div>
-                <div class="col-md-3 text-right">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-plus"></i>  Add Paper</button>
-                </div>
-            </div>
+      <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:200px">
+          <br />
+          <i
+            class="fa fa-area-chart w3-margin-bottom w3-text-theme"
+            style="font-size:120px"
+          ></i>
+          <h3>Task Survey Data</h3>
+          <br />
         </div>
-        <div id="body" class="container-fluid mt-5">
-            <div class="row">
-                <a style="display:block" href="/surveyed-papers/">
-                    <div class="col-md">
-                        <div class="col-md-4 ">
-                            <div class="option border border-dark rounded"></div>
-                        </div>
-                        <div class="col-md-8 offset-sm-2">
-                            <p>Surveyed Papers</p>
-                        </div>
-                    </div>
-                </a>
-                <div class="col-md">
-                    <div class="col-md-4 offset-sm-1">
-                        <div class="option border border-dark rounded "></div>
-                    </div>
-                    <div class="col-md-8 offset-sm-3">
-                        <p>Task Survey Data</p>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="col-md-4 offset-sm-2">
-                        <div class="option border border-dark rounded "></div>
-                    </div>
-                    <div class="col-md-10 offset-sm-3">
-                        <p>Task Based Tree Vis Explorer</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+
+      <div class="w3-third">
+        <div class="w3-card w3-container" style="min-height:200px">
+          <br />
+          <i
+            class="fa fa-bar-chart w3-margin-bottom w3-text-theme"
+            style="font-size:120px"
+          ></i>
+          <h3>Task Survey Data</h3>
+          <br />
         </div>
-        <div class="container">
-            <div id="randomSelection" class="row justify-content-md-center mt-5" onclick="randomizeSurveyPaper()">
-                <div class="col-sm-1 offset-sm-3 text-right">
-                    <i id="randomIcon" class="fa fa-random"></i> 
-                </div>
-                <div class="col-sm-8">
-                    <h4>Show me a random survey paper</h4>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row mt-5">
-                <table class="table table-borderless table-condensed table-hover">
-                    <tbody>
-                        <tr>
-                          <th scope="row">Paper Title</th>
-                          <td id="randomPaperTitle">Paper Title goes here</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Author</th>
-                          <td id="randomPaperAuthor">2020</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Abstract</th>
-                          <td id="randomPaperAbstract">https://papertitle.com</td>
-                        </tr>
-                      </tbody>
-                </table>
-            </div>
-        </div>
+      </div>
     </div>
-    <script src="js/home/landing.js"></script>
-</body>
 
+    <br />
+
+    <hr />
+
+    <div class="w3-center">
+      <br />
+      <a
+        class="w3-button w3-theme"
+        style="min-width: 200px;"
+        onclick="randomizeSurveyPaper()"
+      >
+        Show me a random Survey Paper
+        <i class="fa fa-random" style="color: antiquewhite !important"></i
+      ></a>
+      <br /><br />
+    </div>
+    <br />
+
+    <div
+      class="w3-card-12 w3-center white"
+      style="width:50%; margin: 0 auto; border: thin; border-color: black"
+    >
+      <div class="w3-container w3-theme">
+        <h3>Survey Paper</h3>
+      </div>
+      <div class="w3-container"></div>
+      <ul class="w3-ul w3-border-top">
+        <li>
+          <h3>Paper Title</h3>
+          <p id="randomPaperTitle">
+            The response to the animations was ridiculous
+          </p>
+        </li>
+        <li>
+          <h3>Author</h3>
+          <p id="randomPaperAuthor">
+            Touching, gripping and genuinely well made
+          </p>
+        </li>
+        <li>
+          <h3>Abstract</h3>
+          <p id="randomPaperAbstract">A huge success for Marvel and Disney</p>
+        </li>
+      </ul>
+    </div>
+    <br />
+
+    <hr />
+
+    <script src="js/home/landing.js"></script>
+  </body>
 </html>
