@@ -1,5 +1,5 @@
 let surveyDataLocalCache = undefined;
-fetchData().then(
+fetchSurveyData().then(
     data => {
         surveyDataLocalCache = data;
         randomizeSurveyPaper();

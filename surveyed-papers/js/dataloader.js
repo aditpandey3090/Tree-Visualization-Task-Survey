@@ -1,4 +1,4 @@
-fetchData().then(
+fetchSurveyData().then(
   data => fieldInitializer(data),
   error => console.log(error)
 );
