@@ -46,7 +46,7 @@ async function fetchSurveyData() {
   return createdData;
 }
 
-function parseRawData(row, col, data) {
+function parseRawData(row, column, data) {
   let inputArray = [];
   let createdData = [];
   let localCreatedData = {};
@@ -55,8 +55,8 @@ function parseRawData(row, col, data) {
       createdData.push(localCreatedData);
       localCreatedData = {};
     }
-    for (let j = 0; j < col; j++) {
-      let cell = data[i * 10 + j]["gs$cell"];
+    for (let j = 0; j < column; j++) {
+      let cell = data[i * column + j]["gs$cell"];
       let row = cell["row"];
       let col = cell["col"];
       if (row == 1) {
