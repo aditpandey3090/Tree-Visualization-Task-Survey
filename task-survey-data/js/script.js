@@ -3,6 +3,8 @@ fetchProposedData().then(
         console.log(data);
         appendTable();
         createSearchableTable(data);
+        const tidyTree = generateTree(data);
+        console.log(tidyTree);
     },
     error => console.log(error)
   );
@@ -71,4 +73,93 @@ fetchProposedData().then(
         }
       });
     });
+  }
+
+  /**
+   * Converts the data in a tree structure
+   * ├── Target
+   * │    └── Specific Target
+   * │        └── Target Attribute
+   * 
+   * @param {Object} data JSON data received from the proposed data sheet.
+   */
+  function generateTree(data) {
+    const syntax = {
+      name: ""
+    };
+    
+    const root = {
+      name: "Target",
+      children: []
+    };
+    const attributeName = "Target";
+    recurseNode(root, attributeName, 0);
+    
+    function recurseNode(root, attributeName, level, parentName, parentValue) {
+      for (let i = 0; i < data.length; i++) {
+        const currentData = data[i];
+        const targetName = data[i][attributeName];
+        if (level > 0 && currentData[parentName] !== parentValue) {
+          continue;
+        }
+        let filteredList = root.children.filter(
+          element => element.name === targetName
+        );
+        if (filteredList.length > 0 && level > 1) {
+          let targetChild = undefined;
+    
+          targetChild = root.children.filter(x => x.name === targetName)[0];
+    
+          if (level === 0) {
+            recurseNode(
+              targetChild,
+              "Specific Target",
+              1,
+              attributeName,
+              targetName
+            );
+          } else if (level === 1) {
+            recurseNode(
+              targetChild,
+              "Target Attribute",
+              2,
+              attributeName,
+              targetName
+            );
+          } else if (level === 2) {
+            targetChild.count = targetChild.count + 1;
+          }
+        } else if (filteredList.length === 0) {
+          const targetNode = JSON.parse(JSON.stringify(syntax));
+          targetNode.name = targetName;
+          if (level < 2) {
+            targetNode.children = [];
+          } else {
+            targetNode.count = 1;
+          }
+    
+          root.children.push(targetNode);
+    
+          if (level === 0) {
+            recurseNode(
+              targetNode,
+              "Specific Target",
+              1,
+              attributeName,
+              targetName
+            );
+          } else if (level === 1) {
+            recurseNode(
+              targetNode,
+              "Target Attribute",
+              2,
+              attributeName,
+              targetName
+            );
+          }
+        }
+      }
+    }
+    
+    return root;
   }
