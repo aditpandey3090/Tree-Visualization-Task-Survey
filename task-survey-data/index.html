@@ -26,24 +26,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
   <script src="../js/utils/fetchData.js"></script>
+  <script src="js/views.js"></script>
   <script src="js/script.js"></script>
   <body>
-
     <!-- Header -->
     <header class="w3-container w3-theme w3-padding" id="myHeader">
       <a href="../" style="text-decoration: none; color: white;">
-        <i class="fa fa-home w3-xlarge w3-button w3-theme" style="float: left; margin-top: 12px"></i>
+        <i
+          class="fa fa-home w3-xlarge w3-button w3-theme"
+          style="float: left; margin-top: 12px"
+        ></i>
       </a>
       <div class="w3-center">
-          <h1 style="float: left;" class="w3-xlarge w3-animate-bottom">
+        <h1 style="float: left;" class="w3-xlarge w3-animate-bottom">
           A Curated Dataset of Abstract Tree Visualization Tasks
-          </h1>
+        </h1>
       </div>
     </header>
 
     <br />
     <br />
 
-    <div class="w3-responsive w3-card-4"></div>
+    <div class="w3-half" id="targetChart"></div>
+    <div class="w3-half" id="targetChart1"></div>
   </body>
 </html>
