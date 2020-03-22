@@ -1,10 +1,9 @@
 fetchProposedData().then(
   data => {
-    console.log(data);
     const tidyTree = generateTree(data);
-    console.log(tidyTree);
+    const tidyTree2Level = generateTwoLevelTree(data);
     createSunburstChart(tidyTree, "targetChart", "targetChart");
-    createSunburstChart(tidyTree, "targetChart1", "targetChart1");
+    createSunburstChart(tidyTree2Level, "targetChart1", "targetChart1");
     appendTable();
     createSearchableTable(data);
   },
@@ -189,6 +188,34 @@ function generateTree(data) {
     else if (k === "value") this.count = v;
     else return v;
   });
+  console.log(parsed);
+  return parsed;
+}
+
+function generateTwoLevelTree(data) {
+  var nested_data = d3
+    .nest()
+    .key(function(d) {
+      return d["Action(Search)"];
+    })
+    .key(function(d) {
+      return d["Action(Query)"];
+    })
+    .rollup(function(leaves) {
+      return leaves.length;
+    })
+    .entries(data);
+
+  let targetVal = { name: "Action", children: nested_data };
+
+  var parsed = JSON.parse(JSON.stringify(targetVal), function(k, v) {
+    if (k === "key") this.name = v;
+    else if (k === "values") this.children = v;
+    else if (k === "value") this.count = v;
+    else return v;
+  });
+
+  console.log(parsed);
 
   return parsed;
 }
