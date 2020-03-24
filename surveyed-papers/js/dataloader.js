@@ -23,6 +23,19 @@ function fieldInitializer(createdData) {
     "YearofPub"
   );
 
+  //
+  let visualizationDataBC3 = createFrequencyData(createdData, "Type (S/E/D)");
+  console.log(visualizationDataBC3);
+
+  drawBarChart(
+    visualizationDataBC3,
+    500,
+    "Id",
+    "count",
+    "PaperType",
+    "PaperType"
+  );
+
   // //Bar chart data wrangling and visualization creation
   let visualizationDataBC1 = createFrequencyData(
     createdData,

@@ -38,7 +38,7 @@ function createTable(data) {
 //=====================================================================================================//
 
 function drawLineChart(data, height, dimension, attribute, classname, id) {
-  margin = { left: 15, top: 10, right: 40, bottom: 40 };
+  margin = { left: 18, top: 10, right: 40, bottom: 40 };
   width = document.getElementById(id).clientWidth / 2;
   height = height / 2;
 
@@ -86,12 +86,17 @@ function drawLineChart(data, height, dimension, attribute, classname, id) {
     g
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .attr("class", "xaxis")
-      .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+      .call(
+        d3
+          .axisBottom(x)
+          .tickFormat(d3.format("d"))
+          .ticks(5)
+      );
 
   yAxis = g =>
     g
       .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y))
+      .call(d3.axisLeft(y).ticks(5))
       .attr("class", "yaxis")
       .call(g => g.select(".domain").remove());
 
@@ -127,7 +132,7 @@ function drawLineChart(data, height, dimension, attribute, classname, id) {
 //=====================================================================================================//
 
 function drawBarChart(data, height, dimension, attribute, classname, id) {
-  margin = { left: 15, top: 10, right: 40, bottom: 40 };
+  margin = { left: 20, top: 10, right: 40, bottom: 40 };
   width = document.getElementById(id).clientWidth / 2;
   height = height / 2;
 
@@ -163,7 +168,7 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
   yAxis = g =>
     g
       .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y))
+      .call(d3.axisLeft(y).ticks(5))
       .attr("class", "yaxis")
       .call(g => g.select(".domain").remove());
 

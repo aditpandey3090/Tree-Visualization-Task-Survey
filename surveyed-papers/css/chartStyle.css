@@ -17,3 +17,7 @@
 .selected {
   fill: red;
 }
+
+text {
+  font-size: 20px;
+}
