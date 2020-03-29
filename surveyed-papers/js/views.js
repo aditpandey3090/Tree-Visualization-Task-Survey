@@ -275,7 +275,11 @@ function createSearchableTable(dataSet) {
       columns: [
         {
           title: 'Paper   <span><i class="fa fa-info-circle"></i></span>',
-          data: "Paper_Title"
+          data: "Paper_Title",
+          render: function(data, type, row, meta) {
+            data = '<a href="/profile?id=' + row.Ref_Id + '" target="_blank">' + data + "</a>";
+            return data;
+          }
         },
         {
           title: 'Year    <span><i class="fa fa-info-circle"></i></span>',
