@@ -38,8 +38,10 @@ function filterPaperData(data, paperId, idField) {
  */
 function fillInProfilePage(surveyData, proposedData) {
   setPaperInfo(surveyData);
-  appendTaskSurveyTable("#tableBody");
-  createTaskSurveyTable(proposedData, false);
+  if (proposedData !== undefined || proposedData.length > 0) {
+    appendTaskSurveyTable("#tableBody");
+    createTaskSurveyTable(proposedData, false);
+  }
 }
 
 function setPaperInfo(surveyData) {
