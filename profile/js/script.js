@@ -38,7 +38,7 @@ function filterPaperData(data, paperId, idField) {
  */
 function fillInProfilePage(surveyData, proposedData) {
   setPaperInfo(surveyData);
-  if (proposedData !== undefined || proposedData.length > 0) {
+  if (proposedData !== undefined && proposedData.length > 0) {
     appendTaskSurveyTable("#tableBody");
     createTaskSurveyTable(proposedData, false);
   }
