@@ -1,9 +1,9 @@
 fetchProposedData().then(
   data => {
-    const tidyTree = generateTree(data);
-    const tidyTree2Level = generateTwoLevelTree(data);
-    createSunburstChart(tidyTree, "targetChart", "targetChart");
-    createSunburstChart(tidyTree2Level, "targetChart1", "targetChart1");
+    const target = generateTree(data);
+    const action = generateTwoLevelTree(data);
+    createSunburstChart(action, "actionChart", "actionChart");
+    createSunburstChart(target, "targetChart", "targetChart");
     appendTaskSurveyTable("body");
     createTaskSurveyTable(data);
   },

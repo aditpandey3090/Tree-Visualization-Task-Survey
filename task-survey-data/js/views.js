@@ -1,61 +1,11 @@
 function createSunburstChart(data, id, classname) {
-  margin = { left: 15, top: 10, right: 40, bottom: 40 };
+  // margin = { left: 100, top: 100, right: 100, bottom: 100 };
   format = d3.format(",d");
 
-  //   var width = 500;
-  //   var height = 500;
-  //   var radius = Math.min(width, height) / 2;
-  //   //   var color = d3.scaleOrdinal(d3.schemeCategory20b);
+  var width = document.getElementById(id).clientWidth / 3;
 
-  //   const svg1 = d3
-  //     .select("#" + id)
-  //     .append("svg")
-  //     .attr("width", width)
-  //     .attr("height", height)
-  //     .append("g")
-  //     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-  //   var partition = d3.partition().size([2 * Math.PI, radius]);
-
-  //   // Find data root
-  //   var root = d3.hierarchy(data).sum(function(d) {
-  //     return d.count;
-  //   });
-
-  //   partition(root);
-
-  //   var arc = d3
-  //     .arc()
-  //     .startAngle(function(d) {
-  //       return d.x0;
-  //     })
-  //     .endAngle(function(d) {
-  //       return d.x1;
-  //     })
-  //     .innerRadius(function(d) {
-  //       return d.y0;
-  //     })
-  //     .outerRadius(function(d) {
-  //       return d.y1;
-  //     });
-
-  //   // Put it all together
-  //   svg1
-  //     .selectAll("path")
-  //     .data(root.descendants())
-  //     .enter()
-  //     .append("path")
-  //     .attr("display", function(d) {
-  //       return d.depth ? null : "none";
-  //     })
-  //     .attr("d", arc)
-  //     .style("stroke", "#fff")
-  //     .style("fill", function(d) {
-  //       return "red";
-  //     });
-
-  var width = 500;
-  var height = 800;
+  //var width = 500;
+  var height = document.getElementById(id).clientWidth / 4;
   var radius = Math.min(width, height) / 2;
   partition = data =>
     d3.partition().size([2 * Math.PI, radius])(
@@ -76,9 +26,9 @@ function createSunburstChart(data, id, classname) {
 
   const root = partition(data);
 
-  color = d3.scaleOrdinal(
-    d3.quantize(d3.interpolateRainbow, data.children.length + 1)
-  );
+  console.log(data.children.children);
+
+  color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, 10));
 
   const svg1 = d3
     .select("#" + id)
@@ -94,11 +44,16 @@ function createSunburstChart(data, id, classname) {
     .data(root.descendants().filter(d => d.depth))
     .enter()
     .append("path")
+    .attr("class", "sunburst")
     .attr("fill", d => {
-      while (d.depth > 1) d = d.parent;
+      while (d.depth > 2) d = d.parent;
       return color(d.data.name);
     })
     .attr("d", arc)
+    .on("click", function(d) {
+      d3.selectAll(".sunburst").attr("opacity", 0.5);
+      d3.select(this).attr("opacity", 1);
+    })
     .append("title")
     .text(
       d =>
@@ -113,20 +68,30 @@ function createSunburstChart(data, id, classname) {
     .append("g")
     .attr("pointer-events", "none")
     .attr("text-anchor", "middle")
-    .attr("font-size", 10)
+    .attr("font-size", 7)
     .attr("font-family", "sans-serif")
     .selectAll("text")
     .data(
-      root
-        .descendants()
-        .filter(d => d.depth && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10)
+      root.descendants()
+      // .filter(d => d.depth <= 2 && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10)
     )
     .join("text")
     .attr("transform", function(d) {
-      const x = (((d.x0 + d.x1) / 2) * 180) / Math.PI;
-      const y = (d.y0 + d.y1) / 2;
-      return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+      if (d.depth != 0) {
+        const x = (((d.x0 + d.x1) / 2) * 180) / Math.PI;
+        const y = (d.y0 + d.y1) / 2;
+        return `rotate(${x - 90}) translate(${y},0) rotate(${
+          x < 180 ? 0 : 180
+        })`;
+      }
     })
     .attr("dy", "0.35em")
-    .text(d => d.data.name);
+    .text(d => d.data.name)
+    .style("display", function(d) {
+      if (d.depth <= 2 && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10) {
+        return "";
+      } else {
+        return "none";
+      }
+    });
 }
