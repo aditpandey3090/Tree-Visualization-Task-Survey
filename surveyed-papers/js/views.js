@@ -277,7 +277,7 @@ function createSearchableTable(dataSet) {
           title: 'Paper   <span><i class="fa fa-info-circle"></i></span>',
           data: "Paper_Title",
           render: function(data, type, row, meta) {
-            data = '<a href="/profile?id=' + row.Ref_Id + '" target="_blank">' + data + "</a>";
+            data = '<a href="./profile?id=' + row.Ref_Id + '" target="_blank">' + data + "</a>";
             return data;
           }
         },
