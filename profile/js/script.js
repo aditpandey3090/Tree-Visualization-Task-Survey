@@ -1,3 +1,11 @@
+const LAYOUT_DEF = {
+  ED: "Enclosure Diagram",
+  LD: "Layered Diagram",
+  NL: "Node Link",
+  IL: "Indented List",
+  HD: "Hybrid Diagram",
+  SD: "Symbolic Diagram"
+}
 async function fetchPaperData() {
   const [surveyData, proposedData] = await Promise.all([
     fetchSurveyData(),
@@ -42,6 +50,7 @@ function fillInProfilePage(surveyData, proposedData) {
     appendTaskSurveyTable("#tableBody");
     createTaskSurveyTable(proposedData, false);
   }
+  addVisualEncoding(surveyData.Layouts_Considered);
 }
 
 function setPaperInfo(surveyData) {
@@ -54,4 +63,24 @@ function setPaperInfo(surveyData) {
   document.getElementById("authorName").innerHTML += author;
   document.getElementById("year").innerHTML += year;
   document.getElementById("description").innerHTML += description;
+}
+
+function addVisualEncoding(layouts) {
+  if (layouts === undefined) {
+    console.log("No layouts to be displayed");
+    return;
+  }
+  const layoutHolders = document.getElementsByClassName("visual-encoding");
+  const layoutsList = layouts.split(",");
+  let counter = 0;
+  layoutsList.forEach(layout => {
+    if (layout in LAYOUT_DEF) {
+      const imageFile = layout + ".png";
+      layoutHolders[counter].children[2].src += imageFile;
+      layoutHolders[counter].children[0].innerHTML = LAYOUT_DEF[layout];
+      layoutHolders[counter].style.display = "block";
+      counter++;
+    }
+  });
+  
 }
