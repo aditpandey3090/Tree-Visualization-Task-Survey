@@ -10,7 +10,8 @@ function getAllFilesData() {
 }
 
 columnLookup = {
-  year: 2,
+  yearofpub: 1,
+  PaperType: 2,
   EvaluationType: 3,
-  VisType: 5
+  VisType: 5,
 };

@@ -11,13 +11,13 @@
  * @param {String} sheetId Incremental integer for the sheet.
  */
 function loadDataFromAPI(docId, sheetId) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     const Http = new XMLHttpRequest();
     const url = `https://spreadsheets.google.com/feeds/cells/${docId}/${sheetId}/public/values?alt=json`;
     Http.open("GET", url);
     Http.send();
 
-    Http.onload = e => {
+    Http.onload = (e) => {
       resolve(JSON.parse(Http.responseText).feed.entry);
     };
   });
@@ -38,7 +38,7 @@ async function fetchSurveyData() {
   let data = await loadDataFromAPI(docId, sheetId);
 
   //ToDo: We have to dynamically insert the final file list count
-  const row = 55;
+  const row = 57;
   const col = 10;
 
   let createdData = parseRawData(row, col, data);
