@@ -1,12 +1,12 @@
 //Create a function that can take entire data, and indexing variable to create a frequency chart
 function createFrequencyData(data, dimension) {
   var result = [];
-  data.reduce(function(res, value) {
+  data.reduce(function (res, value) {
     if (!res[value[dimension]]) {
       res[value[dimension]] = {
         Id: value[dimension],
         count: 0,
-        entireData: value
+        entireData: value,
       };
       result.push(res[value[dimension]]);
     }
@@ -22,14 +22,14 @@ function createFrequencyData(data, dimension) {
 function createMultiValueFreqData(data, dimension) {
   var result = [];
   // var res = {};
-  data.reduce(function(res, value) {
+  data.reduce(function (res, value) {
     let vizTypes = value[dimension].split(",");
-    vizTypes.forEach(element => {
+    vizTypes.forEach((element) => {
       if (!res[element]) {
         res[element] = {
           Id: element,
           count: 0,
-          entireData: value
+          entireData: value,
         };
         result.push(res[element]);
       }
@@ -63,23 +63,19 @@ function setRange(min, max) {
  * @param {String} query
  */
 function filterColumn(columnNumber, query) {
-  $("#vizDataTable")
-    .DataTable()
-    .columns(columnNumber)
-    .search(query)
-    .draw();
+  $("#vizDataTable").DataTable().columns(columnNumber).search(query).draw();
 }
 
 /**
  * Filters datatable on year column for the provided range.
  * Could be used to clear the range filter on year column.
- * 
+ *
  * Usages:
  *  - rangeFilterOnYear(2015, 2020)
  *  - rangeFilterOnYear(clear = true)
- * 
- * @param {number} min 
- * @param {number} max 
+ *
+ * @param {number} min
+ * @param {number} max
  * @param {boolean} clear :[OPTIONAL] false by default. If set to true, filter would be removed
  */
 function rangeFilterOnYear(min, max, clear = false) {
@@ -88,7 +84,5 @@ function rangeFilterOnYear(min, max, clear = false) {
   } else {
     setRange(min, max);
   }
-  $("#vizDataTable")
-    .DataTable()
-    .draw();
+  $("#vizDataTable").DataTable().draw();
 }

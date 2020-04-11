@@ -124,7 +124,7 @@ function drawLineChart(data, height, dimension, attribute, classname, id) {
     .on("mouseout", function () {});
 
   //Adding a brush for selection
-  let brush = d3.brush().on("start brush", brushed).on("end", brushEnd);
+  let brush = d3.brushX().on("start brush", brushed).on("end", brushEnd);
 
   svg1.call(brush);
 
@@ -133,37 +133,58 @@ function drawLineChart(data, height, dimension, attribute, classname, id) {
   var selected = [];
 
   function brushed() {
-    if (!d3.event.selection) {
-      return null;
-    }
+    if (!d3.event.sourceEvent) return; // Only transition after input.
+    if (!d3.event.selection) return; // Ignore empty selections.
 
-    //De Selection COde
-    filterCol = columnLookup[classname];
-    filterColumn(filterCol, "");
-
-    //The selection removal part
-    let [[x1, y1], [x2, y2]] = d3.event.selection;
-
+    let [x1, x2] = d3.event.selection;
     points.classed("selected", (d) => {
-      if (
-        x1 <= x(d[dimension]) &&
-        x(d[dimension]) <= x2 &&
-        y1 <= y(d[attribute]) &&
-        y(d[attribute]) <= y2
-      ) {
-        selected.push(d[d[dimension]]);
-
-        filterCol = columnLookup[classname];
-        filterColumn(filterCol, d[dimension]);
-
+      if (x1 <= x(d[dimension]) && x(d[dimension]) <= x2) {
+        selected.push(parseInt(d[dimension]));
+        // filterCol = columnLookup[classname];
+        // filterColumn(filterCol, d[dimension]);
         return true;
       } else {
         return false;
       }
     });
+
+    // if (!d3.event.selection) {
+    //   return null;
+    // }
+    // //De Selection COde
+    // filterCol = columnLookup[classname];
+    // filterColumn(filterCol, "");
+    // //The selection removal part
+    // let [[x1, y1], [x2, y2]] = d3.event.selection;
+    // points.classed("selected", (d) => {
+    //   if (
+    //     x1 <= x(d[dimension]) &&
+    //     x(d[dimension]) <= x2 &&
+    //     y1 <= y(d[attribute]) &&
+    //     y(d[attribute]) <= y2
+    //   ) {
+    //     selected.push(d[d[dimension]]);
+    //     filterCol = columnLookup[classname];
+    //     filterColumn(filterCol, d[dimension]);
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // });
   }
 
-  function brushEnd() {}
+  function brushEnd() {
+    if (!d3.event.sourceEvent) return; // Only transition after input.
+    if (!d3.event.selection) {
+      rangeFilterOnYear(MIN_YEAR_DEFAULT, MAX_YEAR_DEFAULT);
+      return;
+    } // Ignore empty selections.
+
+    rangeFilterOnYear(d3.min(selected), d3.max(selected));
+
+    //Clear Filter Selection
+    selected = [];
+  }
 }
 
 //=====================================================================================================//
