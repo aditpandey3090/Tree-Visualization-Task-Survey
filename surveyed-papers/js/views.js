@@ -347,5 +347,22 @@ function createSearchableTable(dataSet) {
       },
     });
   });
+
+  const rangeFilterFunc = function (settings, data, dataIndex) {
+    var min = minYear;
+    var max = maxYear;
+    var year = parseFloat(data[1]) || 0;
+
+    if (
+      (isNaN(min) && isNaN(max)) ||
+      (isNaN(min) && year <= max) ||
+      (min <= year && isNaN(max)) ||
+      (min <= year && year <= max)
+    ) {
+      return true;
+    }
+    return false;
+  };
+  $.fn.dataTable.ext.search.push(rangeFilterFunc);
 }
 //================================================================================================================//

@@ -41,6 +41,21 @@ function createMultiValueFreqData(data, dimension) {
   return result;
 }
 
+// GLOBAL vars
+const MIN_YEAR_DEFAULT = 0;
+const MAX_YEAR_DEFAULT = 1000000;
+let minYear = MIN_YEAR_DEFAULT;
+let maxYear = MAX_YEAR_DEFAULT;
+
+function setYearToDefault() {
+  minYear = MIN_YEAR_DEFAULT;
+  maxYear = MAX_YEAR_DEFAULT;
+}
+
+function setRange(min, max) {
+  minYear = min;
+  maxYear = max;
+}
 /**
  * Filter DataTable's given column
  *
@@ -52,5 +67,28 @@ function filterColumn(columnNumber, query) {
     .DataTable()
     .columns(columnNumber)
     .search(query)
+    .draw();
+}
+
+/**
+ * Filters datatable on year column for the provided range.
+ * Could be used to clear the range filter on year column.
+ * 
+ * Usages:
+ *  - rangeFilterOnYear(2015, 2020)
+ *  - rangeFilterOnYear(clear = true)
+ * 
+ * @param {number} min 
+ * @param {number} max 
+ * @param {boolean} clear :[OPTIONAL] false by default. If set to true, filter would be removed
+ */
+function rangeFilterOnYear(min, max, clear = false) {
+  if (clear) {
+    setYearToDefault();
+  } else {
+    setRange(min, max);
+  }
+  $("#vizDataTable")
+    .DataTable()
     .draw();
 }
