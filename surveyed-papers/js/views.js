@@ -247,7 +247,7 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
       if (!clickedClass.includes(classname)) {
         d3.select(this).attr("class", "selected");
         filterCol = columnLookup[classname];
-        filterColumn(filterCol, d[dimension]);
+        filterColumn("#vizDataTable", filterCol, d[dimension]);
         clickedClass.push(classname);
       }
       console.log(clickedClass);
@@ -255,7 +255,7 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
     .on("dblclick", function (d) {
       d3.selectAll(".selected").classed("selected", false);
       filterCol = columnLookup[classname];
-      filterColumn(filterCol, "");
+      filterColumn("#vizDataTable", filterCol, "");
       clickedClass = [];
       console.log(clickedClass);
     });

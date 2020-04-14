@@ -56,15 +56,6 @@ function setRange(min, max) {
   minYear = min;
   maxYear = max;
 }
-/**
- * Filter DataTable's given column
- *
- * @param {number} columnNumber
- * @param {String} query
- */
-function filterColumn(columnNumber, query) {
-  $("#vizDataTable").DataTable().columns(columnNumber).search(query).draw();
-}
 
 /**
  * Filters datatable on year column for the provided range.
