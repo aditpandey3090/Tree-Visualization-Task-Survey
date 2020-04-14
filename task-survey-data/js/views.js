@@ -7,26 +7,28 @@ function createSunburstChart(data, id, classname) {
   //var width = 500;
   var height = document.getElementById(id).clientWidth / 4;
   var radius = Math.min(width, height) / 2;
-  partition = data =>
+  partition = (data) =>
     d3.partition().size([2 * Math.PI, radius])(
       d3
         .hierarchy(data)
-        .sum(d => d.count)
+        .sum((d) => d.count)
         .sort((a, b) => b.count - a.count)
     );
 
   arc = d3
     .arc()
-    .startAngle(d => d.x0)
-    .endAngle(d => d.x1)
-    .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+    .startAngle((d) => d.x0)
+    .endAngle((d) => d.x1)
+    .padAngle((d) => Math.min((d.x1 - d.x0) / 2, 0.005))
     .padRadius(radius / 2)
-    .innerRadius(d => d.y0)
-    .outerRadius(d => d.y1 - 1);
+    .innerRadius((d) => d.y0)
+    .outerRadius((d) => d.y1 - 1);
 
   const root = partition(data);
 
-  console.log(data.children.children);
+  let depthArray = root.descendants().map((d) => d.depth);
+  let maxDepth = d3.max(depthArray);
+  console.log(maxDepth);
 
   color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, 10));
 
@@ -41,25 +43,26 @@ function createSunburstChart(data, id, classname) {
   svg1
     .attr("fill-opacity", 0.6)
     .selectAll("path")
-    .data(root.descendants().filter(d => d.depth))
+    .data(root.descendants().filter((d) => d.depth))
     .enter()
     .append("path")
     .attr("class", "sunburst")
-    .attr("fill", d => {
-      while (d.depth > 2) d = d.parent;
+    .attr("fill", (d) => {
+      console.log(d.depth);
+      while (maxDepth - d.depth < 1) d = d.parent;
       return color(d.data.name);
     })
     .attr("d", arc)
-    .on("click", function(d) {
+    .on("mouseover", function (d) {
       d3.selectAll(".sunburst").attr("opacity", 0.5);
       d3.select(this).attr("opacity", 1);
     })
     .append("title")
     .text(
-      d =>
+      (d) =>
         `${d
           .ancestors()
-          .map(d => d.data.name)
+          .map((d) => d.data.name)
           .reverse()
           .join("/")}\n${format(d.value)}`
     );
@@ -76,7 +79,7 @@ function createSunburstChart(data, id, classname) {
       // .filter(d => d.depth <= 2 && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10)
     )
     .join("text")
-    .attr("transform", function(d) {
+    .attr("transform", function (d) {
       if (d.depth != 0) {
         const x = (((d.x0 + d.x1) / 2) * 180) / Math.PI;
         const y = (d.y0 + d.y1) / 2;
@@ -86,8 +89,8 @@ function createSunburstChart(data, id, classname) {
       }
     })
     .attr("dy", "0.35em")
-    .text(d => d.data.name)
-    .style("display", function(d) {
+    .text((d) => d.data.name)
+    .style("display", function (d) {
       if (d.depth <= 2 && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10) {
         return "";
       } else {
