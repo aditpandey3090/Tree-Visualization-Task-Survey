@@ -77,3 +77,22 @@ function rangeFilterOnYear(min, max, clear = false) {
   }
   $("#vizDataTable").DataTable().draw();
 }
+
+// Tooltip initialization
+
+// Add tooltip data
+const yearOfPubToolTipData = "This is <br /> sample data. <br />Example of line break above.";
+$("#yearOfPubToolTip").attr("title", yearOfPubToolTipData);
+
+const paperTypeToolTip = "This is <br /> sample data. <br />Example of line break above.";
+$("#paperTypeToolTip").attr("title", paperTypeToolTip);
+
+const evaluationTypeToolTip = "This is <br /> sample data. <br />Example of line break above.";
+$("#evaluationTypeToolTip").attr("title", evaluationTypeToolTip);
+
+const visEncodingToolTip = "This is <br /> sample data. <br />Example of line break above.";
+$("#visEncodingToolTip").attr("title", visEncodingToolTip);
+
+$(".card-tooltip").tooltip({
+  container: "body",
+});

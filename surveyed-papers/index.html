@@ -29,8 +29,6 @@
   <script src="js/views.js"></script>
   <script src="js/dataModel.js"></script>
   <script src="js/dataloader.js"></script>
-  <script src="js/utility.js"></script>
-  <script src="../js/utils/tableManipulation.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
   <link rel="stylesheet" type="text/css" href="css/chartStyle.css" />
   <body>
@@ -57,7 +55,11 @@
           id="YearofPub"
         >
           <br />
-          <h3>Year of Publication</h3>
+          <h3>Year of Publication 
+            <a style="text-decoration: none; color: black;">
+              <i id="yearOfPubToolTip" href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" class="fa fa-info-circle card-tooltip" style="float: right;"></i>
+            </a>
+          </h3>
           <br />
         </div>
       </div>
@@ -69,7 +71,11 @@
           id="PaperType"
         >
           <br />
-          <h3>Paper Type</h3>
+          <h3>Paper Type
+            <a style="text-decoration: none; color: black;">
+              <i id="paperTypeToolTip" href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" class="fa fa-info-circle card-tooltip" style="float: right;"></i>
+            </a>
+          </h3>
           <br />
         </div>
       </div>
@@ -77,14 +83,22 @@
       <div class="w3-quarter">
         <div class="w3-card w3-container" style="min-height:200px" id="EvaluationType">
           <br />
-          <h3>Evaluation Type</h3>
+          <h3>Evaluation Type
+            <a style="text-decoration: none; color: black;">
+              <i id="evaluationTypeToolTip" href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" class="fa fa-info-circle card-tooltip" style="float: right;"></i>
+            </a>
+          </h3>
           <br />
         </div>
       </div>
         <div class="w3-quarter">
           <div class="w3-card w3-container" style="min-height:200px" id="VisType">
             <br />
-            <h3>Visual Encoding</h3>
+            <h3>Visual Encoding
+              <a style="text-decoration: none; color: black;">
+                <i id="visEncodingToolTip" href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" class="fa fa-info-circle card-tooltip" style="float: right;"></i>
+              </a>
+            </h3>
             <br />
           </div>
         </div>
@@ -99,5 +113,7 @@
     <hr />
 
     <div class="w3-responsive w3-card-4"></div>
+    <script src="js/utility.js"></script>
+    <script src="../js/utils/tableManipulation.js"></script>
   </body>
 </html>
