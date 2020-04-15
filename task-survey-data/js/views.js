@@ -53,9 +53,53 @@ function createSunburstChart(data, id, classname) {
       return color(d.data.name);
     })
     .attr("d", arc)
-    .on("mouseover", function (d) {
-      d3.selectAll(".sunburst").attr("opacity", 0.5);
+    // .on("mouseover", function (d) {
+    //   let currentSelection = d.data.name;
+    //   let paths = d3.selectAll(".sunburst");
+    //   let allText = d3.selectAll(".embeddedlabel");
+    //   hierarchicalSelection(currentSelection, paths, allText);
+    //   //Select only the mouseovered sector
+    //   d3.select(this).attr("opacity", 1);
+    // })
+    // .on("mouseleave", function (d) {
+    //   d3.selectAll(".sunburst").attr("opacity", 1);
+    //   d3.selectAll(".embeddedlabel").style("opacity", 1);
+    // })
+    .on("click", function (d) {
+      let currentSelection = d.data.name;
+      let paths = d3.select("." + classname).selectAll(".sunburst");
+      hierarchicalSelection(currentSelection, paths);
+      //Select only the mouseovered sector
       d3.select(this).attr("opacity", 1);
+
+      if (classname == "targetChart") {
+        filterColumn(
+          "#vizDataTable",
+          columnLookupTasksTarget[d.depth],
+          d.data.name
+        );
+      }
+
+      if (classname == "actionChart") {
+        filterColumn(
+          "#vizDataTable",
+          columnLookupTasksAction[d.depth],
+          d.data.name
+        );
+      }
+    })
+    .on("dblclick", function (d) {
+      d3.select("." + classname)
+        .selectAll(".sunburst")
+        .attr("opacity", 1);
+
+      if (classname == "targetChart") {
+        filterColumn("#vizDataTable", columnLookupTasksTarget[d.depth], "");
+      }
+
+      if (classname == "actionChart") {
+        filterColumn("#vizDataTable", columnLookupTasksAction[d.depth], "");
+      }
     })
     .append("title")
     .text(
@@ -74,11 +118,10 @@ function createSunburstChart(data, id, classname) {
     .attr("font-size", 7)
     .attr("font-family", "sans-serif")
     .selectAll("text")
-    .data(
-      root.descendants()
-      // .filter(d => d.depth <= 2 && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10)
-    )
-    .join("text")
+    .data(root.descendants())
+    .enter()
+    .append("text")
+    .attr("class", "embeddedlabel")
     .attr("transform", function (d) {
       if (d.depth != 0) {
         const x = (((d.x0 + d.x1) / 2) * 180) / Math.PI;
@@ -89,12 +132,51 @@ function createSunburstChart(data, id, classname) {
       }
     })
     .attr("dy", "0.35em")
-    .text((d) => d.data.name)
+    .text((d) => {
+      if (d.y1 - d.y0 < d.data.name.length * 3) {
+        let maxLen = Math.round((d.y1 - d.y0) / 5);
+        return d.data.name.substr(0, maxLen) + "...";
+      } else {
+        return d.data.name;
+      }
+    })
     .style("display", function (d) {
-      if (d.depth <= 2 && ((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10) {
+      if (((d.y0 + d.y1) / 2) * (d.x1 - d.x0) > 10) {
         return "";
       } else {
         return "none";
       }
     });
+}
+
+// @param: Current Selection
+// @param: All the paths in the DOM form
+function hierarchicalSelection(currentSelection, paths) {
+  paths.attr("opacity", function (pathData) {
+    if (
+      pathData.parent.data.name == currentSelection ||
+      (pathData.parent.parent != null &&
+        pathData.parent.parent.data.name == currentSelection)
+    ) {
+      return 1;
+    } else {
+      return 0.2;
+    }
+  });
+
+  // texttest.style("opacity", function (textData) {
+  //   if (textData.parent != null) {
+  //     if (
+  //       (textData.parent != null &&
+  //         textData.parent.data.name == currentSelection) ||
+  //       (textData.parent.parent != null &&
+  //         textData.parent.parent.data.name == currentSelection) ||
+  //       textData.data.name == currentSelection
+  //     ) {
+  //       return 1;
+  //     } else {
+  //       return 0.3;
+  //     }
+  //   }
+  // });
 }

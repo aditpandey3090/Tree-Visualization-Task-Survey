@@ -257,7 +257,6 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
       filterCol = columnLookup[classname];
       filterColumn("#vizDataTable", filterCol, "");
       clickedClass = [];
-      console.log(clickedClass);
     });
 
   const gx = svg.append("g").call(xAxis);
