@@ -1,6 +1,6 @@
 fetchSurveyData().then(
-  data => fieldInitializer(data),
-  error => console.log(error)
+  (data) => fieldInitializer(data),
+  (error) => console.log(error)
 );
 
 //Initializing the field
@@ -8,7 +8,7 @@ fetchSurveyData().then(
 //This function organizes data in a usable format.
 //The data wrangling will aim to organize information in a map, where each id will store the information related to an object
 function fieldInitializer(createdData) {
-  setAllFilesData(createdData);
+  // setAllFilesData(createdData);
   console.log(createdData);
 
   //After dataloading create views
