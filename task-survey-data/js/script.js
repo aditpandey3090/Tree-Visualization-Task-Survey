@@ -1,5 +1,5 @@
 fetchProposedData().then(
-  data => {
+  (data) => {
     const target = generateTree(data);
     const action = generateTwoLevelTree(data);
     createSunburstChart(action, "actionChart", "actionChart");
@@ -7,7 +7,7 @@ fetchProposedData().then(
     appendTaskSurveyTable("body");
     createTaskSurveyTable(data);
   },
-  error => console.log(error)
+  (error) => console.log(error)
 );
 
 /**
@@ -19,127 +19,65 @@ fetchProposedData().then(
  * @param {Object} data JSON data received from the proposed data sheet.
  */
 function generateTree(data) {
-  // const syntax = {
-  //   name: ""
-  // };
-
-  // const root = {
-  //   name: "Target",
-  //   children: []
-  // };
-  // const attributeName = "Target";
-  // recurseNode(root, attributeName, 0);
-
-  // function recurseNode(root, attributeName, level, parentName, parentValue) {
-  //   for (let i = 0; i < data.length; i++) {
-  //     const currentData = data[i];
-  //     const targetName = data[i][attributeName];
-  //     if (level > 0 && currentData[parentName] !== parentValue) {
-  //       continue;
-  //     }
-  //     let filteredList = root.children.filter(
-  //       element => element.name === targetName
-  //     );
-  //     if (filteredList.length > 0 && level > 1) {
-  //       let targetChild = undefined;
-  //       targetChild = root.children.filter(x => x.name === targetName)[0];
-
-  //       if (level === 0) {
-  //         recurseNode(
-  //           targetChild,
-  //           "Specific Target", //Column name
-  //           1,
-  //           attributeName,
-  //           targetName
-  //         );
-  //       } else if (level === 1) {
-  //         recurseNode(
-  //           targetChild,
-  //           "Target Attribute",
-  //           2,
-  //           attributeName,
-  //           targetName
-  //         );
-  //       } else if (level === 2) {
-  //         targetChild.count = targetChild.count + 1;
-  //       }
-  //     } else if (filteredList.length === 0) {
-  //       const targetNode = JSON.parse(JSON.stringify(syntax));
-  //       targetNode.name = targetName;
-  //       if (level < 2) {
-  //         targetNode.children = [];
-  //       } else {
-  //         targetNode.count = 1;
-  //       }
-
-  //       root.children.push(targetNode);
-
-  //       if (level === 0) {
-  //         recurseNode(
-  //           targetNode,
-  //           "Specific Target",
-  //           1,
-  //           attributeName,
-  //           targetName
-  //         );
-  //       } else if (level === 1) {
-  //         recurseNode(
-  //           targetNode,
-  //           "Target Attribute",
-  //           2,
-  //           attributeName,
-  //           targetName
-  //         );
-  //       }
-  //     }
-  //   }
-  // }
+  function compareValues(a, b) {
+    return a.value - b.value;
+  }
 
   var nested_data = d3
     .nest()
-    .key(function(d) {
+    .key(function (d) {
       return d["Target"];
     })
-    .key(function(d) {
+    .sortKeys(d3.descending)
+    .key(function (d) {
       return d["Specific Target"];
     })
-    .key(function(d) {
+    .key(function (d) {
       return d["Target Attribute"];
     })
-    .rollup(function(leaves) {
+    .rollup(function (leaves) {
       return leaves.length;
     })
     .entries(data);
 
   let targetVal = { name: "Target", children: nested_data };
 
-  var parsed = JSON.parse(JSON.stringify(targetVal), function(k, v) {
+  var parsed = JSON.parse(JSON.stringify(targetVal), function (k, v) {
     if (k === "key") this.name = v;
     else if (k === "values") this.children = v;
     else if (k === "value") this.count = v;
     else return v;
   });
+
+  parsed.children[0].children.map((d) => {
+    console.log(d);
+    return d.children.sort((a, b) => {
+      return b.count - a.count;
+    });
+  });
+
   console.log(parsed);
+
   return parsed;
 }
 
 function generateTwoLevelTree(data) {
   var nested_data = d3
     .nest()
-    .key(function(d) {
+    .key(function (d) {
       return d["Action(Search)"];
     })
-    .key(function(d) {
+    .key(function (d) {
       return d["Action(Query)"];
     })
-    .rollup(function(leaves) {
+    .rollup(function (leaves) {
       return leaves.length;
     })
     .entries(data);
 
   let targetVal = { name: "Action", children: nested_data };
 
-  var parsed = JSON.parse(JSON.stringify(targetVal), function(k, v) {
+  var parsed = JSON.parse(JSON.stringify(targetVal), function (k, v) {
     if (k === "key") this.name = v;
     else if (k === "values") this.children = v;
     else if (k === "value") this.count = v;
@@ -148,5 +86,54 @@ function generateTwoLevelTree(data) {
 
   console.log(parsed);
 
+  generateOneLevelTree(data);
+
   return parsed;
+}
+
+function generateOneLevelTree(data) {
+  //let targetVal = { name: "Action", children: nested_data };
+
+  var nested_search = d3
+    .nest()
+    .key(function (d) {
+      return d["Action(Search)"];
+    })
+    .rollup(function (leaves) {
+      return leaves.length;
+    })
+    .entries(data);
+
+  var nested_query = d3
+    .nest()
+    .key(function (d) {
+      return d["Action(Query)"];
+    })
+    .rollup(function (leaves) {
+      return leaves.length;
+    })
+    .entries(data);
+
+  let targetValSearch = {
+    name: "Mid-Level(Search)",
+    children: nested_search,
+  };
+
+  let targetValQuery = {
+    name: "Low-Level(Query)",
+    children: nested_query,
+  };
+
+  var parsed = JSON.parse(JSON.stringify(targetValSearch), function (k, v) {
+    if (k === "key") this.name = v;
+    else if (k === "values") this.children = v;
+    else if (k === "value") this.count = v;
+    else return v;
+  });
+
+  parsed.children.sort((a, b) => {
+    return b.count - a.count;
+  });
+
+  console.log(parsed);
 }
