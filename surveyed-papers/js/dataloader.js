@@ -56,6 +56,7 @@ function fieldInitializer(createdData) {
     "Layouts_Considered"
   );
   drawBarChart(visualizationDataBC2, 500, "Id", "count", "VisType", "VisType");
+  console.log(visualizationDataBC2);
 
   //Moving the code to views.js
   appendTable();
