@@ -1,5 +1,5 @@
 // Tabs
-function openTab(evt, cityName) {
+function openTab(evt, tabName) {
   var i;
   var x = document.getElementsByClassName("tab");
   for (i = 0; i < x.length; i++) {
@@ -12,7 +12,7 @@ function openTab(evt, cityName) {
       ""
     );
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " w3-dark-grey";
 }
 
