@@ -37,8 +37,16 @@ function createTable(data) {
 }
 //=====================================================================================================//
 
-function drawLineChart(data, height, dimension, attribute, classname, id) {
-  margin = { left: 7, top: 10, right: 25, bottom: 40 };
+function drawLineChart(
+  data,
+  height,
+  dimension,
+  attribute,
+  classname,
+  id,
+  axisLabel
+) {
+  margin = { left: 7, top: 10, right: 25, bottom: 50 };
   width = document.getElementById(id).clientWidth / 2;
   height = height / 2;
 
@@ -185,16 +193,42 @@ function drawLineChart(data, height, dimension, attribute, classname, id) {
     //Clear Filter Selection
     selected = [];
   }
+
+  svg1
+    .append("text")
+    .attr("class", "xaxis")
+    .attr("y", height - margin.bottom + 3 * margin.top)
+    .attr("x", (width - margin.left - margin.right) / 2)
+    .attr("dy", ".32em")
+    .style("text-anchor", "middle")
+    .text(axisLabel)
+    .style("fill", "black");
 }
 
 //=====================================================================================================//
 
 let clickedClass = []; // This variable keeps track of the currently selected charts
 
-function drawBarChart(data, height, dimension, attribute, classname, id) {
-  margin = { left: 20, top: 10, right: 40, bottom: 40 };
+function drawBarChart(
+  data,
+  height,
+  dimension,
+  attribute,
+  classname,
+  id,
+  axisLabel
+) {
+  margin = { left: 35, top: 10, right: 40, bottom: 50 };
   width = document.getElementById(id).clientWidth / 2;
   height = height / 2;
+
+  data.sort(function (a, b) {
+    return a[attribute] - b[attribute];
+  });
+
+  data = data.filter((d) => d[dimension] != "-");
+
+  console.log(data);
 
   //Setup the svg for chart drawing
   var svg = d3
@@ -202,22 +236,19 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
     .append("svg")
     .attr("class", classname) //ToDo:Add a more descriptive classname
     .attr("viewBox", "0 0 " + width + " " + height)
-    // .attr("width", width + margin.left + margin.right)
-    // .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3
-    .scaleBand()
-    .domain(data.map((d) => d[dimension]))
-    .range([margin.left, width - margin.right])
-    .padding(0.1);
-
-  var y = d3
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d[attribute])])
-    .nice()
-    .range([height - margin.bottom, margin.top]);
+    .range([margin.left, width - margin.right]);
+
+  var y = d3
+    .scaleBand()
+    .domain(data.map((d) => d[dimension]))
+    .range([height - margin.bottom, margin.top])
+    .padding(0.1);
 
   xAxis = (g) =>
     g
@@ -228,21 +259,23 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
   yAxis = (g) =>
     g
       .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y).ticks(5))
+      .call(d3.axisLeft(y))
       .attr("class", "yaxis")
       .call((g) => g.select(".domain").remove());
 
   var click = false;
 
-  const bar = svg
+  var barGroup = svg.append("g");
+
+  const bar = barGroup
     .selectAll("rect")
     .data(data)
     .join("rect")
     .attr("class", "bar")
-    .attr("x", (d) => x(d[dimension]))
-    .attr("y", (d) => y(d[attribute]))
-    .attr("height", (d) => y(0) - y(d[attribute]))
-    .attr("width", x.bandwidth())
+    .attr("x", (d) => margin.left)
+    .attr("y", (d) => y(d[dimension]))
+    .attr("width", (d) => x(d[attribute]) - margin.left)
+    .attr("height", y.bandwidth())
     .on("click", function (d) {
       if (!clickedClass.includes(classname)) {
         d3.select(this).attr("class", "selected");
@@ -259,8 +292,34 @@ function drawBarChart(data, height, dimension, attribute, classname, id) {
       clickedClass = [];
     });
 
+  barGroup
+    .selectAll("text")
+    .data(data)
+    .enter()
+    .append("text")
+    .attr("x", function (d) {
+      return x(d[attribute]) - margin.left / 2;
+    })
+    .attr("y", (d) => y(d[dimension]) + y.bandwidth() / 2)
+    .attr("dy", ".35em")
+    .text(function (d) {
+      return d[attribute];
+    })
+    .style("fill", "white");
+
   const gx = svg.append("g").call(xAxis);
   const gy = svg.append("g").call(yAxis);
+
+  // text label for the y axis
+  svg
+    .append("text")
+    .attr("class", "xaxis")
+    .attr("y", height - margin.bottom + 3 * margin.top)
+    .attr("x", (width - margin.left - margin.right) / 2)
+    .attr("dy", ".32em")
+    .style("text-anchor", "middle")
+    .text(axisLabel)
+    .style("fill", "black");
 }
 
 //=====================================================================================================//

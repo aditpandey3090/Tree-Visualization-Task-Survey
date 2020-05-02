@@ -15,5 +15,9 @@
 }
 
 .selected {
-  fill: red;
+  fill: rgb(141, 215, 220);
+}
+
+rect:hover {
+  opacity: 0.6;
 }

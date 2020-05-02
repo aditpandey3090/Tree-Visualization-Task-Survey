@@ -20,7 +20,8 @@ function fieldInitializer(createdData) {
     "Id",
     "count",
     "yearofpub",
-    "YearofPub"
+    "YearofPub",
+    "Year"
   );
 
   //
@@ -33,7 +34,8 @@ function fieldInitializer(createdData) {
     "Id",
     "count",
     "PaperType",
-    "PaperType"
+    "PaperType",
+    "# of Papers"
   );
 
   // //Bar chart data wrangling and visualization creation
@@ -47,7 +49,8 @@ function fieldInitializer(createdData) {
     "Id",
     "count",
     "EvaluationType",
-    "EvaluationType"
+    "EvaluationType",
+    "# of Papers"
   );
 
   // //Bar chart data wrangling and visualization creation
@@ -55,7 +58,15 @@ function fieldInitializer(createdData) {
     createdData,
     "Layouts_Considered"
   );
-  drawBarChart(visualizationDataBC2, 500, "Id", "count", "VisType", "VisType");
+  drawBarChart(
+    visualizationDataBC2,
+    500,
+    "Id",
+    "count",
+    "VisType",
+    "VisType",
+    "# of Techniques"
+  );
   console.log(visualizationDataBC2);
 
   //Moving the code to views.js

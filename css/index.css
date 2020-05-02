@@ -1,0 +1,13 @@
+/* Add all the meta css here */
+
+.ExplorationTabs div:hover {
+  background-color: #ccc;
+}
+
+.references i:hover {
+  opacity: 0.6;
+}
+
+.references img:hover {
+  opacity: 0.6;
+}
