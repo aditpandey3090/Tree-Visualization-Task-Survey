@@ -48,7 +48,6 @@ function drawLineChart(
 ) {
   margin = { left: 7, top: 10, right: 25, bottom: 50 };
 
-  console.log(document.getElementById(id).clientWidth);
   if (document.getElementById(id).clientWidth > 400) {
     width = document.getElementById(id).clientWidth / 2;
     height = height / 2;
@@ -56,9 +55,6 @@ function drawLineChart(
     width = document.getElementById(id).clientWidth / 1;
     height = height / 3;
   }
-
-  // width = document.getElementById(id).clientWidth / 2;
-  // height = height / 2;
 
   var svg1 = d3
     .select("#" + id)
@@ -230,7 +226,6 @@ function drawBarChart(
 ) {
   margin = { left: 35, top: 10, right: 40, bottom: 50 };
 
-  console.log(document.getElementById(id).clientWidth);
   if (document.getElementById(id).clientWidth > 400) {
     width = document.getElementById(id).clientWidth / 2;
     height = height / 2;
@@ -244,8 +239,6 @@ function drawBarChart(
   });
 
   data = data.filter((d) => d[dimension] != "-");
-
-  console.log(data);
 
   //Setup the svg for chart drawing
   var svg = d3
@@ -303,7 +296,7 @@ function drawBarChart(
       console.log(clickedClass);
     })
     .on("dblclick", function (d) {
-      d3.selectAll(".selected").classed("selected", false);
+      d3.select(this).classed("selected", false);
       filterCol = columnLookup[classname];
       filterColumn("#vizDataTable", filterCol, "");
       clickedClass = [];
