@@ -6,20 +6,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css" />
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
-  />
-  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-  />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/index.css" />
 <style>
     html,
@@ -36,17 +31,20 @@
 
 <body>
 
-    <!-- Header -->
-    <header class="w3-container w3-theme w3-padding" id="myHeader">
-        <a href="../" style="text-decoration: none; color: white;">
-            <i class="fa fa-home w3-xlarge w3-button w3-theme" style="float: left; margin-top: 12px"></i>
+    <div class="w3-bar w3-theme" id="myHeader">
+        <a href="../" class="w3-bar-item w3-button" title="Home">
+          <i class="fa fa-home w3-xlarge w3-button "></i>
         </a>
-        <div class="w3-center">
-            <h1 style="float: left;" class="w3-xlarge w3-animate-bottom">
-                A Curated Dataset of Abstract Tree Visualization Tasks
-            </h1>
-        </div>
-    </header>
+        <a href="../surveyed-papers/" title="Surveyed Papers" class="w3-bar-item w3-button">
+          <i class="fas fa-file w3-xlarge w3-button" ></i>
+        </a>
+        <a href="../task-survey-data/" class="w3-bar-item w3-button" title="Task Survey Data" >
+          <i class="fas fa-bullseye w3-xlarge w3-button"></i>
+        </a>
+        <a href="../task-tree/" class="w3-bar-item w3-button">
+          <i class="fa fa-sitemap w3-xlarge w3-button"></i>
+        </a>
+      </div>
 
     <!-- Page Container -->
     <div class="w3-content w3-margin-top" style="max-width:1400px;">
