@@ -47,8 +47,18 @@ function drawLineChart(
   axisLabel
 ) {
   margin = { left: 7, top: 10, right: 25, bottom: 50 };
-  width = document.getElementById(id).clientWidth / 2;
-  height = height / 2;
+
+  console.log(document.getElementById(id).clientWidth);
+  if (document.getElementById(id).clientWidth > 400) {
+    width = document.getElementById(id).clientWidth / 2;
+    height = height / 2;
+  } else {
+    width = document.getElementById(id).clientWidth / 1;
+    height = height / 3;
+  }
+
+  // width = document.getElementById(id).clientWidth / 2;
+  // height = height / 2;
 
   var svg1 = d3
     .select("#" + id)
@@ -219,8 +229,15 @@ function drawBarChart(
   axisLabel
 ) {
   margin = { left: 35, top: 10, right: 40, bottom: 50 };
-  width = document.getElementById(id).clientWidth / 2;
-  height = height / 2;
+
+  console.log(document.getElementById(id).clientWidth);
+  if (document.getElementById(id).clientWidth > 400) {
+    width = document.getElementById(id).clientWidth / 2;
+    height = height / 2;
+  } else {
+    width = document.getElementById(id).clientWidth / 1;
+    height = height / 3;
+  }
 
   data.sort(function (a, b) {
     return a[attribute] - b[attribute];
@@ -254,7 +271,7 @@ function drawBarChart(
     g
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .attr("class", "xaxis")
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+      .call(d3.axisBottom(x).ticks(5));
 
   yAxis = (g) =>
     g
@@ -370,7 +387,8 @@ function createSearchableTable(dataSet) {
       order: [[1, "desc"]],
       columns: [
         {
-          title: 'Paper   <span data-toggle="tooltip" title="Paper"><i class="fa fa-info-circle"></i></span>',
+          title:
+            'Paper   <span data-toggle="tooltip" title="Paper"><i class="fa fa-info-circle"></i></span>',
           data: "Paper_Title",
           width: "30%",
           render: function (data, type, row, meta) {
@@ -384,7 +402,8 @@ function createSearchableTable(dataSet) {
           },
         },
         {
-          title: 'Year    <span data-toggle="tooltip" title="Year"><i class="fa fa-info-circle"></i></span>',
+          title:
+            'Year    <span data-toggle="tooltip" title="Year"><i class="fa fa-info-circle"></i></span>',
           data: "Year",
         },
         {
@@ -398,15 +417,18 @@ function createSearchableTable(dataSet) {
           data: "Evaluation_Type (O/S/M/EX/ET/I/C)",
         },
         {
-          title: 'Stimuli Description      <span data-toggle="tooltip" title="Stimuli Description "><i class="fa fa-info-circle"></i></span> ',
+          title:
+            'Stimuli Description      <span data-toggle="tooltip" title="Stimuli Description "><i class="fa fa-info-circle"></i></span> ',
           data: "Stimuli_Description",
         },
         {
-          title: 'Layouts Considered       <span data-toggle="tooltip" title="Layouts Considered"><i class="fa fa-info-circle"></i></span> ',
+          title:
+            'Layouts Considered       <span data-toggle="tooltip" title="Layouts Considered"><i class="fa fa-info-circle"></i></span> ',
           data: "Layouts_Considered",
         },
         {
-          title: 'More Information       <span data-toggle="tooltip" title="More Information"><i class="fa fa-info-circle"></i></span>',
+          title:
+            'More Information       <span data-toggle="tooltip" title="More Information"><i class="fa fa-info-circle"></i></span>',
           data: "DOI",
           render: function (data, type, row, meta) {
             data = '<a href="' + data + '" target="_blank">' + data + "</a>";
@@ -415,7 +437,7 @@ function createSearchableTable(dataSet) {
         },
       ],
       initComplete: function (settings) {
-        $('#vizDataTable').tooltip({selector: '[data-toggle="tooltip"]'});
+        $("#vizDataTable").tooltip({ selector: '[data-toggle="tooltip"]' });
       },
     });
   });
