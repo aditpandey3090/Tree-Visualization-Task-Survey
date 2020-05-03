@@ -1,281 +1,275 @@
 <!DOCTYPE html>
 <html>
-  <title>A Curated Dataset of Abstract Tree Visualization Tasks</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link
-    rel="stylesheet"
-    href="https://www.w3schools.com/lib/w3-theme-black.css"
-  />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
-  />
-  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-  />
-  <link rel="stylesheet" type="text/css" href="css/tasksurvey.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
-  <script src="../js/utils/fetchData.js"></script>
-  <script src="../js/utils/taskSurveyTable.js"></script>
-  <script src="js/views.js"></script>
-  <body>
-    <div class="w3-bar w3-theme" id="myHeader">
-      <a href="../" class="w3-bar-item w3-button" title="Home">
-        <i class="fa fa-home w3-xlarge w3-button "></i>
-      </a>
-      <a href="../surveyed-papers/" title="Surveyed Papers" class="w3-bar-item w3-button">
-        <i class="fa fa-bar-chart w3-xlarge w3-button" ></i>
-      </a>
-      <a href="#" class="w3-bar-item w3-button" title="Task Survey Data" style="color: #000; background-color: #ccc">
-        <i class="fas fa-bullseye w3-xlarge w3-button" style="color: #000; background-color: #ccc"></i>
-      </a>
-      <a href="../task-tree/" class="w3-bar-item w3-button">
-        <i class="fa fa-sitemap w3-xlarge w3-button"></i>
-      </a>
+<title>A Curated Dataset of Abstract Tree Visualization Tasks</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/tasksurvey.css" />
+<script src="../js/utils/fetchData.js"></script>
+<script src="../js/utils/taskSurveyTable.js"></script>
+<script src="js/views.js"></script>
+
+<body>
+  <div class="w3-bar w3-theme" id="myHeader">
+    <a href="../" class="w3-bar-item w3-button" title="Home">
+      <i class="fa fa-home w3-xlarge w3-button "></i>
+    </a>
+    <a href="../surveyed-papers/" title="Surveyed Papers" class="w3-bar-item w3-button">
+      <i class="fas fa-file w3-xlarge w3-button"></i>
+    </a>
+    <a href="#" class="w3-bar-item w3-button" title="Task Survey Data" style="color: #000; background-color: #ccc">
+      <i class="fas fa-bullseye w3-xlarge w3-button" style="color: #000; background-color: #ccc"></i>
+    </a>
+    <a href="../task-tree/" class="w3-bar-item w3-button">
+      <i class="fa fa-sitemap w3-xlarge w3-button"></i>
+    </a>
+  </div>
+
+  <br />
+
+  <div class="w3-container">
+    <div class="w3-bar w3-theme">
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'actions')"> <i
+          class="fas fa-hand-pointer w3-xlarge"></i></button>
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'targets')"><i
+          class="fas fa-bullseye w3-xlarge"></i></button>
+    </div>
+    <div id="actions" style="min-height: 800px" class="w3-card w3-container tab w3-animate-opacity">
+      <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Actions</h2>
+      <div class="w3-container">
+        <h3 style="margin-top: 0px; padding-top: 0px">Mid-Level (Search)</h3>
+        <div class="w3-card w3-responsive">
+          <table class="w3-table w3-striped w3-bordered">
+            <colgroup>
+              <col span="1" style="width: 33%;">
+              <col span="1" style="width: 33%;">
+              <col span="1" style="width: 33%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th class="w3-center">Target Known</th>
+                <th class="w3-center">Target Unknown</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="vertical-align:middle" class="w3-center">Location Known</th>
+                <td class="w3-center">
+                  <img src="./img/lookup.png" style="height: 120px" />
+                  <h5>Lookup</h5>
+                </td>
+                <td class="w3-center">
+                  <img src="./img/browse.png" style="height: 120px" />
+                  <h5>Browse</h5>
+                </td>
+              </tr>
+              <tr class="w3-white">
+                <th style="vertical-align:middle" class="w3-center">Location Unkown</th>
+                <td class="w3-center">
+                  <img src="./img/locate.png" style="height: 120px" />
+                  <h5>Locate</h5>
+                </td>
+                <td class="w3-center">
+                  <img src="./img/explore.png" style="height: 120px" />
+                  <h5>Explore</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="w3-container">
+        <h3>Low-Level (Query)</h3>
+        <div class="w3-card w3-responsive">
+          <table class="w3-table w3-striped w3-bordered">
+            <colgroup>
+              <col span="1" style="width: 33%;">
+              <col span="1" style="width: 33%;">
+              <col span="1" style="width: 33%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="w3-center">Identify</th>
+                <th class="w3-center">Compare</th>
+                <th class="w3-center">Summarize</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w3-center">
+                  <img src="./img/identify.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/compare.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/summarize.png" style="height: 120px" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <br />
-  
-    <div class="w3-container">
-      <div class="w3-bar w3-theme">
-        <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'actions')"> <i
-            class="fas fa-hand-pointer w3-xlarge"></i></button>
-        <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'targets')"><i
-            class="fas fa-bullseye w3-xlarge"></i></button>
+    <div id="targets" style="min-height: 1100px" class="w3-card w3-container tab w3-animate-opacity">
+      <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Targets</h2>
+      <div class="w3-container">
+        <h3>Topology</h3>
+        <div class="w3-card w3-responsive">
+          <table class="w3-table w3-bordered">
+            <colgroup>
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th class="w3-center">Height</th>
+                <th class="w3-center">Balanced</th>
+                <th class="w3-center">Fanout</th>
+                <th class="w3-center">Size</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="vertical-align:middle" class="w3-center w3-large">Tree</th>
+                <td class="w3-center">
+                  <img src="./img/height.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/balanced.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/fanout.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/size.png" style="height: 120px" />
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <th class="w3-center">Height</th>
+                <th class="w3-center">Depth</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr>
+                <th style="vertical-align:middle" class="w3-center w3-large">Subtree</th>
+                <td class="w3-center">
+                  <img src="./img/subtree_height.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/depth.png" style="height: 120px" />
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th></th>
+                <th class="w3-center">Depth</th>
+                <th class="w3-center">Degree</th>
+                <th class="w3-center"><span style="color: #68389B">Ancestor</span>/<span
+                    style="color: #7A601D">Descendent</span></th>
+                <th class="w3-center"><span style="color: #3F76B1">Sibling</span></th>
+              </tr>
+              <tr>
+                <th style="vertical-align:middle" class="w3-center w3-large">Node</th>
+                <td class="w3-center">
+                  <img src="./img/node_depth.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/degree.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/ancestor_descendent.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/sibling.png" style="height: 120px" />
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <th class="w3-center">Length</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr>
+                <th style="vertical-align:middle" class="w3-center w3-large">Path</th>
+                <td class="w3-center">
+                  <img src="./img/length.png" style="height: 120px" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div id="actions" style="min-height: 800px" class="w3-card w3-container tab w3-animate-opacity">
-        <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Actions</h2>
-        <div class="w3-container">
-          <h3 style="margin-top: 0px; padding-top: 0px">Mid-Level (Search)</h3>
-          <div class="w3-card w3-responsive">
-            <table class="w3-table w3-striped w3-bordered">
-              <colgroup>
-                <col span="1" style="width: 33%;">
-                <col span="1" style="width: 33%;">
-                <col span="1" style="width: 33%;">
-              </colgroup>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th class="w3-center">Target Known</th>
-                  <th class="w3-center">Target Unknown</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th style="vertical-align:middle" class="w3-center">Location Known</th>
-                  <td class="w3-center">
-                    <img src="./img/lookup.png" style="height: 120px" />
-                    <h5>Lookup</h5>
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/browse.png" style="height: 120px" />
-                    <h5>Browse</h5>
-                  </td>
-                </tr>
-                <tr class="w3-white">
-                  <th style="vertical-align:middle" class="w3-center">Location Unkown</th>
-                  <td class="w3-center">
-                    <img src="./img/locate.png" style="height: 120px" />
-                    <h5>Locate</h5>
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/explore.png" style="height: 120px" />
-                    <h5>Explore</h5>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="w3-container">
-          <h3>Low-Level (Query)</h3>
-          <div class="w3-card w3-responsive">
-            <table class="w3-table w3-striped w3-bordered">
-              <colgroup>
-                <col span="1" style="width: 33%;">
-                <col span="1" style="width: 33%;">
-                <col span="1" style="width: 33%;">
-              </colgroup>
-              <thead>
-                <tr>
-                  <th class="w3-center">Identify</th>
-                  <th class="w3-center">Compare</th>
-                  <th class="w3-center">Summarize</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="w3-center">
-                    <img src="./img/identify.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/compare.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/summarize.png" style="height: 120px" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-  
-      <br />
-      <div id="targets" style="min-height: 1100px" class="w3-card w3-container tab w3-animate-opacity">
-        <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Targets</h2>
-        <div class="w3-container">
-          <h3>Topology</h3>
-          <div class="w3-card w3-responsive">
-            <table class="w3-table w3-bordered">
-              <colgroup>
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-              </colgroup>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th class="w3-center">Height</th>
-                  <th class="w3-center">Balanced</th>
-                  <th class="w3-center">Fanout</th>
-                  <th class="w3-center">Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th style="vertical-align:middle" class="w3-center w3-large">Tree</th>
-                  <td class="w3-center">
-                    <img src="./img/height.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/balanced.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/fanout.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/size.png" style="height: 120px" />
-                  </td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th class="w3-center">Height</th>
-                  <th class="w3-center">Depth</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <th style="vertical-align:middle" class="w3-center w3-large">Subtree</th>
-                  <td class="w3-center">
-                    <img src="./img/subtree_height.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/depth.png" style="height: 120px" />
-                  </td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th class="w3-center">Depth</th>
-                  <th class="w3-center">Degree</th>
-                  <th class="w3-center"><span style="color: #68389B">Ancestor</span>/<span style="color: #7A601D">Descendent</span></th>
-                  <th class="w3-center"><span style="color: #3F76B1">Sibling</span></th>
-                </tr>
-                <tr>
-                  <th style="vertical-align:middle" class="w3-center w3-large">Node</th>
-                  <td class="w3-center">
-                    <img src="./img/node_depth.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/degree.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/ancestor_descendent.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/sibling.png" style="height: 120px" />
-                  </td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th class="w3-center">Length</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <th style="vertical-align:middle" class="w3-center w3-large">Path</th>
-                  <td class="w3-center">
-                    <img src="./img/length.png" style="height: 120px" />
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="w3-container">
-          <h3>Attribute</h3>
-          <div class="w3-card w3-responsive">
-            <table class="w3-table w3-bordered">
-              <colgroup>
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 20%;">
-              </colgroup>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th class="w3-center">Categorical Value</th>
-                  <th class="w3-center">Quantitative Value</th>
-                  <th class="w3-center">Ordinal Value</th>
-                  <th class="w3-center">Multi-Dimensional Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th style="vertical-align:middle" class="w3-center w3-large">Internal Node, Leaf Node, Link</th>
-                  <td class="w3-center">
-                    <img src="./img/categorical_value.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/quantitative_value.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/ordinal_value.png" style="height: 120px" />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/multi_dim_value.png" style="height: 120px" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <div class="w3-container">
+        <h3>Attribute</h3>
+        <div class="w3-card w3-responsive">
+          <table class="w3-table w3-bordered">
+            <colgroup>
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 20%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th class="w3-center">Categorical Value</th>
+                <th class="w3-center">Quantitative Value</th>
+                <th class="w3-center">Ordinal Value</th>
+                <th class="w3-center">Multi-Dimensional Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="vertical-align:middle" class="w3-center w3-large">Internal Node, Leaf Node, Link</th>
+                <td class="w3-center">
+                  <img src="./img/categorical_value.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/quantitative_value.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/ordinal_value.png" style="height: 120px" />
+                </td>
+                <td class="w3-center">
+                  <img src="./img/multi_dim_value.png" style="height: 120px" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-    <br />
-    <br />
-  </body>
-  <script src="js/script.js"></script>
-  <script src="../js/utils/tableManipulation.js"></script>
-  <script src="../js/model/dataModel.js"></script>
+  </div>
+  <br />
+  <br />
+</body>
+<script src="js/script.js"></script>
+<script src="../js/utils/tableManipulation.js"></script>
+<script src="../js/model/dataModel.js"></script>
+
 </html>

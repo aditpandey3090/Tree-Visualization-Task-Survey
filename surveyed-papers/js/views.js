@@ -359,7 +359,7 @@ function drawPieChart(data) {
 // Latest Table Code
 function appendTable() {
   $("body").append(
-    '<table id="vizDataTable" class="display" width="100%"></table>'
+    '<table id="vizDataTable" class="table table-bordered" width="100%"></table>'
   );
 }
 
@@ -370,8 +370,9 @@ function createSearchableTable(dataSet) {
       order: [[1, "desc"]],
       columns: [
         {
-          title: 'Paper   <span><i class="fa fa-info-circle"></i></span>',
+          title: 'Paper   <span data-toggle="tooltip" title="Paper"><i class="fa fa-info-circle"></i></span>',
           data: "Paper_Title",
+          width: "30%",
           render: function (data, type, row, meta) {
             data =
               '<a href="../profile?id=' +
@@ -383,29 +384,29 @@ function createSearchableTable(dataSet) {
           },
         },
         {
-          title: 'Year    <span><i class="fa fa-info-circle"></i></span>',
+          title: 'Year    <span data-toggle="tooltip" title="Year"><i class="fa fa-info-circle"></i></span>',
           data: "Year",
         },
         {
           title:
-            'Type (S/E/D)    <span><i class="fa fa-info-circle"></i></span>',
+            'Type (S/E/D)    <span data-toggle="tooltip" title="Type (S/E/D)"><i class="fa fa-info-circle"></i></span>',
           data: "Type (S/E/D)",
         },
         {
           title:
-            'Evaluation Type (O/S/M/EX/ET/I/C)     <i class="fa fa-info-circle"></i>',
+            'Evaluation Type (O/S/M/EX/ET/I/C)     <span data-toggle="tooltip" title="Evaluation Type (O/S/M/EX/ET/I/C)"><i class="fa fa-info-circle"></i></span>',
           data: "Evaluation_Type (O/S/M/EX/ET/I/C)",
         },
         {
-          title: 'Stimuli Description      <i class="fa fa-info-circle"></i> ',
+          title: 'Stimuli Description      <span data-toggle="tooltip" title="Stimuli Description "><i class="fa fa-info-circle"></i></span> ',
           data: "Stimuli_Description",
         },
         {
-          title: 'Layouts Considered       <i class="fa fa-info-circle"></i> ',
+          title: 'Layouts Considered       <span data-toggle="tooltip" title="Layouts Considered"><i class="fa fa-info-circle"></i></span> ',
           data: "Layouts_Considered",
         },
         {
-          title: 'More Information       <i class="fa fa-info-circle"></i>',
+          title: 'More Information       <span data-toggle="tooltip" title="More Information"><i class="fa fa-info-circle"></i></span>',
           data: "DOI",
           render: function (data, type, row, meta) {
             data = '<a href="' + data + '" target="_blank">' + data + "</a>";
@@ -414,15 +415,7 @@ function createSearchableTable(dataSet) {
         },
       ],
       initComplete: function (settings) {
-        $("#vizDataTable thead th").each(function () {
-          var $td = $(this);
-          $td.attr("title", $td.text());
-        });
-
-        /* Apply the tooltips */
-        $("#vizDataTable thead th[title]").tooltip({
-          container: "body",
-        });
+        $('#vizDataTable').tooltip({selector: '[data-toggle="tooltip"]'});
       },
     });
   });
