@@ -1,10 +1,10 @@
 const LAYOUT_DEF = {
-  ED: "Enclosure Diagram",
-  LD: "Layered Diagram",
-  NL: "Node Link",
-  IL: "Indented List",
-  HD: "Hybrid Diagram",
-  SD: "Symbolic Diagram"
+  "Enclosure": "ED",
+  "Layered": "LD",
+  "Node-Link": "NL",
+  "Indented List": "IL",
+  "Hybrid": "HD",
+  "Symbolic": "SD"
 }
 async function fetchPaperData() {
   const [surveyData, proposedData] = await Promise.all([
@@ -48,7 +48,7 @@ function fillInProfilePage(surveyData, proposedData) {
   setPaperInfo(surveyData);
   if (proposedData !== undefined && proposedData.length > 0) {
     appendTaskSurveyTable("#tableBody");
-    createTaskSurveyTable(proposedData, false);
+    createTaskSurveyTable(proposedData, false, false, false);
   }
   addVisualEncoding(surveyData.Layouts_Considered);
 }
@@ -60,6 +60,7 @@ function setPaperInfo(surveyData) {
   const description = surveyData.Abstract;
 
   document.getElementById("paperName").innerHTML += paperName;
+  document.getElementById("hyperlink").href = surveyData.DOI
   document.getElementById("authorName").innerHTML += author;
   document.getElementById("year").innerHTML += year;
   document.getElementById("description").innerHTML += description;
@@ -75,9 +76,9 @@ function addVisualEncoding(layouts) {
   let counter = 0;
   layoutsList.forEach(layout => {
     if (layout in LAYOUT_DEF) {
-      const imageFile = layout + ".png";
+      const imageFile = LAYOUT_DEF[layout] + ".png";
       layoutHolders[counter].children[2].src += imageFile;
-      layoutHolders[counter].children[0].innerHTML = LAYOUT_DEF[layout];
+      layoutHolders[counter].children[1].innerHTML = layout;
       layoutHolders[counter].style.display = "block";
       counter++;
     }

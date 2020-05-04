@@ -4,11 +4,13 @@ function appendTaskSurveyTable(element) {
     );
   }
 
-function createTaskSurveyTable(dataSet, paginate = true) {
+function createTaskSurveyTable(dataSet, paginate = true, info = true, searching = true) {
     $(document).ready(function() {
       $("#vizDataTable").DataTable({
         data: dataSet,
         order: [[3, "desc"]],
+        info: info,
+        searching: searching,
         columns: [
           {
             title:
