@@ -21,6 +21,16 @@ columnLookupTasksAction = {
   2: 4,
 };
 
+actionLookup = {
+  Lookup: 3,
+  Explore: 3,
+  Locate: 3,
+  Browse: 3,
+  Identify: 4,
+  Summarize: 4,
+  Compare: 4,
+};
+
 columnLookupTasksTarget = {
   1: 5,
   2: 6,

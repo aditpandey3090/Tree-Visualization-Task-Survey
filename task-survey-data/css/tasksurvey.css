@@ -1,3 +1,11 @@
 table {
   empty-cells: hide;
 }
+
+td:hover {
+  opacity: 0.5;
+}
+
+.selected {
+  background-color: #ccc;
+}
