@@ -33,7 +33,27 @@
   </div>
 
   <br />
+
+  <div class="w3-container">
+    <div class="w3-bar w3-theme">
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'actions')"> <i
+          class="fas fa-hand-pointer w3-xlarge"></i></button>
+      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'targets')"><i
+          class="fas fa-bullseye w3-xlarge"></i></button>
+    </div>
+    <div id="actions" style="min-height: 800px" class="w3-card w3-container tab w3-animate-opacity">
+      <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Actions</h2>
+      <table id="actionMatrix" class="table hover" width="100%"></table>
+    </div>
+
+    <br />
+    <div id="targets" style="min-height: 1100px" class="w3-card w3-container tab w3-animate-opacity">
+      <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Targets</h2>
+      <table id="targetMatrix" class="table hover" width="100%"></table>
+    </div>
+  </div>
 </body>
+<script src="../js/utils/fetchData.js"></script>
 <script src="js/script.js"></script>
 
 </html>

@@ -1,3 +1,27 @@
 table {
   empty-cells: hide;
 }
+
+table.dataTable thead th {
+  border-bottom: 0;
+  text-align: center;
+}
+table.dataTable tfoot th {
+  border-top: 0;
+}
+
+.table td, .table th {
+  border-top: 0
+}
+
+.bold {
+  font-weight: bold;
+}
+
+td.highlight {
+  background-color: whitesmoke !important;
+}
+
+th.highlight {
+  background-color: whitesmoke !important;
+}
