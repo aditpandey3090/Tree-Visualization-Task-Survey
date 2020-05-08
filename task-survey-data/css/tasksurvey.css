@@ -2,10 +2,10 @@ table {
   empty-cells: hide;
 }
 
-td:hover {
+.hovered {
   background-color: #ccc;
 }
 
 .selected {
-  background-color: #ccc;
+  background-color: #a6bddb;
 }

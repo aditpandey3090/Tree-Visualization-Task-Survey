@@ -186,31 +186,47 @@ desc: called to select an element in the table and perform a consistent action
 args: id of the div to select, column to filter
 */
 function selectCharts(id, column) {
-  d3.select("#" + id).classed("selected", true);
+  d3.selectAll("#" + id).classed("selected", true);
   filterColumn("#vizDataTable", column, id);
 }
 
 function deselectCharts(id, column) {
-  d3.select("#" + id).classed("selected", false);
+  d3.selectAll("#" + id).classed("selected", false);
   filterColumn("#vizDataTable", column, "");
 }
 
 midLevelLock = false;
 lowLevelLock = false;
 
-d3.selectAll("td").on("click", function (d) {
-  let id = d3.select(this).attr("id");
+d3.selectAll("td")
+  .on("mouseover", function (d) {
+    let selectedItem = d3.select(this).attr("class").includes("selected");
+    if (!selectedItem) {
+      console.log("reaching");
+      d3.select(this).classed("hovered", true);
+    } else {
+      console.log(selectedItem);
+    }
+  })
+  .on("mouseout", function (d) {
+    let selectedItem = d3.select(this).attr("class").includes("selected");
+    if (!selectedItem) {
+      d3.select(this).classed("hovered", false);
+    }
+  })
+  .on("click", function (d) {
+    let id = d3.select(this).attr("id");
 
-  if (actionLookup[id] == 3 && !midLevelLock) {
-    selectCharts(id, actionLookup[id]);
-    midLevelLock = true;
-  }
+    if (actionLookup[id] == 3 && !midLevelLock) {
+      selectCharts(id, actionLookup[id]);
+      midLevelLock = true;
+    }
 
-  if (actionLookup[id] == 4 && !lowLevelLock) {
-    selectCharts(id, actionLookup[id]);
-    lowLevelLock = true;
-  }
-});
+    if (actionLookup[id] == 4 && !lowLevelLock) {
+      selectCharts(id, actionLookup[id]);
+      lowLevelLock = true;
+    }
+  });
 
 d3.selectAll("td").on("dblclick", function (d) {
   let id = d3.select(this).attr("id");

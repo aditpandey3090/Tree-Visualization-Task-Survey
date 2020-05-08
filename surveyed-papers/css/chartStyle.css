@@ -15,7 +15,7 @@
 }
 
 .selected {
-  fill: rgb(141, 215, 220);
+  fill: #a6bddb;
 }
 
 rect:hover {
