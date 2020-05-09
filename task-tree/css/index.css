@@ -1,7 +1,3 @@
-table {
-  empty-cells: hide;
-}
-
 table.dataTable thead th {
   border-bottom: 0;
   text-align: center;
@@ -18,10 +14,25 @@ table.dataTable tfoot th {
   font-weight: bold;
 }
 
-td.highlight {
-  background-color: whitesmoke !important;
+table {
+  overflow: hidden;
 }
 
-th.highlight {
-  background-color: whitesmoke !important;
+/* tr:hover {
+  background-color: #006600;
+} */
+
+/* td, th {
+  position: relative;
 }
+td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  background-color: #006600;
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+} */

@@ -16,8 +16,8 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " w3-dark-grey";
 }
 
-var mybtn = document.getElementsByClassName("testbtn")[0];
-mybtn.click();
+// var mybtn = document.getElementsByClassName("testbtn")[0];
+// mybtn.click();
 
 const finalActionData = [
   {
@@ -235,7 +235,14 @@ fetchPaperData()
   });
 
 function createTable(selector, data) {
-  $(document).ready(function () {
+  var op = [];
+  data.forEach((d) => {
+      VALID_LAYOUTS.forEach(l => {
+          op.push(d[l]);
+      });
+  });
+  op.sort((a,b)=>a-b)
+  $(document).ready(function() {
     const table = $(selector).DataTable({
       data: data,
       order: [[0, "desc"]],
@@ -245,39 +252,64 @@ function createTable(selector, data) {
       columns: [
         {
           data: "row_header",
-          width: "10%",
-          className: "bold",
+          width: "20%",
+          className: "bold"
         },
         {
           title: "Enclosure",
           data: "Enclosure",
           className: "w3-center",
+          fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+            updateTableCell(nTd, sData, op);
+          }
         },
         {
           title: "Indented List",
           data: "Indented List",
           className: "w3-center",
+          fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+            updateTableCell(nTd, sData, op);
+          }
         },
         {
           title: "Layered",
           data: "Layered",
           className: "w3-center",
+          fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+            updateTableCell(nTd, sData, op);
+          }
         },
         {
           title: "Node-Link",
           data: "Node-Link",
           className: "w3-center",
+          fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+            updateTableCell(nTd, sData, op);
+          }
         },
         {
           title: "Symbolic",
           data: "Symbolic",
           className: "w3-center",
-        },
+          fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+            updateTableCell(nTd, sData, op);
+          }
+        }
       ],
       bPaginate: false,
       info: false,
     });
   });
+}
+
+function updateTableCell(nTd, sData, op) {
+
+  // Uncomment this line to hide the data in the table cell.
+  // Numbers won't be shown.
+  // $(nTd).empty();
+  const color = find_color(sData, op);
+  $(nTd).css('background-color', color);
+  $(nTd).css('color', "#008000");
 }
 
 function addTofinalTargetData(action, layouts) {
@@ -296,5 +328,32 @@ function addTofinalActionData(action, layouts) {
     });
 }
 function extractLayouts(layouts) {
-  return layouts.split(",").filter((l) => VALID_LAYOUTS.includes(l));
+  return layouts.split(",").filter(l => VALID_LAYOUTS.includes(l));
+}
+
+function find_color (n, op) {
+  if (n === 0) {
+    n = 1;
+  }
+  return increase_brightness(((op[op.length - 1] - n) / op[op.length - 1]) * 100);
+}
+
+function increase_brightness(percent){
+  // strip the leading # if it's there
+  var hex = "#00e600";
+  hex = hex.replace(/^\s*#|\s*$/g, '');
+
+  // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
+  if(hex.length == 3){
+      hex = hex.replace(/(.)/g, '$1$1');
+  }
+
+  var r = parseInt(hex.substr(0, 2), 16),
+      g = parseInt(hex.substr(2, 2), 16),
+      b = parseInt(hex.substr(4, 2), 16);
+
+  return '#' +
+     ((0|(1<<8) + r + (256 - r) * percent / 100).toString(16)).substr(1) +
+     ((0|(1<<8) + g + (256 - g) * percent / 100).toString(16)).substr(1) +
+     ((0|(1<<8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
 }
