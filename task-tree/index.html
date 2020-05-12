@@ -35,24 +35,65 @@
   <br />
 
   <div class="w3-container">
-    <!-- <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'actions')"> <i
-          class="fas fa-hand-pointer w3-xlarge"></i></button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openTab(event,'targets')"><i
-          class="fas fa-bullseye w3-xlarge"></i></button>
-    </div> -->
-    <div id="actions" style="min-height: 850px" class="w3-card-2 w3-half w3-container tab w3-animate-opacity">
+    <div id="actions" style="min-height: 850px" class="w3-container w3-responsive w3-half tab w3-animate-opacity">
       <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Actions</h2>
-      <table id="actionMatrix" class="table hover" width="100%"></table>
+      <h4>Action (Search)</h4>
+      <div class="w3-card w3-responsive">
+        <table id="actionMatrix" class="table w3-table hover" width="100%"></table>
+      </div>
+      <br />
+      <h4>Action (Query)</h4>
+      <div class="w3-card w3-responsive">
+        <table id="actionQueryMatrix" class="table w3-table hover" width="100%"></table>
+      </div>
     </div>
 
-    <div id="targets" style="min-height: 850px" class="w3-card-2 w3-half w3-container tab w3-animate-opacity">
+    <div id="targets" style="min-height: 850px" class="w3-container w3-responsive w3-half tab w3-animate-opacity">
       <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Targets</h2>
-      <table id="targetMatrix" class="table hover" width="100%"></table>
+      
+        <h4>Topology</h4>
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Tree</h5>
+          <table id="targetTopoTree" class="table w3-table hover" width="100%"></table>
+        </div>
+        <br />
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Subtree</h5>
+          <table id="targetTopoSubtree" class="table w3-table hover" width="100%"></table>
+        </div>
+        <br />
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Node</h5>
+          <table id="targetTopoNode" class="table w3-table hover" width="100%"></table>
+        </div>
+        <br />
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Path</h5>
+          <table id="targetTopoPath" class="table w3-table hover" width="100%"></table>
+        </div>
+      <br />
+      <br />
+        <h4>Attribute</h4>
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Internal Node</h5>
+          <table id="targetAttInternalNode" class="table w3-table hover" width="100%"></table>
+        </div>
+        <br />
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Leaf Node</h5>
+          <table id="targetAttLeafNode" class="table w3-table hover" width="100%"></table>
+        </div>
+        <br />
+        <div class="w3-card w3-responsive">
+          <h5 class="w3-tag">Link</h5>
+          <table id="targetAttLink" class="table w3-table hover" width="100%"></table>
+        </div>
+      </div>
     </div>
   </div>
 </body>
 <script src="../js/utils/fetchData.js"></script>
 <script src="js/script.js"></script>
+<script src="js/script2.js"></script>
 
 </html>

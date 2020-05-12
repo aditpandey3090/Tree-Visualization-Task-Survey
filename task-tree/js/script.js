@@ -19,7 +19,7 @@ function openTab(evt, tabName) {
 // var mybtn = document.getElementsByClassName("testbtn")[0];
 // mybtn.click();
 
-const finalActionData = [
+const finalActionSearchData = [
   {
     row_header: "Browse",
     Enclosure: 0,
@@ -56,6 +56,36 @@ const finalActionData = [
     Symbolic: 0,
     Hybrid: 0,
   },
+];
+
+const finalActionQueryData = [
+  {
+    row_header: "Identify",
+    Enclosure: 0,
+    "Indented List": 0,
+    Layered: 0,
+    "Node-Link": 0,
+    Symbolic: 0,
+    Hybrid: 0,
+  },
+  {
+    row_header: "Compare",
+    Enclosure: 0,
+    "Indented List": 0,
+    Layered: 0,
+    "Node-Link": 0,
+    Symbolic: 0,
+    Hybrid: 0,
+  },
+  {
+    row_header: "Summarize",
+    Enclosure: 0,
+    "Indented List": 0,
+    Layered: 0,
+    "Node-Link": 0,
+    Symbolic: 0,
+    Hybrid: 0,
+  }
 ];
 
 const finalTargetData = [
@@ -205,6 +235,15 @@ const finalTargetData = [
   },
 ];
 
+const images = {
+  "Enclosure": "ED.png",
+  "Hybrid": "HD.png",
+  "Indented List": "IL.png",
+  "Layered": "LD.png",
+  "Node-Link": "NL.png",
+  "Symbolic": "SD.png"
+}
+
 async function fetchPaperData() {
   const [surveyData, proposedData] = await Promise.all([
     fetchSurveyData(),
@@ -212,26 +251,28 @@ async function fetchPaperData() {
   ]);
   return { survey_data: surveyData, proposed_data: proposedData };
 }
-const VALID_LAYOUTS = Object.keys(finalActionData[0]).slice(1);
+const VALID_LAYOUTS = Object.keys(finalActionSearchData[0]).slice(1);
 
 fetchPaperData()
   .then((data) => {
-    const proposedData = data.proposed_data;
-    data.survey_data.forEach((sd) => {
-      const pageId = sd.Ref_Id;
-      const layouts = extractLayouts(sd.Layouts_Considered);
-      const filteredProposedData = proposedData.filter(
-        (pd) => pd.PaperId === pageId
-      );
-      filteredProposedData.forEach((pd) => {
-        addTofinalActionData(pd["Action(Search)"], layouts);
-        addTofinalTargetData(pd["Target Attribute"], layouts);
-      });
-    });
+    // const proposedData = data.proposed_data;
+    // data.survey_data.forEach((sd) => {
+    //   const pageId = sd.Ref_Id;
+    //   const layouts = extractLayouts(sd.Layouts_Considered);
+    //   const filteredProposedData = proposedData.filter(
+    //     (pd) => pd.PaperId === pageId
+    //   );
+    //   filteredProposedData.forEach((pd) => {
+    //     addTofinalActionSearchData(pd["Action(Search)"], layouts);
+    //     addTofinalTargetData(pd["Target Attribute"], layouts);
+    //     addTofinalActionQueryData(pd["Action(Query)"], layouts);
+    //   });
+    // });
   })
   .then((result) => {
-    createTable("#actionMatrix", finalActionData);
-    createTable("#targetMatrix", finalTargetData);
+    // createTable("#actionMatrix", finalActionSearchData);
+    // createTable("#targetMatrix", finalTargetData);
+    // createTable("#actionQueryMatrix", finalActionQueryData);
   });
 
 function createTable(selector, data) {
@@ -246,7 +287,6 @@ function createTable(selector, data) {
     const table = $(selector).DataTable({
       data: data,
       order: [[0, "desc"]],
-      columnDefs: [{ title: "", targets: 1 }],
       ordering: false,
       searching: false,
       columns: [
@@ -298,6 +338,11 @@ function createTable(selector, data) {
       ],
       bPaginate: false,
       info: false,
+      headerCallback: function headerCallback(thead, data, start, end, display) {
+        for (let i = 0; i < 5; i++) {
+          $(thead).find('th')[i+1].innerHTML = '<img style="height:4%;" src="./img/' + images[VALID_LAYOUTS[i]] + '" alt="' + VALID_LAYOUTS[i] + '" />';
+        }
+      }
     });
   });
 }
@@ -320,8 +365,16 @@ function addTofinalTargetData(action, layouts) {
     });
 }
 
-function addTofinalActionData(action, layouts) {
-  const data = finalActionData.filter((d) => d.row_header === action);
+function addTofinalActionQueryData(action, layouts) {
+  const data = finalActionQueryData.filter((d) => d.row_header === action);
+  data.length > 0 &&
+    layouts.forEach((layout) => {
+      data[0][layout] += 1;
+    });
+}
+
+function addTofinalActionSearchData(action, layouts) {
+  const data = finalActionSearchData.filter((d) => d.row_header === action);
   data.length > 0 &&
     layouts.forEach((layout) => {
       data[0][layout] += 1;
