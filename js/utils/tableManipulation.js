@@ -5,6 +5,6 @@
  * @param {number} columnNumber
  * @param {string} query
  */
-function filterColumn(tableSelector, columnNumber, query) {
-    $(tableSelector).DataTable().columns(columnNumber).search(query).draw();
+function filterColumn(tableSelector, columnNumber, query, regex = false) {
+    $(tableSelector).DataTable().columns(columnNumber).search(query, regex, false).draw();
   }
