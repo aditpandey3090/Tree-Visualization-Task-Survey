@@ -354,7 +354,7 @@ function updateTableCell(nTd, sData, op) {
   // $(nTd).empty();
   const color = find_color(sData, op);
   $(nTd).css('background-color', color);
-  $(nTd).css('color', "#008000");
+  // $(nTd).css('color', "black");
 }
 
 function addTofinalTargetData(action, layouts) {
@@ -393,7 +393,7 @@ function find_color (n, op) {
 
 function increase_brightness(percent){
   // strip the leading # if it's there
-  var hex = "#00e600";
+  var hex = "#4a9091";
   hex = hex.replace(/^\s*#|\s*$/g, '');
 
   // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
