@@ -29,6 +29,10 @@ actionLookup = {
   Identify: 4,
   Summarize: 4,
   Compare: 4,
+  tree_Height: 7,
+  tree_Balance: 7,
+  tree_Fanout: 7,
+  tree_Size: 7,
 };
 
 columnLookupTasksTarget = {

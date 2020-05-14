@@ -205,16 +205,16 @@
                     >
                       Tree
                     </th>
-                    <td class="w3-center">
+                    <td id="tree_Height" class="w3-center">
                       <img src="./img/height.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
+                    <td id="tree_Balance" class="w3-center">
                       <img src="./img/balanced.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
+                    <td id="tree_Fanout" class="w3-center">
                       <img src="./img/fanout.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
+                    <td id="tree_Size" class="w3-center">
                       <img src="./img/size.png" style="height: 120px;" />
                     </td>
                   </tr>
@@ -708,7 +708,20 @@
     <!-- Tab Window Exits Here -->
     <br />
     <br />
-    <h2 class="w3-center">Tasks</h2>
+    <div id="selectionFilter" class="w3-center">
+      <h2 class="w3-center">Tasks</h2>
+      <i class="fa fa-filter" aria-hidden="true"></i>
+
+      <a id="MidLevelButton" style="display: none;" class="w3-button w3-theme"
+        >Button</a
+      >
+      <a id="LowLevelButton" style="display: none;" class="w3-button w3-theme"
+        >Button</a
+      >
+      <a id="TargetButton" style="display: none;" class="w3-button w3-theme"
+        >Button</a
+      >
+    </div>
   </body>
   <script src="js/script.js"></script>
   <script src="js/views.js"></script>

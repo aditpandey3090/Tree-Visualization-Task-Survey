@@ -185,18 +185,37 @@ function hierarchicalSelection(currentSelection, paths) {
 desc: called to select an element in the table and perform a consistent action
 args: id of the div to select, column to filter
 */
-function selectCharts(id, column) {
+function selectCharts(id, column, filterText, filterTagID, filterTagText) {
   d3.selectAll("#" + id).classed("selected", true);
-  filterColumn("#vizDataTable", column, id);
+  filterColumn("#vizDataTable", column, filterText);
+  scrollToTable();
+  addFilterTags(filterTagID, filterTagText);
 }
 
-function deselectCharts(id, column) {
+function deselectCharts(id, column, filterTagID) {
   d3.selectAll("#" + id).classed("selected", false);
   filterColumn("#vizDataTable", column, "");
+  removeFilterTags(filterTagID);
+}
+
+function scrollToTable() {
+  var elmntToView = document.getElementById("selectionFilter");
+  elmntToView.scrollIntoView();
+}
+
+function addFilterTags(id, data) {
+  d3.select("#" + id + "Button")
+    .style("display", "")
+    .html(id + ": " + data);
+}
+
+function removeFilterTags(id) {
+  d3.select("#" + id + "Button").style("display", "none");
 }
 
 midLevelLock = false;
 lowLevelLock = false;
+target = false;
 
 d3.selectAll("td")
   .on("mouseover", function (d) {
@@ -218,13 +237,24 @@ d3.selectAll("td")
     let id = d3.select(this).attr("id");
 
     if (actionLookup[id] == 3 && !midLevelLock) {
-      selectCharts(id, actionLookup[id]);
+      selectCharts(id, actionLookup[id], id, "MidLevel", id);
       midLevelLock = true;
     }
 
     if (actionLookup[id] == 4 && !lowLevelLock) {
-      selectCharts(id, actionLookup[id]);
+      selectCharts(id, actionLookup[id], id, "LowLevel", id);
       lowLevelLock = true;
+    }
+
+    if (actionLookup[id] == 7 && !target) {
+      selectCharts(
+        id,
+        actionLookup[id],
+        id.split("_")[1],
+        "Target",
+        id.split("_")[1]
+      );
+      target = true;
     }
   });
 
@@ -232,11 +262,15 @@ d3.selectAll("td").on("dblclick", function (d) {
   let id = d3.select(this).attr("id");
 
   if (actionLookup[id] == 3 && midLevelLock) {
-    deselectCharts(id, actionLookup[id]);
+    deselectCharts(id, actionLookup[id], "MidLevel");
     midLevelLock = false;
   }
   if (actionLookup[id] == 4 && lowLevelLock) {
-    deselectCharts(id, actionLookup[id]);
+    deselectCharts(id, actionLookup[id], "LowLevel");
     lowLevelLock = false;
+  }
+  if (actionLookup[id] == 7 && target) {
+    deselectCharts(id, actionLookup[id], "Target");
+    target = false;
   }
 });

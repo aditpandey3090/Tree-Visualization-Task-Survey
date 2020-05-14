@@ -9,3 +9,9 @@ table {
 .selected {
   background-color: #a6bddb;
 }
+
+#MidLevelButton,
+#LowLevelButton,
+#TargetButton {
+  background-color: #a6bddb !important;
+}
