@@ -191,8 +191,11 @@ function drawLineChart(
     if (!d3.event.sourceEvent) return; // Only transition after input.
     if (!d3.event.selection) {
       rangeFilterOnYear(MIN_YEAR_DEFAULT, MAX_YEAR_DEFAULT);
+      removeFilterTags(id);
       return;
     } // Ignore empty selections.
+
+    addFilterTags(id, "" + d3.min(selected) + "-" + d3.max(selected));
 
     rangeFilterOnYear(d3.min(selected), d3.max(selected));
 
@@ -289,14 +292,16 @@ function drawBarChart(
     .on("click", function (d) {
       if (!clickedClass.includes(classname)) {
         d3.select(this).attr("class", "selected");
+        addFilterTags(id, d[dimension]);
         filterCol = columnLookup[classname];
         filterColumn("#vizDataTable", filterCol, d[dimension]);
         clickedClass.push(classname);
       }
-      console.log(clickedClass);
     })
     .on("dblclick", function (d) {
       d3.select(this).classed("selected", false);
+      removeFilterTags(id);
+      d3.select(this).attr("class", "bar");
       filterCol = columnLookup[classname];
       filterColumn("#vizDataTable", filterCol, "");
       clickedClass = [];
@@ -453,3 +458,13 @@ function createSearchableTable(dataSet) {
   $.fn.dataTable.ext.search.push(rangeFilterFunc);
 }
 //================================================================================================================//
+
+function addFilterTags(id, data) {
+  d3.select("#" + id + "Button")
+    .style("display", "")
+    .html(id + ": " + data);
+}
+
+function removeFilterTags(id) {
+  d3.select("#" + id + "Button").style("display", "none");
+}

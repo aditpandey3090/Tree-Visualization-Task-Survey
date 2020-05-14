@@ -14,15 +14,7 @@ function fieldInitializer(createdData) {
   //After dataloading create views
   //Creating real
   let visualizationData = createFrequencyData(createdData, "Year");
-  drawLineChart(
-    visualizationData,
-    500,
-    "Id",
-    "count",
-    "yearofpub",
-    "YearofPub",
-    "Year"
-  );
+  drawLineChart(visualizationData, 500, "Id", "count", "Year", "Year", "Year");
 
   //
   let visualizationDataBC3 = createFrequencyData(createdData, "Type (S/E/D)");

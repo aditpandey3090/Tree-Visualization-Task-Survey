@@ -1,6 +1,6 @@
 /* Style the dots by assigning a fill and stroke */
 .dot {
-  fill: black;
+  fill: #4a9091;
   stroke: #fff;
 }
 
@@ -9,15 +9,29 @@
   stroke: steelblue;
 }
 
+.bar {
+  fill: #4a9091;
+}
+
 .line {
   stroke: black;
   fill: none;
 }
 
 .selected {
-  fill: #a6bddb;
+  fill: #d5aa4b;
 }
 
-rect:hover {
-  opacity: 0.6;
+.bar:hover {
+  fill: #ccc;
+}
+tr:hover {
+  background-color: #ccc;
+}
+
+#PaperTypeButton,
+#EvaluationTypeButton,
+#VisTypeButton,
+#YearButton {
+  background-color: #d5aa4b !important;
 }
