@@ -10,6 +10,19 @@ table.dataTable tfoot th {
   border-top: 0
 }
 
+.table td:hover {
+    box-shadow: 0px 0px 150px #4a9091;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
+
 .bold {
   font-weight: bold;
 }
