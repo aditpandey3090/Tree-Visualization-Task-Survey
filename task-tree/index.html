@@ -34,20 +34,46 @@
 
   <br />
 
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+      <header  class="w3-container w3-theme w3-padding"> 
+        <i onclick="closeModal(this)" class="fas fa-window-close  w3-display-topright w3-large w3-button"></i>
+        <h3 id="modalHeading" class="w3-center"></h3>
+      </header>
+      <div class="w3-padding">
+        <h4 id="modalType" class="w3-center"></h4>
+        <h5 id="modalSubtype" class="w3-tag"></h5>
+        <hr />
+        <div class="w3-row">
+          <div class="w3-container w3-half w3-responsive w3-animate-opacity">
+            <h4 id="modalColumn" class="w3-center"></h4>
+          </div>
+          <div class="w3-container w3-half w3-responsive w3-animate-opacity">
+            <h4 id="modalRow" class="w3-center"></h4>
+          </div>
+        </div>
+        
+        <div id="tableContainer" class="w3-container w3-responsive w3-animate-opacity">
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="w3-container">
     <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">Actions</h2>
     <br />
     <div id="actions" style="min-height: 350px" class="w3-container w3-responsive tab w3-animate-opacity">
       <div style="min-height: 300px" class="w3-container w3-responsive w3-half tab w3-animate-opacity">
-        <h4 class="w3-center">Action (Search)</h4>
+        <h4 class="w3-center">Search</h4>
         <div class="w3-card w3-responsive">
-          <table id="actionMatrix" class="table w3-table hover" width="100%"></table>
+          <table id="actionMatrix" class="table page-table w3-table hover" width="100%"></table>
         </div>
       </div>
       <div style="min-height: 300px" class="w3-container w3-responsive w3-half tab w3-animate-opacity">
-        <h4 class="w3-center">Action (Query)</h4>
+        <h4 class="w3-center">Query</h4>
         <div class="w3-card w3-responsive">
-          <table id="actionQueryMatrix" class="table w3-table hover" width="100%"></table>
+          <table id="actionQueryMatrix" class="table page-table w3-table hover" width="100%"></table>
         </div>
       </div>
     </div>
@@ -59,22 +85,22 @@
         <h4 class="w3-center">Topology</h4>
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Tree</h5>
-          <table id="targetTopoTree" class="table w3-table hover" width="100%"></table>
+          <table id="targetTopoTree" class="table page-table w3-table hover" width="100%"></table>
         </div>
         <br />
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Subtree</h5>
-          <table id="targetTopoSubtree" class="table w3-table hover" width="100%"></table>
+          <table id="targetTopoSubtree" class="table page-table w3-table hover" width="100%"></table>
         </div>
         <br />
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Node</h5>
-          <table id="targetTopoNode" class="table w3-table hover" width="100%"></table>
+          <table id="targetTopoNode" class="table page-table w3-table hover" width="100%"></table>
         </div>
         <br />
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Path</h5>
-          <table id="targetTopoPath" class="table w3-table hover" width="100%"></table>
+          <table id="targetTopoPath" class="table page-table w3-table hover" width="100%"></table>
         </div>
       </div>
       <div style="min-height: 300px" class="w3-container w3-responsive w3-half tab w3-animate-opacity">
@@ -82,17 +108,17 @@
         <h4 class="w3-center">Attribute</h4>
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Internal Node</h5>
-          <table id="targetAttInternalNode" class="table w3-table hover" width="100%"></table>
+          <table id="targetAttInternalNode" class="table page-table w3-table hover" width="100%"></table>
         </div>
         <br />
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Leaf Node</h5>
-          <table id="targetAttLeafNode" class="table w3-table hover" width="100%"></table>
+          <table id="targetAttLeafNode" class="table page-table w3-table hover" width="100%"></table>
         </div>
         <br />
         <div class="w3-card w3-responsive">
           <h5 class="w3-tag">Link</h5>
-          <table id="targetAttLink" class="table w3-table hover" width="100%"></table>
+          <table id="targetAttLink" class="table page-table w3-table hover" width="100%"></table>
         </div>
       </div>
     </div>
@@ -101,5 +127,6 @@
 <script src="../js/utils/fetchData.js"></script>
 <script src="js/script.js"></script>
 <script src="js/script2.js"></script>
+<script src="../js/utils/taskSurveyTable.js"></script>
 
 </html>

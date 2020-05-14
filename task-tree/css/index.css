@@ -6,12 +6,12 @@ table.dataTable tfoot th {
   border-top: 0;
 }
 
-.table td, .table th {
+.page-table td, .table th {
   border-top: 0
 }
 
-.table td:hover {
-    box-shadow: 0px 0px 150px #4a9091;
+.page-table td:hover {
+    box-shadow: 0px 0px 30px #4a9091;
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.1);
@@ -35,6 +35,9 @@ table {
   padding: 0.01em 16px
 }
 
+#id01 .w3-modal-content{
+  width: 80%;
+}
 /* tr:hover {
   background-color: #006600;
 } */

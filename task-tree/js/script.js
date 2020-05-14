@@ -275,11 +275,11 @@ fetchPaperData()
     // createTable("#actionQueryMatrix", finalActionQueryData);
   });
 
-function createTable(selector, data) {
+function createTable(selector, data, metadata) {
   var op = [];
   data.forEach((d) => {
       VALID_LAYOUTS.forEach(l => {
-          op.push(d[l]);
+          op.push(d[l]["number"]);
       });
   });
   op.sort((a,b)=>a-b)
@@ -297,42 +297,43 @@ function createTable(selector, data) {
         },
         {
           title: "Enclosure",
-          data: "Enclosure",
+          data: "Enclosure.number",
           className: "w3-center",
           fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            updateTableCell(nTd, sData, op);
+            updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata);
+            console.log("Hello");
           }
         },
         {
           title: "Indented List",
-          data: "Indented List",
+          data: "Indented List.number",
           className: "w3-center",
           fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            updateTableCell(nTd, sData, op);
+            updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata);
           }
         },
         {
           title: "Layered",
-          data: "Layered",
+          data: "Layered.number",
           className: "w3-center",
           fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            updateTableCell(nTd, sData, op);
+            updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata);
           }
         },
         {
           title: "Node-Link",
-          data: "Node-Link",
+          data: "Node-Link.number",
           className: "w3-center",
           fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            updateTableCell(nTd, sData, op);
+            updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata);
           }
         },
         {
           title: "Symbolic",
-          data: "Symbolic",
+          data: "Symbolic.number",
           className: "w3-center",
           fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-            updateTableCell(nTd, sData, op);
+            updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata);
           }
         }
       ],
@@ -347,14 +348,23 @@ function createTable(selector, data) {
   });
 }
 
-function updateTableCell(nTd, sData, op) {
+var columnOrder = ["Enclosure", "Indented List", "Layered", "Node-Link", "Symbolic"];
+
+function updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata) {
 
   // Uncomment this line to hide the data in the table cell.
   // Numbers won't be shown.
   // $(nTd).empty();
   const color = find_color(sData, op);
   $(nTd).css('background-color', color);
-  // $(nTd).css('color', "black");
+  $(nTd).css('font-weight', "bold");
+  $(nTd).attr("onclick", "displayModal(this)");
+  
+  const columnName = columnOrder[iCol - 1];
+  $(nTd).data("column", columnName);
+  $(nTd).data("row", oData["row_header"]);
+  $(nTd).data("metadata", metadata);
+  $(nTd).data("data", oData[columnName]["data"]);
 }
 
 function addTofinalTargetData(action, layouts) {

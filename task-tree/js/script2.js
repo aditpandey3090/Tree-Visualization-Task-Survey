@@ -11,13 +11,17 @@ async function fetchPaperData() {
   return { survey_data: generatedSurveyData, proposed_data: proposedData };
 }
 
+const internalStruct = {
+    number: 0,
+    data: []
+}
 const dataStruct = {
-    Enclosure: 0,
-    "Indented List": 0,
-    Layered: 0,
-    "Node-Link": 0,
-    Symbolic: 0,
-    Hybrid: 0,
+    Enclosure: internalStruct,
+    "Indented List": internalStruct,
+    Layered: internalStruct,
+    "Node-Link": internalStruct,
+    Symbolic: internalStruct,
+    Hybrid: internalStruct,
 }
 
 const finalData = {
@@ -54,15 +58,15 @@ fetchPaperData()
     });
     console.log("Buffer")
 }).then((result) => {
-    createTable("#actionMatrix", Object.values(finalData.action.search));
-    createTable("#actionQueryMatrix", Object.values(finalData.action.query));
-    createTable("#targetTopoTree", Object.values(finalData.target.Topology["Tree"]));
-    createTable("#targetTopoSubtree", Object.values(finalData.target.Topology["Subtree"]));
-    createTable("#targetTopoNode", Object.values(finalData.target.Topology["Node"]));
-    createTable("#targetTopoPath", Object.values(finalData.target.Topology["Path"]));
-    createTable("#targetAttInternalNode", Object.values(finalData.target.Attribute["Internal Node"]));
-    createTable("#targetAttLeafNode", Object.values(finalData.target.Attribute["Leaf Node"]));
-    createTable("#targetAttLink", Object.values(finalData.target.Attribute["Link"]));
+    createTable("#actionMatrix", Object.values(finalData.action.search), {heading: "Action", type: "Search"});
+    createTable("#actionQueryMatrix", Object.values(finalData.action.query), {heading: "Action", type: "Query"});
+    createTable("#targetTopoTree", Object.values(finalData.target.Topology["Tree"]), {heading: "Target", type: "Topology", subtype: "Tree"});
+    createTable("#targetTopoSubtree", Object.values(finalData.target.Topology["Subtree"]), {heading: "Target", type: "Topology", subtype: "Subtree"});
+    createTable("#targetTopoNode", Object.values(finalData.target.Topology["Node"]), {heading: "Target", type: "Topology", subtype: "Node"});
+    createTable("#targetTopoPath", Object.values(finalData.target.Topology["Path"]), {heading: "Target", type: "Topology", subtype: "Path"});
+    createTable("#targetAttInternalNode", Object.values(finalData.target.Attribute["Internal Node"]), {heading: "Target", type: "Attribute", subtype: "Internal Node"});
+    createTable("#targetAttLeafNode", Object.values(finalData.target.Attribute["Leaf Node"]), {heading: "Target", type: "Attribute", subtype: "Leaf Node"});
+    createTable("#targetAttLink", Object.values(finalData.target.Attribute["Link"]), {heading: "Target", type: "Attribute", subtype: "Link"});
 });;
 
 function addActionData(pd, sd) {
@@ -74,8 +78,10 @@ function addActionData(pd, sd) {
     addArrayEntry(pd["Action(Search)"], finalData.action.search);
     addArrayEntry(pd["Action(Query)"], finalData.action.query);
     layouts.forEach((layout) => {
-        finalData.action.search[pd["Action(Search)"]][layout] += 1;
-        finalData.action.query[pd["Action(Query)"]][layout] += 1;
+        finalData.action.search[pd["Action(Search)"]][layout]["data"].push(pd)
+        finalData.action.search[pd["Action(Search)"]][layout]["number"] += 1;
+        finalData.action.query[pd["Action(Query)"]][layout]["data"].push(pd)
+        finalData.action.query[pd["Action(Query)"]][layout]["number"] += 1;
     });
 }
 
@@ -85,7 +91,8 @@ function addTargetData(pd, sd) {
     const layouts = extractLayouts(sd.Layouts_Considered);
     addArrayEntry(pd["Target Attribute"], data);
     layouts.forEach((layout) => {
-        finalData.target[pd["Target"]][pd["Specific Target"]][pd["Target Attribute"]][layout] += 1;
+        finalData.target[pd["Target"]][pd["Specific Target"]][pd["Target Attribute"]][layout]["data"].push(pd)
+        finalData.target[pd["Target"]][pd["Specific Target"]][pd["Target Attribute"]][layout]["number"] += 1;
     });
 }
 
@@ -93,4 +100,30 @@ function addArrayEntry(key, data) {
     const item = JSON.parse(JSON.stringify(dataStruct));
     item.row_header = key;
     !Object.keys(data).includes(key) && (data[key] = item);
+}
+
+function displayModal(e) {
+    const jElement = $(e);
+    if (jElement.data("data").length === 0) {
+        return;
+    }
+    $("#modalHeading").html(jElement.data("metadata").heading);
+    $("#modalType").html(jElement.data("metadata").type);
+    const subtype = jElement.data("metadata").subtype
+    if (subtype === undefined) {
+        $("#modalSubtype").hide();
+    } else {
+        $("#modalSubtype").html(subtype).show();
+    }
+    $("#modalColumn").html(jElement.data("column"));
+    $("#modalRow").html(jElement.data("row"));
+    
+    appendTaskSurveyTable("#tableContainer");
+    createTaskSurveyTable(jElement.data("data"));
+    document.getElementById('id01').style.display='block'
+}
+
+function closeModal(e) {
+    var table = $('#vizDataTable').DataTable().destroy();
+    document.getElementById('id01').style.display='none'
 }
