@@ -48,7 +48,7 @@ function fillInProfilePage(surveyData, proposedData) {
   setPaperInfo(surveyData);
   if (proposedData !== undefined && proposedData.length > 0) {
     appendTaskSurveyTable("#tableBody");
-    createTaskSurveyTable(proposedData, false, false, false);
+    createTaskSurveyTable(proposedData, false, false, false, false);
   }
   addVisualEncoding(surveyData.Layouts_Considered);
 }

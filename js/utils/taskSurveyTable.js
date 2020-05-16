@@ -4,7 +4,7 @@ function appendTaskSurveyTable(element) {
     );
   }
 
-function createTaskSurveyTable(dataSet, paginate = true, info = true, searching = true) {
+function createTaskSurveyTable(dataSet, paginate = true, info = true, searching = true, showLink = true) {
     $(document).ready(function() {
       $("#vizDataTable").DataTable({
         data: dataSet,
@@ -16,7 +16,18 @@ function createTaskSurveyTable(dataSet, paginate = true, info = true, searching 
             title:
               'Task Description   <span data-toggle="tooltip" title="Task Description"><i class="fa fa-info-circle"></i></span>',
             data: "Task Description",
-            width: "30%"
+            width: "30%",
+            render: function (data, type, row, meta) {
+              if (showLink) {
+                data =
+                '<a href="../profile?id=' +
+                row.PaperId +
+                '" target="_blank">' +
+                data +
+                "</a>";
+              }
+              return data;
+            }
           },
           {
             title:
