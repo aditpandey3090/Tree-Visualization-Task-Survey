@@ -19,10 +19,6 @@ function createTaskSurveyTable(dataSet, paginate = true, info = true, searching 
             width: "30%"
           },
           {
-            title: 'Complex    <span data-toggle="tooltip" title="Complex"><i class="fa fa-info-circle"></i></span>',
-            data: "Complex"
-          },
-          {
             title:
               'Analyze(Consume)    <span data-toggle="tooltip" title="Analyze(Consume)"><i class="fa fa-info-circle"></i></span>',
             data: "Analyze(Consume)"
