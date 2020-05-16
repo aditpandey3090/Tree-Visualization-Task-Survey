@@ -11,7 +11,7 @@ table.dataTable tfoot th {
 }
 
 .page-table td:hover {
-    box-shadow: 0px 0px 30px #4a9091;
+    box-shadow: 0px 0px 30px #737373;
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.1);
@@ -21,6 +21,7 @@ table.dataTable tfoot th {
     -moz-transform: scale(1.1);
     transition: all 200ms ease-in;
     transform: scale(1.1);
+    background-color: #ccc !important;
 }
 
 .bold {

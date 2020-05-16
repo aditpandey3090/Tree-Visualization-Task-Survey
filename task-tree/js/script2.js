@@ -127,3 +127,4 @@ function closeModal(e) {
     var table = $('#vizDataTable').DataTable().destroy();
     document.getElementById('id01').style.display='none'
 }
+
