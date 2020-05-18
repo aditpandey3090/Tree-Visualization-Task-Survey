@@ -236,17 +236,17 @@ d3.selectAll("td")
   .on("click", function (d) {
     let id = d3.select(this).attr("id");
 
-    if (actionLookup[id] == 3 && !midLevelLock) {
+    if (actionLookup[id] == 2 && !midLevelLock) {
       selectCharts(id, actionLookup[id], id, "MidLevel", id);
       midLevelLock = true;
     }
 
-    if (actionLookup[id] == 4 && !lowLevelLock) {
+    if (actionLookup[id] == 3 && !lowLevelLock) {
       selectCharts(id, actionLookup[id], id, "LowLevel", id);
       lowLevelLock = true;
     }
 
-    if (actionLookup[id] == 7 && !target) {
+    if (actionLookup[id] == 6 && !target) {
       selectCharts(
         id,
         actionLookup[id],
@@ -261,15 +261,15 @@ d3.selectAll("td")
 d3.selectAll("td").on("dblclick", function (d) {
   let id = d3.select(this).attr("id");
 
-  if (actionLookup[id] == 3 && midLevelLock) {
+  if (actionLookup[id] == 2 && midLevelLock) {
     deselectCharts(id, actionLookup[id], "MidLevel");
     midLevelLock = false;
   }
-  if (actionLookup[id] == 4 && lowLevelLock) {
+  if (actionLookup[id] == 3 && lowLevelLock) {
     deselectCharts(id, actionLookup[id], "LowLevel");
     lowLevelLock = false;
   }
-  if (actionLookup[id] == 7 && target) {
+  if (actionLookup[id] == 6 && target) {
     deselectCharts(id, actionLookup[id], "Target");
     target = false;
   }

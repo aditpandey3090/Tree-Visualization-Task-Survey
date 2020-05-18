@@ -22,17 +22,17 @@ columnLookupTasksAction = {
 };
 
 actionLookup = {
-  Lookup: 3,
-  Explore: 3,
-  Locate: 3,
-  Browse: 3,
-  Identify: 4,
-  Summarize: 4,
-  Compare: 4,
-  tree_Height: 7,
-  tree_Balance: 7,
-  tree_Fanout: 7,
-  tree_Size: 7,
+  Lookup: 2,
+  Explore: 2,
+  Locate: 2,
+  Browse: 2,
+  Identify: 3,
+  Summarize: 3,
+  Compare: 3,
+  tree_Height: 6,
+  tree_Balance: 6,
+  tree_Fanout: 6,
+  tree_Size: 6,
 };
 
 columnLookupTasksTarget = {

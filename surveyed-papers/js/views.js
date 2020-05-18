@@ -227,7 +227,7 @@ function drawBarChart(
   id,
   axisLabel
 ) {
-  margin = { left: 35, top: 10, right: 40, bottom: 50 };
+  margin = { left: 35, top: 10, right: 42, bottom: 50 };
 
   if (document.getElementById(id).clientWidth > 400) {
     width = document.getElementById(id).clientWidth / 2;
@@ -313,7 +313,7 @@ function drawBarChart(
     .enter()
     .append("text")
     .attr("x", function (d) {
-      return x(d[attribute]) - margin.left / 2;
+      return x(d[attribute]) - margin.left / 1.5;
     })
     .attr("y", (d) => y(d[dimension]) + y.bandwidth() / 2)
     .attr("dy", ".35em")
