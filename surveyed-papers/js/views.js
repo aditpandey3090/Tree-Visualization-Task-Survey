@@ -359,7 +359,6 @@ function drawPieChart(data) {
 
   let arcs = pie(data);
 
-  console.log(arcs);
   svg2
     .selectAll("path")
     .data(arcs)
@@ -467,4 +466,23 @@ function addFilterTags(id, data) {
 
 function removeFilterTags(id) {
   d3.select("#" + id + "Button").style("display", "none");
+}
+
+//================================================================================================================//
+
+function clearSelection() {
+  filterColumn("#vizDataTable", 1, "");
+  filterColumn("#vizDataTable", 2, "");
+  filterColumn("#vizDataTable", 3, "");
+  filterColumn("#vizDataTable", 5, "");
+
+  d3.selectAll(".selected").attr("class", "bar");
+
+  d3.select(".selection").style("display", "none");
+
+  clickedClass = [];
+
+  ["PaperType", "VisType", "EvaluationType", "Year"].map((d) => {
+    removeFilterTags(d);
+  });
 }
