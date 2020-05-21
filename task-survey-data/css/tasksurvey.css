@@ -15,3 +15,7 @@ table {
 #TargetButton {
   background-color: #a6bddb !important;
 }
+
+#vizDataTable tr:hover {
+  background-color: #ccc;
+}

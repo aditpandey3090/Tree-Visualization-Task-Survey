@@ -60,14 +60,14 @@
       <a href="../task-tree/" class="w3-bar-item w3-button">
         <i class="fa fa-sitemap w3-xlarge w3-button"></i>
       </a>
-      <a style="float: right" href="#" class="w3-bar-item w3-button">
+      <a style="float: right;" href="#" class="w3-bar-item w3-button">
         <i class="fa fa-file-text w3-xlarge w3-button"></i>
       </a>
     </div>
 
     <br />
     <div id="noTabWindow" class="w3-container">
-      <div class="w3-half w3-container">
+      <div class="w3-third w3-container">
         <div
           style="min-height: 1100px;"
           class="w3-card w3-container w3-animate-opacity"
@@ -169,7 +169,7 @@
         </div>
       </div>
 
-      <div class="w3-half w3-container">
+      <div class="w3-twothird w3-container">
         <div
           style="min-height: 1100px;"
           class="w3-card w3-container w3-animate-opacity"
@@ -198,6 +198,7 @@
                     <th class="w3-center">Balanced</th>
                     <th class="w3-center">Fanout</th>
                     <th class="w3-center">Size</th>
+                    <th class="w3-center">Miscellaneous</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -208,17 +209,20 @@
                     >
                       Tree
                     </th>
-                    <td id="tree_Height" class="w3-center">
+                    <td id="Tree_Height" class="w3-center">
                       <img src="./img/height.png" style="height: 120px;" />
                     </td>
-                    <td id="tree_Balance" class="w3-center">
+                    <td id="Tree_Balance" class="w3-center">
                       <img src="./img/balanced.png" style="height: 120px;" />
                     </td>
-                    <td id="tree_Fanout" class="w3-center">
+                    <td id="Tree_Fanout" class="w3-center">
                       <img src="./img/fanout.png" style="height: 120px;" />
                     </td>
-                    <td id="tree_Size" class="w3-center">
+                    <td id="Tree_Size" class="w3-center">
                       <img src="./img/size.png" style="height: 120px;" />
+                    </td>
+                    <td id="Tree_Misc" class="w3-center">
+                      <img src="./img/misctree.png" style="height: 120px;" />
                     </td>
                   </tr>
                   <tr>
@@ -227,9 +231,7 @@
                     <th class="w3-center">Height</th>
                     <th class="w3-center">Depth</th>
                     <th class="w3-center">Ancestor</th>
-
-                    <th></th>
-                    <th></th>
+                    <th class="w3-center">Miscellaneous</th>
                   </tr>
                   <tr>
                     <th
@@ -238,41 +240,43 @@
                     >
                       Subtree
                     </th>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Subtree_Size">
                       <img
                         src="./img/subtree_size.png"
                         style="height: 120px;"
                       />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Subtree_Height">
                       <img
                         src="./img/subtree_height.png"
                         style="height: 120px;"
                       />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Subtree_Depth">
                       <img src="./img/depth.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Subtree_Ancestor">
                       <img
                         src="./img/subtree_ancestor.png"
                         style="height: 120px;"
                       />
                     </td>
-                    <td></td>
+                    <td class="w3-center" id="subtree_Misc">
+                      <img src="./img/miscsubtree.png" style="height: 120px;" />
+                    </td>
                   </tr>
                   <tr>
                     <th></th>
                     <th class="w3-center">Depth</th>
                     <th class="w3-center">Degree</th>
                     <th class="w3-center">
-                      <span style="color: #68389b;">Ancestor</span>/<span
-                        style="color: #7a601d;"
-                        >Descendent</span
-                      >
+                      Ancestor
                     </th>
                     <th class="w3-center">
-                      <span style="color: #3f76b1;">Sibling</span>
+                      Descendent
+                    </th>
+                    <th class="w3-center">
+                      Sibling
                     </th>
                   </tr>
                   <tr>
@@ -282,25 +286,26 @@
                     >
                       Node
                     </th>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Node_Depth">
                       <img src="./img/node_depth.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Node_Degree">
                       <img src="./img/degree.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
-                      <img
-                        src="./img/ancestor_descendent.png"
-                        style="height: 120px;"
-                      />
+                    <td class="w3-center" id="Node_Ancestor">
+                      <img src="./img/ancestors.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Node_Descendant">
+                      <img src="./img/descendants.png" style="height: 120px;" />
+                    </td>
+                    <td class="w3-center" id="Node_Sibling">
                       <img src="./img/sibling.png" style="height: 120px;" />
                     </td>
                   </tr>
                   <tr>
                     <th></th>
                     <th class="w3-center">Length</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -312,7 +317,7 @@
                     >
                       Path
                     </th>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Path_Length">
                       <img src="./img/length.png" style="height: 120px;" />
                     </td>
                     <td></td>
@@ -352,25 +357,25 @@
                     >
                       Internal Node, Leaf Node, Link
                     </th>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Attribute_Categorical">
                       <img
                         src="./img/categorical_value.png"
                         style="height: 120px;"
                       />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Attribute_Quantitative">
                       <img
                         src="./img/quantitative_value.png"
                         style="height: 120px;"
                       />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Attribute_Ordinal">
                       <img
                         src="./img/ordinal_value.png"
                         style="height: 120px;"
                       />
                     </td>
-                    <td class="w3-center">
+                    <td class="w3-center" id="Attribute_MultiDimensional">
                       <img
                         src="./img/multi_dim_value.png"
                         style="height: 120px;"
@@ -531,6 +536,7 @@
                   <th class="w3-center">Balanced</th>
                   <th class="w3-center">Fanout</th>
                   <th class="w3-center">Size</th>
+                  <th class="w3-center">Miscellaneous</th>
                 </tr>
               </thead>
               <tbody>
@@ -541,17 +547,20 @@
                   >
                     Tree
                   </th>
-                  <td class="w3-center">
+                  <td id="Tree_Height" class="w3-center">
                     <img src="./img/height.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td id="Tree_Balance" class="w3-center">
                     <img src="./img/balanced.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td id="Tree_Fanout" class="w3-center">
                     <img src="./img/fanout.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td id="Tree_Size" class="w3-center">
                     <img src="./img/size.png" style="height: 120px;" />
+                  </td>
+                  <td id="Tree_Misc" class="w3-center">
+                    <img src="./img/misctree.png" style="height: 120px;" />
                   </td>
                 </tr>
                 <tr>
@@ -560,6 +569,7 @@
                   <th class="w3-center">Height</th>
                   <th class="w3-center">Depth</th>
                   <th class="w3-center">Ancestor</th>
+                  <th class="w3-center">Miscellaneous</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -570,38 +580,40 @@
                   >
                     Subtree
                   </th>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Subtree_Size">
                     <img src="./img/subtree_size.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Subtree_Height">
                     <img
                       src="./img/subtree_height.png"
                       style="height: 120px;"
                     />
                   </td>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Subtree_Depth">
                     <img src="./img/depth.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Subtree_Ancestor">
                     <img
                       src="./img/subtree_ancestor.png"
                       style="height: 120px;"
                     />
                   </td>
-                  <td></td>
+                  <td class="w3-center" id="subtree_Misc">
+                    <img src="./img/miscsubtree.png" style="height: 120px;" />
+                  </td>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="w3-center">Depth</th>
                   <th class="w3-center">Degree</th>
                   <th class="w3-center">
-                    <span style="color: #68389b;">Ancestor</span>/<span
-                      style="color: #7a601d;"
-                      >Descendent</span
-                    >
+                    Ancestor
                   </th>
                   <th class="w3-center">
-                    <span style="color: #3f76b1;">Sibling</span>
+                    Descendent
+                  </th>
+                  <th class="w3-center">
+                    Sibling
                   </th>
                 </tr>
                 <tr>
@@ -611,19 +623,19 @@
                   >
                     Node
                   </th>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Node_Depth">
                     <img src="./img/node_depth.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Node_Degree">
                     <img src="./img/degree.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
-                    <img
-                      src="./img/ancestor_descendent.png"
-                      style="height: 120px;"
-                    />
+                  <td class="w3-center" id="Node_Ancestor">
+                    <img src="./img/ancestors.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center">
+                  <td class="w3-center" id="Node_Descendant">
+                    <img src="./img/descendants.png" style="height: 120px;" />
+                  </td>
+                  <td class="w3-center" id="Node_Sibling">
                     <img src="./img/sibling.png" style="height: 120px;" />
                   </td>
                 </tr>
@@ -724,6 +736,14 @@
       <a id="TargetButton" style="display: none;" class="w3-button w3-theme"
         >Button</a
       >
+      <a href="javascript:void(0)"
+        ><i
+          class="fa fa-refresh"
+          onclick="clearSelection()"
+          id="clearSelection"
+          aria-hidden="true"
+        ></i
+      ></a>
     </div>
   </body>
   <script src="js/script.js"></script>
