@@ -67,6 +67,8 @@ fetchPaperData()
     createTable("#targetAttInternalNode", Object.values(finalData.target.Attribute["Internal Node"]), {heading: "Target", type: "Attribute", subtype: "Internal Node"});
     createTable("#targetAttLeafNode", Object.values(finalData.target.Attribute["Leaf Node"]), {heading: "Target", type: "Attribute", subtype: "Leaf Node"});
     createTable("#targetAttLink", Object.values(finalData.target.Attribute["Link"]), {heading: "Target", type: "Attribute", subtype: "Link"});
+
+    setTimeout(function(){ $('[data-toggle="tooltip"]').tooltip(); }, 5000);
 });;
 
 function addActionData(pd, sd) {
@@ -127,4 +129,3 @@ function closeModal(e) {
     var table = $('#vizDataTable').DataTable().destroy();
     document.getElementById('id01').style.display='none'
 }
-

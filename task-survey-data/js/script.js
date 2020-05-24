@@ -7,6 +7,8 @@ if (window.innerWidth < 1441) {
   d3.select("#tabWindow").style("display", "none");
 }
 
+$('[data-toggle="tooltip"]').tooltip();
+
 // Tabs
 function openTab(evt, tabName) {
   var i;

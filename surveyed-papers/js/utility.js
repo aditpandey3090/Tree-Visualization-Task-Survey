@@ -1,3 +1,5 @@
+$('[data-toggle="tooltip"]').tooltip();
+
 //Create a function that can take entire data, and indexing variable to create a frequency chart
 function createFrequencyData(data, dimension) {
   var result = [];

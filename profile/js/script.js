@@ -1,3 +1,5 @@
+$('[data-toggle="tooltip"]').tooltip();
+
 const LAYOUT_DEF = {
   "Enclosure": "ED",
   "Layered": "LD",
