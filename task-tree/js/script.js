@@ -19,6 +19,8 @@ function openTab(evt, tabName) {
 // var mybtn = document.getElementsByClassName("testbtn")[0];
 // mybtn.click();
 
+$('[data-toggle="tooltip"]').tooltip();
+
 const finalActionSearchData = [
   {
     row_header: "Browse",
