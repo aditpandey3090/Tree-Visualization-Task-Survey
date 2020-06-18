@@ -38,12 +38,10 @@ async function fetchSurveyData() {
   let data = await loadDataFromAPI(docId, sheetId);
 
   //ToDo: We have to dynamically insert the final file list count
-  const row = 56;
+  const row = 57;
   const col = 10;
 
   let createdData = parseRawData(row, col, data);
-  console.log("In fetchSurveyData");
-  console.log(createdData);
   return createdData;
 }
 

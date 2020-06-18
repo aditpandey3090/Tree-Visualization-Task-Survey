@@ -49,7 +49,7 @@ function drawLineChart(
   margin = { left: 7, top: 10, right: 25, bottom: 50 };
 
   if (document.getElementById(id).clientWidth > 400) {
-    width = document.getElementById(id).clientWidth / 2;
+    width = document.getElementById(id).clientWidth / 1.5;
     height = height / 2;
   } else {
     width = document.getElementById(id).clientWidth / 1;
@@ -230,7 +230,7 @@ function drawBarChart(
   margin = { left: 35, top: 10, right: 42, bottom: 50 };
 
   if (document.getElementById(id).clientWidth > 400) {
-    width = document.getElementById(id).clientWidth / 2;
+    width = document.getElementById(id).clientWidth / 1.5;
     height = height / 2;
   } else {
     width = document.getElementById(id).clientWidth / 1;
@@ -307,20 +307,21 @@ function drawBarChart(
       clickedClass = [];
     });
 
-  barGroup
-    .selectAll("text")
-    .data(data)
-    .enter()
-    .append("text")
-    .attr("x", function (d) {
-      return x(d[attribute]) - margin.left / 1.5;
-    })
-    .attr("y", (d) => y(d[dimension]) + y.bandwidth() / 2)
-    .attr("dy", ".35em")
-    .text(function (d) {
-      return d[attribute];
-    })
-    .style("fill", "white");
+  //Text labels on the bar chart  
+  // barGroup
+  //   .selectAll("text")
+  //   .data(data)
+  //   .enter()
+  //   .append("text")
+  //   .attr("x", function (d) {
+  //     return x(d[attribute]) - margin.left / 1.5;
+  //   })
+  //   .attr("y", (d) => y(d[dimension]) + y.bandwidth() / 2)
+  //   .attr("dy", ".35em")
+  //   .text(function (d) {
+  //     return d[attribute];
+  //   })
+  //   .style("fill", "white");
 
   const gx = svg.append("g").call(xAxis);
   const gy = svg.append("g").call(yAxis);
@@ -373,7 +374,7 @@ function drawPieChart(data) {
 // Latest Table Code
 function appendTable() {
   $("body").append(
-    '<table id="vizDataTable" class="table table-bordered" width="100%"></table>'
+    '<div class="w3-row-padding"><table id="vizDataTable" class="table table-bordered" width="100%"></table></div>'
   );
 }
 
@@ -385,7 +386,7 @@ function createSearchableTable(dataSet) {
       columns: [
         {
           title:
-            'Paper   <span data-toggle="tooltip" title="Paper"><i class="fa fa-info-circle"></i></span>',
+            'Paper   <span data-toggle="tooltip" title="Paper"></span>',
           data: "Paper_Title",
           width: "30%",
           render: function (data, type, row, meta) {
@@ -400,32 +401,32 @@ function createSearchableTable(dataSet) {
         },
         {
           title:
-            'Year    <span data-toggle="tooltip" title="Year"><i class="fa fa-info-circle"></i></span>',
+            'Year    <span data-toggle="tooltip" title="Year"></span>',
           data: "Year",
         },
         {
           title:
-            'Type (S/E/D)    <span data-toggle="tooltip" title="Type (S/E/D)"><i class="fa fa-info-circle"></i></span>',
+            'Type (S/E/D)    <span data-toggle="tooltip" title="Type (S/E/D)"></span>',
           data: "Type (S/E/D)",
         },
         {
           title:
-            'Evaluation Type (O/S/M/EX/ET/I/C)     <span data-toggle="tooltip" title="Evaluation Type (O/S/M/EX/ET/I/C)"><i class="fa fa-info-circle"></i></span>',
+            'Evaluation Type (O/S/M/EX/ET/I/C)     <span data-toggle="tooltip" title="Evaluation Type (O/S/M/EX/ET/I/C)"></span>',
           data: "Evaluation_Type (O/S/M/EX/ET/I/C)",
         },
         {
           title:
-            'Stimuli Description      <span data-toggle="tooltip" title="Stimuli Description "><i class="fa fa-info-circle"></i></span> ',
+            'Stimuli Description      <span data-toggle="tooltip" title="Stimuli Description "></span> ',
           data: "Stimuli_Description",
         },
         {
           title:
-            'Layouts Considered       <span data-toggle="tooltip" title="Layouts Considered"><i class="fa fa-info-circle"></i></span> ',
+            'Layouts Considered       <span data-toggle="tooltip" title="Layouts Considered"></span> ',
           data: "Layouts_Considered",
         },
         {
           title:
-            'More Information       <span data-toggle="tooltip" title="More Information"><i class="fa fa-info-circle"></i></span>',
+            'More Information       <span data-toggle="tooltip" title="More Information"></span>',
           data: "DOI",
           render: function (data, type, row, meta) {
             data = '<a href="' + data + '" target="_blank">' + data + "</a>";

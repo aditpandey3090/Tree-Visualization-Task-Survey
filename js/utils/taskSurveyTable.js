@@ -1,7 +1,7 @@
 function appendTaskSurveyTable(element) {
     $(element).append(
-      '<table id="vizDataTable" class="table table-bordered" width="100%"></table>'
-    );
+      '<div class="w3-container"><table id="vizDataTable" class="table table-bordered" width="100%"></table></div>'
+      );
   }
 
 function createTaskSurveyTable(dataSet, paginate = true, info = true, searching = true, showLink = true) {
@@ -14,7 +14,7 @@ function createTaskSurveyTable(dataSet, paginate = true, info = true, searching 
         columns: [
           {
             title:
-              'Task Description   <span data-toggle="tooltip" title="Task Description"><i class="fa fa-info-circle"></i></span>',
+              'Task Description   <span data-toggle="tooltip" title="Task Description"></span>',
             data: "Task Description",
             width: "30%",
             render: function (data, type, row, meta) {
@@ -31,34 +31,34 @@ function createTaskSurveyTable(dataSet, paginate = true, info = true, searching 
           },
           {
             title:
-              'Analyze(Consume)    <span data-toggle="tooltip" title="Analyze(Consume)"><i class="fa fa-info-circle"></i></span>',
+              'Analyze(Consume)    <span data-toggle="tooltip" title="Analyze(Consume)"></span>',
             data: "Analyze(Consume)"
           },
           {
-            title: 'Action(Search)     <span data-toggle="tooltip" title="Action(Search)"><i class="fa fa-info-circle"></i></span>',
+            title: 'Action(Search)     <span data-toggle="tooltip" title="Action(Search)"></span>',
             data: "Action(Search)"
           },
           {
-            title: 'Action(Query)      <span data-toggle="tooltip" title="Action(Query)"><i class="fa fa-info-circle"></i></span>',
+            title: 'Action(Query)      <span data-toggle="tooltip" title="Action(Query)"></span>',
             data: "Action(Query)"
           },
           {
-            title: 'Target       <span data-toggle="tooltip" title="Target"><i class="fa fa-info-circle"></i></span> ',
+            title: 'Target       <span data-toggle="tooltip" title="Target"></span> ',
             data: "Target"
           },
           {
             title:
-              'Specific Target   <span data-toggle="tooltip" title="Specific Target"><i class="fa fa-info-circle"></i></span>',
+              'Specific Target   <span data-toggle="tooltip" title="Specific Target"></span>',
             data: "Specific Target"
           },
           {
             title:
-              'Target Attribute    <span data-toggle="tooltip" title="Task Description"><i class="fa fa-info-circle"></i></span>',
+              'Target Attribute    <span data-toggle="tooltip" title="Task Description"></span>',
             data: "Target Attribute"
           },
           {
             title:
-              'Target Attribute Descriptor    <span data-toggle="tooltip" title="Task Description"><i class="fa fa-info-circle"></i></span>',
+              'Target Attribute Descriptor    <span data-toggle="tooltip" title="Task Description"></span>',
             data: "Target Attribute Descriptor"
           }
         ],
