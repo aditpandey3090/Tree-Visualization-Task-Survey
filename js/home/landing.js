@@ -28,3 +28,12 @@ function randomizeSurveyPaper() {
     document.getElementById(FIELD_ID.random_author).innerHTML = randomlySelectedPaperId.Author || ''
     document.getElementById(FIELD_ID.random_abstract).innerHTML = randomlySelectedPaperId.Abstract || ''
 }
+
+function myAccFunc(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }

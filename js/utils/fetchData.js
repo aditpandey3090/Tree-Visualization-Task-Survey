@@ -76,7 +76,7 @@ async function fetchProposedData() {
   let data = await loadDataFromAPI(docId, sheetId);
 
   //ToDo: We have to dynamically insert the final file list count
-  const row = 214;
+  const row = 215;
   const col = 11;
 
   let createdData = parseRawData(row, col, data);
