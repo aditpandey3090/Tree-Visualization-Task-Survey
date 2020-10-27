@@ -17,7 +17,7 @@ function fieldInitializer(createdData) {
   drawLineChart(visualizationData, 500, "Id", "count", "Year", "Year", "Year");
 
   //
-  let visualizationDataBC3 = createFrequencyData(createdData, "Type (S/E/D)");
+  let visualizationDataBC3 = createFrequencyData(createdData, "Type");
   console.log(visualizationDataBC3);
 
   drawBarChart(
@@ -33,7 +33,7 @@ function fieldInitializer(createdData) {
   // //Bar chart data wrangling and visualization creation
   let visualizationDataBC1 = createFrequencyData(
     createdData,
-    "Evaluation_Type (O/S/M/EX/ET/I/C)"
+    "Evaluation_Type"
   );
   drawBarChart(
     visualizationDataBC1,
@@ -44,12 +44,14 @@ function fieldInitializer(createdData) {
     "EvaluationType",
     "# of Papers"
   );
+  console.log(visualizationDataBC1);
 
   // //Bar chart data wrangling and visualization creation
   let visualizationDataBC2 = createMultiValueFreqData(
     createdData,
     "Layouts_Considered"
   );
+
   drawBarChart(
     visualizationDataBC2,
     500,

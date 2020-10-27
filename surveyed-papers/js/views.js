@@ -241,7 +241,8 @@ function drawBarChart(
     return a[attribute] - b[attribute];
   });
 
-  data = data.filter((d) => d[dimension] != "-");
+  //We have to show - because it is part of data
+  // data = data.filter((d) => d[dimension] != "-");
 
   //Setup the svg for chart drawing
   var svg = d3
@@ -401,18 +402,18 @@ function createSearchableTable(dataSet) {
         },
         {
           title:
-            'Year    <span data-toggle="tooltip" title="Year"></span>',
+            'Year  <span data-toggle="tooltip" title="Year"></span>',
           data: "Year",
         },
         {
           title:
-            'Type (S/E/D)    <span data-toggle="tooltip" title="Type (S/E/D)"></span>',
-          data: "Type (S/E/D)",
+            'Type<span data-toggle="tooltip" title="Type (S/E/D)"></span>',
+          data: "Type",
         },
         {
           title:
-            'Evaluation Type (O/S/M/EX/ET/I/C)     <span data-toggle="tooltip" title="Evaluation Type (O/S/M/EX/ET/I/C)"></span>',
-          data: "Evaluation_Type (O/S/M/EX/ET/I/C)",
+            'Evaluation Type<span data-toggle="tooltip" title="Evaluation Type (O/S/M/EX/ET/I/C)"></span>',
+          data: "Evaluation_Type",
         },
         {
           title:
