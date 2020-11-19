@@ -2,7 +2,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 const LAYOUT_DEF = {
   "Enclosure": "ED",
-  "Layered": "LD",
+  "Adjacency": "LD",
   "Node-Link": "NL",
   "Indented List": "IL",
   "Hybrid": "HD",

@@ -227,7 +227,7 @@ function drawBarChart(
   id,
   axisLabel
 ) {
-  margin = { left: 35, top: 10, right: 42, bottom: 50 };
+  margin = { left: 51, top: 10, right: 35, bottom: 50 };
 
   if (document.getElementById(id).clientWidth > 400) {
     width = document.getElementById(id).clientWidth / 1.5;
