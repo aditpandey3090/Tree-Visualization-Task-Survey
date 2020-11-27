@@ -60,6 +60,11 @@ function createTaskSurveyTable(dataSet, paginate = true, info = true, searching 
             title:
               'Target Attribute Descriptor    <span data-toggle="tooltip" title="Task Description"></span>',
             data: "Target Attribute Descriptor"
+          },
+          {
+            title:
+              'Special Task    <span data-toggle="tooltip" title="Special Task"></span>',
+            data: "Special Task Marker"
           }
         ],
         "bPaginate": paginate,

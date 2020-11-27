@@ -38,9 +38,7 @@ const finalData = {
 
         },
         "Attribute": {
-            "Link": {},
-            "Leaf Node": {},
-            "Internal Node": {}
+            "Node": {}
         }
     }
 }
@@ -50,7 +48,6 @@ fetchPaperData()
     const surveyData = data.survey_data;
     const proposedData = data.proposed_data;
     
-    // proposedData.filter((pd) => Object.keys(surveyData)pd.PaperId)
     proposedData.forEach((pd) => {
         const id = pd.PaperId;
         addActionData(pd, surveyData[id]);
@@ -64,9 +61,7 @@ fetchPaperData()
     createTable("#targetTopoSubtree", Object.values(finalData.target.Topology["Subtree"]), {heading: "Target", type: "Topology", subtype: "Subtree"});
     createTable("#targetTopoNode", Object.values(finalData.target.Topology["Node"]), {heading: "Target", type: "Topology", subtype: "Node"});
     createTable("#targetTopoPath", Object.values(finalData.target.Topology["Path"]), {heading: "Target", type: "Topology", subtype: "Path"});
-    createTable("#targetAttInternalNode", Object.values(finalData.target.Attribute["Internal Node"]), {heading: "Target", type: "Attribute", subtype: "Internal Node"});
-    createTable("#targetAttLeafNode", Object.values(finalData.target.Attribute["Leaf Node"]), {heading: "Target", type: "Attribute", subtype: "Leaf Node"});
-    createTable("#targetAttLink", Object.values(finalData.target.Attribute["Link"]), {heading: "Target", type: "Attribute", subtype: "Link"});
+    createTable("#targetAttNode", Object.values(finalData.target.Attribute["Node"]), {heading: "Target", type: "Attribute", subtype: "Node"});
 
     setTimeout(function(){ $('[data-toggle="tooltip"]').tooltip(); }, 5000);
 });;
