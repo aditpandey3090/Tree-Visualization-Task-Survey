@@ -33,7 +33,7 @@ actionLookup = {
   Tree_Balance: 6,
   Tree_Fanout: 6,
   Tree_Size: 6,
-  Tree_Misc: 6,
+  Tree_Order: 6,
   Subtree_Height: 6,
   Subtree_Size: 6,
   Subtree_Depth: 6,

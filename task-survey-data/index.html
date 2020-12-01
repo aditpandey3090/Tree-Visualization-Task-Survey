@@ -59,9 +59,7 @@
       <a href="../task-tree/" data-toggle="tooltip" data-placement="bottom" title="Task & Tree Data" class="w3-bar-item w3-button">
         <i class="fa fa-sitemap w3-xlarge w3-button"></i>
       </a>
-      <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQLPlS_oTs--SF2VsLwfTrBbEFSycJFwnHcmd3a1w73Vf_MHnymwdcfa9LCTDKArNcFugtyH-mMLMQP/pub?output=csv" style="float: right" href="#" class="w3-bar-item w3-button">
-        Dataset <i class="fa fa-download w3-xlarge w3-button"></i>
-       </a>
+
     </div>
 
     <br />
@@ -197,7 +195,7 @@
                     <th class="w3-center">Balanced</th>
                     <th class="w3-center">Fanout</th>
                     <th class="w3-center">Size</th>
-                    <th class="w3-center">Miscellaneous</th>
+                    <th class="w3-center">Order</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -220,8 +218,8 @@
                     <td id="Tree_Size" class="w3-center">
                       <img src="./img/size.png" style="height: 120px;" />
                     </td>
-                    <td id="Tree_Misc" class="w3-center">
-                      <img src="./img/misctree.png" style="height: 120px;" />
+                    <td id="Tree_Order" class="w3-center">
+                      <img src="./img/ordertree.png" style="height: 120px;" />
                     </td>
                   </tr>
                   <tr>
@@ -229,8 +227,8 @@
                     <th class="w3-center">Size</th>
                     <th class="w3-center">Height</th>
                     <th class="w3-center">Depth</th>
-                    <th class="w3-center">Ancestor</th>
-                    <th class="w3-center">Miscellaneous</th>
+                    <th class="w3-center"></th>
+                    <th class="w3-center"></th>
                   </tr>
                   <tr>
                     <th
@@ -254,15 +252,8 @@
                     <td class="w3-center" id="Subtree_Depth">
                       <img src="./img/depth.png" style="height: 120px;" />
                     </td>
-                    <td class="w3-center" id="Subtree_Ancestor">
-                      <img
-                        src="./img/subtree_ancestor.png"
-                        style="height: 120px;"
-                      />
-                    </td>
-                    <td class="w3-center" id="subtree_Misc">
-                      <img src="./img/miscsubtree.png" style="height: 120px;" />
-                    </td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr>
                     <th></th>
@@ -344,8 +335,6 @@
                     <th></th>
                     <th class="w3-center">Categorical Value</th>
                     <th class="w3-center">Quantitative Value</th>
-                    <th class="w3-center">Ordinal Value</th>
-                    <th class="w3-center">Multi-Dimensional Value</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -354,7 +343,7 @@
                       style="vertical-align: middle;"
                       class="w3-center w3-large"
                     >
-                      Internal Node, Leaf Node, Link
+                      Node, Link
                     </th>
                     <td class="w3-center" id="Attribute_Categorical">
                       <img
@@ -365,18 +354,6 @@
                     <td class="w3-center" id="Attribute_Quantitative">
                       <img
                         src="./img/quantitative_value.png"
-                        style="height: 120px;"
-                      />
-                    </td>
-                    <td class="w3-center" id="Attribute_Ordinal">
-                      <img
-                        src="./img/ordinal_value.png"
-                        style="height: 120px;"
-                      />
-                    </td>
-                    <td class="w3-center" id="Attribute_MultiDimensional">
-                      <img
-                        src="./img/multi_dim_value.png"
                         style="height: 120px;"
                       />
                     </td>
@@ -535,7 +512,7 @@
                   <th class="w3-center">Balanced</th>
                   <th class="w3-center">Fanout</th>
                   <th class="w3-center">Size</th>
-                  <th class="w3-center">Miscellaneous</th>
+                  <th class="w3-center">Order</th>
                 </tr>
               </thead>
               <tbody>
@@ -558,8 +535,8 @@
                   <td id="Tree_Size" class="w3-center">
                     <img src="./img/size.png" style="height: 120px;" />
                   </td>
-                  <td id="Tree_Misc" class="w3-center">
-                    <img src="./img/misctree.png" style="height: 120px;" />
+                  <td id="Tree_Order" class="w3-center">
+                    <img src="./img/ordertree.png" style="height: 120px;" />
                   </td>
                 </tr>
                 <tr>
@@ -567,8 +544,6 @@
                   <th class="w3-center">Size</th>
                   <th class="w3-center">Height</th>
                   <th class="w3-center">Depth</th>
-                  <th class="w3-center">Ancestor</th>
-                  <th class="w3-center">Miscellaneous</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -591,15 +566,10 @@
                   <td class="w3-center" id="Subtree_Depth">
                     <img src="./img/depth.png" style="height: 120px;" />
                   </td>
-                  <td class="w3-center" id="Subtree_Ancestor">
-                    <img
-                      src="./img/subtree_ancestor.png"
-                      style="height: 120px;"
-                    />
-                  </td>
-                  <td class="w3-center" id="subtree_Misc">
-                    <img src="./img/miscsubtree.png" style="height: 120px;" />
-                  </td>
+                  <td>
+                    </td>
+                    <td>
+                    </td>
                 </tr>
                 <tr>
                   <th></th>
@@ -679,8 +649,6 @@
                   <th></th>
                   <th class="w3-center">Categorical Value</th>
                   <th class="w3-center">Quantitative Value</th>
-                  <th class="w3-center">Ordinal Value</th>
-                  <th class="w3-center">Multi-Dimensional Value</th>
                 </tr>
               </thead>
               <tbody>
@@ -689,7 +657,7 @@
                     style="vertical-align: middle;"
                     class="w3-center w3-large"
                   >
-                    Internal Node, Leaf Node, Link
+                   Node,Link
                   </th>
                   <td class="w3-center">
                     <img
@@ -700,15 +668,6 @@
                   <td class="w3-center">
                     <img
                       src="./img/quantitative_value.png"
-                      style="height: 120px;"
-                    />
-                  </td>
-                  <td class="w3-center">
-                    <img src="./img/ordinal_value.png" style="height: 120px;" />
-                  </td>
-                  <td class="w3-center">
-                    <img
-                      src="./img/multi_dim_value.png"
                       style="height: 120px;"
                     />
                   </td>
