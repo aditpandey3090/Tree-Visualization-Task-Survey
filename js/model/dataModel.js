@@ -22,6 +22,8 @@ columnLookupTasksAction = {
 };
 
 actionLookup = {
+  Discover:1,
+  Annotate:1,
   Lookup: 2,
   Explore: 2,
   Locate: 2,

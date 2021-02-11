@@ -53,6 +53,7 @@ function removeFilterTags(id) {
   d3.select("#" + id + "Button").style("display", "none");
 }
 
+highLevelLock = false;
 midLevelLock = false;
 lowLevelLock = false;
 targetTopology = false;
@@ -74,6 +75,12 @@ d3.selectAll("td")
   })
   .on("click", function (d) {
     let id = d3.select(this).attr("id");
+
+
+    if (actionLookup[id] == 1 && !highLevelLock) {
+      selectCharts(id, actionLookup[id], id, false, "HighLevel", id);
+      highLevelLock = true;
+    }
 
     if (actionLookup[id] == 2 && !midLevelLock) {
       selectCharts(id, actionLookup[id], id, false, "MidLevel", id);
@@ -104,6 +111,10 @@ d3.selectAll("td")
 d3.selectAll("td").on("dblclick", function (d) {
   let id = d3.select(this).attr("id");
 
+  if (actionLookup[id] == 1 && highLevelLock) {
+    deselectCharts(id, actionLookup[id], "HighLevel");
+    highLevelLock = false;
+  }
   if (actionLookup[id] == 2 && midLevelLock) {
     deselectCharts(id, actionLookup[id], "MidLevel");
     midLevelLock = false;

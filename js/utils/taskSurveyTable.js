@@ -31,8 +31,8 @@ function createTaskSurveyTable(dataSet, paginate = true, info = true, searching 
           },
           {
             title:
-              'Analyze(Consume)    <span data-toggle="tooltip" title="Analyze(Consume)"></span>',
-            data: "Analyze(Consume)"
+              'Analyze(Consume/Produce)    <span data-toggle="tooltip" title="Analyze(Consume)"></span>',
+            data: "Analyze(Consume/Produce)"
           },
           {
             title: 'Action(Search)     <span data-toggle="tooltip" title="Action(Search)"></span>',

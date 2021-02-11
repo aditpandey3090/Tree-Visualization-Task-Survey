@@ -11,6 +11,7 @@ table {
 }
 
 #MidLevelButton,
+#HighLevelButton,
 #LowLevelButton,
 #TargetButton {
   background-color: #a6bddb !important;

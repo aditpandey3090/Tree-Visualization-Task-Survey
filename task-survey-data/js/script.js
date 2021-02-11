@@ -18,14 +18,12 @@ function openTab(evt, tabName) {
   }
 
   var activebtn = document.getElementsByClassName("testbtn");
-  console.log(activebtn);
   for (i = 0; i < x.length; i++) {
     activebtn[i].className = activebtn[i].className.replace(
       " w3-dark-grey",
       ""
     );
   }
-  console.log(tabName);
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " w3-dark-grey";
 }

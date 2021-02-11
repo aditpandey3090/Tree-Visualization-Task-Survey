@@ -36,12 +36,20 @@
 
   <body>
     <div class="w3-bar w3-theme" id="myHeader">
-      <a href="../" class="w3-bar-item w3-button" data-toggle="tooltip" data-placement="bottom" title="Home">
+      <a
+        href="../"
+        class="w3-bar-item w3-button"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title="Home"
+      >
         <i class="fa fa-home w3-xlarge w3-button"></i>
       </a>
       <a
         href="../surveyed-papers/"
-        data-toggle="tooltip" data-placement="bottom" title="Surveyed Papers"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title="Surveyed Papers"
         class="w3-bar-item w3-button"
       >
         <i class="fas fa-file w3-xlarge w3-button"></i>
@@ -49,43 +57,77 @@
       <a
         href="#"
         class="w3-bar-item w3-button"
-        style="color: #000; background-color: #ccc;"
+        style="color: #000; background-color: #ccc"
       >
         <i
           class="fas fa-bullseye w3-xlarge w3-button"
-          style="color: #000; background-color: #ccc;"
+          style="color: #000; background-color: #ccc"
         ></i>
       </a>
-      <a href="../task-tree/" data-toggle="tooltip" data-placement="bottom" title="Task & Tree Data" class="w3-bar-item w3-button">
+      <a
+        href="../task-tree/"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title="Task & Tree Data"
+        class="w3-bar-item w3-button"
+      >
         <i class="fa fa-sitemap w3-xlarge w3-button"></i>
       </a>
-
     </div>
 
     <br />
     <div id="noTabWindow" class="w3-container">
       <div class="w3-third w3-container">
         <div
-          style="min-height: 1100px;"
+          style="min-height: 1100px"
           class="w3-card w3-container w3-animate-opacity"
         >
           <h2
             class="w3-center"
             id="ActionTab"
-            style="margin-bottom: 0px; padding-bottom: 0px;"
+            style="margin-bottom: 0px; padding-bottom: 0px"
           >
             Actions
           </h2>
 
-          <h3 style="margin-top: 0px; padding-top: 0px;">
-            Mid-Level (Search)
-          </h3>
+        <!-- High-Level -->
+
+        <h3>High-Level (Consume/Produce)</h3>
+        <div class="w3-card w3-responsive">
+          <table class="w3-table w3-striped w3-bordered">
+            <colgroup>
+              <col span="1" style="width: 50%" />
+              <col span="1" style="width: 50%" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="w3-center">Discover</th>
+                <th class="w3-center">Annotate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="Discover" class="w3-center">
+                  <img src="./img/discover.png" style="height: 120px" />
+                </td>
+                <td id="Annotate" class="w3-center">
+                  <img src="./img/annotate.png" style="height: 120px" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br \ />
+
+        <!-- Mid-Level -->
+
+          <h3 style="margin-top: 0px; padding-top: 0px">Mid-Level (Search)</h3>
           <div class="w3-card w3-responsive">
             <table id="Actions" class="w3-table w3-striped w3-bordered">
               <colgroup>
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
               </colgroup>
               <thead>
                 <tr>
@@ -98,34 +140,34 @@
                 <tr>
                   <th
                     id="LocationKnown"
-                    style="vertical-align: middle;"
+                    style="vertical-align: middle"
                     class="w3-center"
                   >
                     Location Known
                   </th>
                   <td class="w3-center" id="Lookup">
-                    <img src="./img/lookup.png" style="height: 120px;" />
+                    <img src="./img/lookup.png" style="height: 120px" />
                     <h5>Lookup</h5>
                   </td>
                   <td class="w3-center" id="Browse">
-                    <img src="./img/browse.png" style="height: 120px;" />
+                    <img src="./img/browse.png" style="height: 120px" />
                     <h5>Browse</h5>
                   </td>
                 </tr>
                 <tr class="w3-white">
                   <th
                     id="LocationUnknown"
-                    style="vertical-align: middle;"
+                    style="vertical-align: middle"
                     class="w3-center"
                   >
                     Location Unkown
                   </th>
                   <td class="w3-center" id="Locate">
-                    <img src="./img/locate.png" style="height: 120px;" />
+                    <img src="./img/locate.png" style="height: 120px" />
                     <h5>Locate</h5>
                   </td>
                   <td class="w3-center" id="Explore">
-                    <img src="./img/explore.png" style="height: 120px;" />
+                    <img src="./img/explore.png" style="height: 120px" />
                     <h5>Explore</h5>
                   </td>
                 </tr>
@@ -137,9 +179,9 @@
           <div class="w3-card w3-responsive">
             <table class="w3-table w3-striped w3-bordered">
               <colgroup>
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
               </colgroup>
               <thead>
                 <tr>
@@ -151,13 +193,13 @@
               <tbody>
                 <tr>
                   <td id="Identify" class="w3-center">
-                    <img src="./img/identify.png" style="height: 120px;" />
+                    <img src="./img/identify.png" style="height: 120px" />
                   </td>
                   <td id="Compare" class="w3-center">
-                    <img src="./img/compare.png" style="height: 120px;" />
+                    <img src="./img/compare.png" style="height: 120px" />
                   </td>
                   <td id="Summarize" class="w3-center">
-                    <img src="./img/summarize.png" style="height: 120px;" />
+                    <img src="./img/summarize.png" style="height: 120px" />
                   </td>
                 </tr>
               </tbody>
@@ -168,13 +210,10 @@
 
       <div class="w3-twothird w3-container">
         <div
-          style="min-height: 1100px;"
+          style="min-height: 1100px"
           class="w3-card w3-container w3-animate-opacity"
         >
-          <h2
-            class="w3-center"
-            style="margin-bottom: 0px; padding-bottom: 0px;"
-          >
+          <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">
             Targets
           </h2>
           <div class="w3-container">
@@ -182,11 +221,11 @@
             <div class="w3-card w3-responsive">
               <table class="w3-table w3-bordered">
                 <colgroup>
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
                 </colgroup>
                 <thead>
                   <tr>
@@ -201,25 +240,25 @@
                 <tbody>
                   <tr>
                     <th
-                      style="vertical-align: middle;"
+                      style="vertical-align: middle"
                       class="w3-center w3-large"
                     >
                       Tree
                     </th>
                     <td id="Tree_Height" class="w3-center">
-                      <img src="./img/height.png" style="height: 120px;" />
+                      <img src="./img/height.png" style="height: 120px" />
                     </td>
                     <td id="Tree_Balance" class="w3-center">
-                      <img src="./img/balanced.png" style="height: 120px;" />
+                      <img src="./img/balanced.png" style="height: 120px" />
                     </td>
                     <td id="Tree_Fanout" class="w3-center">
-                      <img src="./img/fanout.png" style="height: 120px;" />
+                      <img src="./img/fanout.png" style="height: 120px" />
                     </td>
                     <td id="Tree_Size" class="w3-center">
-                      <img src="./img/size.png" style="height: 120px;" />
+                      <img src="./img/size.png" style="height: 120px" />
                     </td>
                     <td id="Tree_Order" class="w3-center">
-                      <img src="./img/ordertree.png" style="height: 120px;" />
+                      <img src="./img/ordertree.png" style="height: 120px" />
                     </td>
                   </tr>
                   <tr>
@@ -232,25 +271,22 @@
                   </tr>
                   <tr>
                     <th
-                      style="vertical-align: middle;"
+                      style="vertical-align: middle"
                       class="w3-center w3-large"
                     >
                       Subtree
                     </th>
                     <td class="w3-center" id="Subtree_Size">
-                      <img
-                        src="./img/subtree_size.png"
-                        style="height: 120px;"
-                      />
+                      <img src="./img/subtree_size.png" style="height: 120px" />
                     </td>
                     <td class="w3-center" id="Subtree_Height">
                       <img
                         src="./img/subtree_height.png"
-                        style="height: 120px;"
+                        style="height: 120px"
                       />
                     </td>
                     <td class="w3-center" id="Subtree_Depth">
-                      <img src="./img/depth.png" style="height: 120px;" />
+                      <img src="./img/depth.png" style="height: 120px" />
                     </td>
                     <td></td>
                     <td></td>
@@ -259,37 +295,31 @@
                     <th></th>
                     <th class="w3-center">Depth</th>
                     <th class="w3-center">Degree</th>
-                    <th class="w3-center">
-                      Ancestor
-                    </th>
-                    <th class="w3-center">
-                      Descendent
-                    </th>
-                    <th class="w3-center">
-                      Sibling
-                    </th>
+                    <th class="w3-center">Ancestor</th>
+                    <th class="w3-center">Descendent</th>
+                    <th class="w3-center">Sibling</th>
                   </tr>
                   <tr>
                     <th
-                      style="vertical-align: middle;"
+                      style="vertical-align: middle"
                       class="w3-center w3-large"
                     >
                       Node
                     </th>
                     <td class="w3-center" id="Node_Depth">
-                      <img src="./img/node_depth.png" style="height: 120px;" />
+                      <img src="./img/node_depth.png" style="height: 120px" />
                     </td>
                     <td class="w3-center" id="Node_Degree">
-                      <img src="./img/degree.png" style="height: 120px;" />
+                      <img src="./img/degree.png" style="height: 120px" />
                     </td>
                     <td class="w3-center" id="Node_Ancestor">
-                      <img src="./img/ancestors.png" style="height: 120px;" />
+                      <img src="./img/ancestors.png" style="height: 120px" />
                     </td>
                     <td class="w3-center" id="Node_Descendant">
-                      <img src="./img/descendants.png" style="height: 120px;" />
+                      <img src="./img/descendants.png" style="height: 120px" />
                     </td>
                     <td class="w3-center" id="Node_Sibling">
-                      <img src="./img/sibling.png" style="height: 120px;" />
+                      <img src="./img/sibling.png" style="height: 120px" />
                     </td>
                   </tr>
                   <tr>
@@ -302,13 +332,13 @@
                   </tr>
                   <tr>
                     <th
-                      style="vertical-align: middle;"
+                      style="vertical-align: middle"
                       class="w3-center w3-large"
                     >
                       Path
                     </th>
                     <td class="w3-center" id="Path_Length">
-                      <img src="./img/length.png" style="height: 120px;" />
+                      <img src="./img/length.png" style="height: 120px" />
                     </td>
                     <td></td>
                     <td></td>
@@ -324,11 +354,11 @@
             <div class="w3-card w3-responsive">
               <table class="w3-table w3-bordered">
                 <colgroup>
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
-                  <col span="1" style="width: 20%;" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 20%" />
                 </colgroup>
                 <thead>
                   <tr>
@@ -340,7 +370,7 @@
                 <tbody>
                   <tr>
                     <th
-                      style="vertical-align: middle;"
+                      style="vertical-align: middle"
                       class="w3-center w3-large"
                     >
                       Node, Link
@@ -348,13 +378,13 @@
                     <td class="w3-center" id="Attribute_Categorical">
                       <img
                         src="./img/categorical_value.png"
-                        style="height: 120px;"
+                        style="height: 120px"
                       />
                     </td>
                     <td class="w3-center" id="Attribute_Quantitative">
                       <img
                         src="./img/quantitative_value.png"
-                        style="height: 120px;"
+                        style="height: 120px"
                       />
                     </td>
                   </tr>
@@ -386,24 +416,58 @@
       </div>
       <div
         id="actions"
-        style="min-height: 800px;"
+        style="min-height: 800px"
         class="w3-card w3-container tab w3-animate-opacity"
       >
+
+
         <h2
           class="w3-center"
           id="ActionTab"
-          style="margin-bottom: 0px; padding-bottom: 0px;"
+          style="margin-bottom: 0px; padding-bottom: 0px"
         >
           Actions
         </h2>
         <div class="w3-container">
-          <h3 style="margin-top: 0px; padding-top: 0px;">Mid-Level (Search)</h3>
+
+            <h3>High-Level (Consume/Produce)</h3>
+            <div class="w3-card w3-responsive">
+              <table class="w3-table w3-striped w3-bordered">
+                <colgroup>
+                  <col span="1" style="width: 50%" />
+                  <col span="1" style="width: 50%" />
+               </colgroup>
+                <thead>
+                  <tr>
+                    <th class="w3-center">Discover</th>
+                    <th class="w3-center">Annotate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="Discover" class="w3-center">
+                      <img src="./img/discover.png" style="height: 120px" />
+                    </td>
+                    <td id="Annotate" class="w3-center">
+                      <img src="./img/annotate.png" style="height: 120px" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+       <br/>
+
+
+
+
+          <h3 style="margin-top: 0px; padding-top: 0px">Mid-Level (Search)</h3>
           <div class="w3-card w3-responsive">
             <table id="Actions" class="w3-table w3-striped w3-bordered">
               <colgroup>
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
               </colgroup>
               <thead>
                 <tr>
@@ -416,34 +480,34 @@
                 <tr>
                   <th
                     id="LocationKnown"
-                    style="vertical-align: middle;"
+                    style="vertical-align: middle"
                     class="w3-center"
                   >
                     Location Known
                   </th>
                   <td class="w3-center" id="Lookup">
-                    <img src="./img/lookup.png" style="height: 120px;" />
+                    <img src="./img/lookup.png" style="height: 120px" />
                     <h5>Lookup</h5>
                   </td>
                   <td class="w3-center" id="Browse">
-                    <img src="./img/browse.png" style="height: 120px;" />
+                    <img src="./img/browse.png" style="height: 120px" />
                     <h5>Browse</h5>
                   </td>
                 </tr>
                 <tr class="w3-white">
                   <th
                     id="LocationUnknown"
-                    style="vertical-align: middle;"
+                    style="vertical-align: middle"
                     class="w3-center"
                   >
                     Location Unkown
                   </th>
                   <td class="w3-center" id="Locate">
-                    <img src="./img/locate.png" style="height: 120px;" />
+                    <img src="./img/locate.png" style="height: 120px" />
                     <h5>Locate</h5>
                   </td>
                   <td class="w3-center" id="Explore">
-                    <img src="./img/explore.png" style="height: 120px;" />
+                    <img src="./img/explore.png" style="height: 120px" />
                     <h5>Explore</h5>
                   </td>
                 </tr>
@@ -456,9 +520,9 @@
           <div class="w3-card w3-responsive">
             <table class="w3-table w3-striped w3-bordered">
               <colgroup>
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
-                <col span="1" style="width: 33%;" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
+                <col span="1" style="width: 33%" />
               </colgroup>
               <thead>
                 <tr>
@@ -470,13 +534,13 @@
               <tbody>
                 <tr>
                   <td id="Identify" class="w3-center">
-                    <img src="./img/identify.png" style="height: 120px;" />
+                    <img src="./img/identify.png" style="height: 120px" />
                   </td>
                   <td id="Compare" class="w3-center">
-                    <img src="./img/compare.png" style="height: 120px;" />
+                    <img src="./img/compare.png" style="height: 120px" />
                   </td>
                   <td id="Summarize" class="w3-center">
-                    <img src="./img/summarize.png" style="height: 120px;" />
+                    <img src="./img/summarize.png" style="height: 120px" />
                   </td>
                 </tr>
               </tbody>
@@ -488,10 +552,10 @@
       <br />
       <div
         id="targets"
-        style="min-height: 1100px;"
+        style="min-height: 1100px"
         class="w3-card w3-container tab w3-animate-opacity"
       >
-        <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px;">
+        <h2 class="w3-center" style="margin-bottom: 0px; padding-bottom: 0px">
           Targets
         </h2>
         <div class="w3-container">
@@ -499,11 +563,11 @@
           <div class="w3-card w3-responsive">
             <table class="w3-table w3-bordered">
               <colgroup>
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
               </colgroup>
               <thead>
                 <tr>
@@ -517,26 +581,23 @@
               </thead>
               <tbody>
                 <tr>
-                  <th
-                    style="vertical-align: middle;"
-                    class="w3-center w3-large"
-                  >
+                  <th style="vertical-align: middle" class="w3-center w3-large">
                     Tree
                   </th>
                   <td id="Tree_Height" class="w3-center">
-                    <img src="./img/height.png" style="height: 120px;" />
+                    <img src="./img/height.png" style="height: 120px" />
                   </td>
                   <td id="Tree_Balance" class="w3-center">
-                    <img src="./img/balanced.png" style="height: 120px;" />
+                    <img src="./img/balanced.png" style="height: 120px" />
                   </td>
                   <td id="Tree_Fanout" class="w3-center">
-                    <img src="./img/fanout.png" style="height: 120px;" />
+                    <img src="./img/fanout.png" style="height: 120px" />
                   </td>
                   <td id="Tree_Size" class="w3-center">
-                    <img src="./img/size.png" style="height: 120px;" />
+                    <img src="./img/size.png" style="height: 120px" />
                   </td>
                   <td id="Tree_Order" class="w3-center">
-                    <img src="./img/ordertree.png" style="height: 120px;" />
+                    <img src="./img/ordertree.png" style="height: 120px" />
                   </td>
                 </tr>
                 <tr>
@@ -548,64 +609,47 @@
                   <th></th>
                 </tr>
                 <tr>
-                  <th
-                    style="vertical-align: middle;"
-                    class="w3-center w3-large"
-                  >
+                  <th style="vertical-align: middle" class="w3-center w3-large">
                     Subtree
                   </th>
                   <td class="w3-center" id="Subtree_Size">
-                    <img src="./img/subtree_size.png" style="height: 120px;" />
+                    <img src="./img/subtree_size.png" style="height: 120px" />
                   </td>
                   <td class="w3-center" id="Subtree_Height">
-                    <img
-                      src="./img/subtree_height.png"
-                      style="height: 120px;"
-                    />
+                    <img src="./img/subtree_height.png" style="height: 120px" />
                   </td>
                   <td class="w3-center" id="Subtree_Depth">
-                    <img src="./img/depth.png" style="height: 120px;" />
+                    <img src="./img/depth.png" style="height: 120px" />
                   </td>
-                  <td>
-                    </td>
-                    <td>
-                    </td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="w3-center">Depth</th>
                   <th class="w3-center">Degree</th>
-                  <th class="w3-center">
-                    Ancestor
-                  </th>
-                  <th class="w3-center">
-                    Descendent
-                  </th>
-                  <th class="w3-center">
-                    Sibling
-                  </th>
+                  <th class="w3-center">Ancestor</th>
+                  <th class="w3-center">Descendent</th>
+                  <th class="w3-center">Sibling</th>
                 </tr>
                 <tr>
-                  <th
-                    style="vertical-align: middle;"
-                    class="w3-center w3-large"
-                  >
+                  <th style="vertical-align: middle" class="w3-center w3-large">
                     Node
                   </th>
                   <td class="w3-center" id="Node_Depth">
-                    <img src="./img/node_depth.png" style="height: 120px;" />
+                    <img src="./img/node_depth.png" style="height: 120px" />
                   </td>
                   <td class="w3-center" id="Node_Degree">
-                    <img src="./img/degree.png" style="height: 120px;" />
+                    <img src="./img/degree.png" style="height: 120px" />
                   </td>
                   <td class="w3-center" id="Node_Ancestor">
-                    <img src="./img/ancestors.png" style="height: 120px;" />
+                    <img src="./img/ancestors.png" style="height: 120px" />
                   </td>
                   <td class="w3-center" id="Node_Descendant">
-                    <img src="./img/descendants.png" style="height: 120px;" />
+                    <img src="./img/descendants.png" style="height: 120px" />
                   </td>
                   <td class="w3-center" id="Node_Sibling">
-                    <img src="./img/sibling.png" style="height: 120px;" />
+                    <img src="./img/sibling.png" style="height: 120px" />
                   </td>
                 </tr>
                 <tr>
@@ -616,14 +660,11 @@
                   <th></th>
                 </tr>
                 <tr>
-                  <th
-                    style="vertical-align: middle;"
-                    class="w3-center w3-large"
-                  >
+                  <th style="vertical-align: middle" class="w3-center w3-large">
                     Path
                   </th>
                   <td class="w3-center">
-                    <img src="./img/length.png" style="height: 120px;" />
+                    <img src="./img/length.png" style="height: 120px" />
                   </td>
                   <td></td>
                   <td></td>
@@ -638,11 +679,11 @@
           <div class="w3-card w3-responsive">
             <table class="w3-table w3-bordered">
               <colgroup>
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
-                <col span="1" style="width: 20%;" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
+                <col span="1" style="width: 20%" />
               </colgroup>
               <thead>
                 <tr>
@@ -653,22 +694,19 @@
               </thead>
               <tbody>
                 <tr>
-                  <th
-                    style="vertical-align: middle;"
-                    class="w3-center w3-large"
-                  >
-                   Node,Link
+                  <th style="vertical-align: middle" class="w3-center w3-large">
+                    Node,Link
                   </th>
                   <td class="w3-center">
                     <img
                       src="./img/categorical_value.png"
-                      style="height: 120px;"
+                      style="height: 120px"
                     />
                   </td>
                   <td class="w3-center">
                     <img
                       src="./img/quantitative_value.png"
-                      style="height: 120px;"
+                      style="height: 120px"
                     />
                   </td>
                 </tr>
@@ -679,29 +717,46 @@
       </div>
     </div>
     <!-- Tab Window Exits Here -->
+    <!-- href="https://drive.google.com/file/d/1dKjaJO2c_o2RjybGNiBeleaLV9BGKgHC/view?usp=sharing" -->
     <br />
     <br />
     <div id="selectionFilter" class="w3-center">
       <h2 class="w3-center">Tasks</h2>
-      <i class="fa fa-filter" aria-hidden="true"></i>
-
-      <a id="MidLevelButton" style="display: none;" class="w3-button w3-theme"
+      <span class="w3-bar-item w3-button">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+      </span>
+      <a id="HighLevelButton" style="display: none" class="w3-button w3-theme"
+      >Button</a>
+      
+      <a id="MidLevelButton" style="display: none" class="w3-button w3-theme"
         >Button</a
       >
-      <a id="LowLevelButton" style="display: none;" class="w3-button w3-theme"
+      <a id="LowLevelButton" style="display: none" class="w3-button w3-theme"
         >Button</a
       >
-      <a id="TargetButton" style="display: none;" class="w3-button w3-theme"
+      <a id="TargetButton" style="display: none" class="w3-button w3-theme"
         >Button</a
       >
-      <a href="javascript:void(0)"
+      <a href="javascript:void(0)" class="w3-bar-item w3-button"
         ><i
           class="fa fa-refresh"
           onclick="clearSelection()"
           id="clearSelection"
           aria-hidden="true"
+          title="Clear all filters"
         ></i
       ></a>
+      <a
+        title="Download the complete task list"
+        class="w3-bar-item w3-button"
+        href="https://drive.google.com/file/d/1dKjaJO2c_o2RjybGNiBeleaLV9BGKgHC/view?usp=sharing"
+      >
+        <i
+          class="fa fa-download"
+          title="Download the complete task list"
+          aria-hidden="true"
+        ></i>
+      </a>
     </div>
   </body>
   <script src="js/script.js"></script>
