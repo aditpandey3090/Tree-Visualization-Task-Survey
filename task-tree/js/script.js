@@ -303,7 +303,6 @@ function createTable(selector, data, metadata) {
           className: "w3-center",
           fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
             updateTableCell(nTd, sData, op, oData, iRow, iCol, metadata);
-            console.log("Hello");
           }
         },
         {
@@ -343,7 +342,7 @@ function createTable(selector, data, metadata) {
       info: false,
       headerCallback: function headerCallback(thead, data, start, end, display) {
         for (let i = 0; i < 5; i++) {
-          $(thead).find('th')[i+1].innerHTML = '<img data-toggle="tooltip" data-placement="top" title="' + VALID_LAYOUTS[i] + '" style="height:4%;" src="./img/' + images[VALID_LAYOUTS[i]] + '" alt="' + VALID_LAYOUTS[i] + '" />'
+          $(thead).find('th')[i+1].innerHTML = '<img data-toggle="tooltip" data-placement="top" title="' + VALID_LAYOUTS[i] + '" style="width:20%" src="./img/' + images[VALID_LAYOUTS[i]] + '" alt="' + VALID_LAYOUTS[i] + '" />'
         }
       }
     });

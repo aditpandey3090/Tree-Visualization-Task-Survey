@@ -29,6 +29,9 @@ table {
 #id01 .w3-modal-content{
   width: 80%;
 }
+img{
+  width:100%
+}
 /* tr:hover {
   background-color: #006600;
 } */
