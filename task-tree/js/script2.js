@@ -18,7 +18,7 @@ const internalStruct = {
 const dataStruct = {
     Enclosure: internalStruct,
     "Indented List": internalStruct,
-    Layered: internalStruct,
+    Adjacency: internalStruct,
     "Node-Link": internalStruct,
     Symbolic: internalStruct,
     Hybrid: internalStruct,
