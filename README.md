@@ -30,5 +30,5 @@ https://www.youtube.com/watch?v=k4cjVvIznys&ab_channel=AditeyaPandey
 
 
 ### Website Contributors 
-1. Aditeya Pandey 
-2. Amriteya Pandey
+1. [Aditeya Pandey](https://twitter.com/aaditeya) 
+2. [Amriteya Pandey](https://www.linkedin.com/in/amriteyapandey/)
