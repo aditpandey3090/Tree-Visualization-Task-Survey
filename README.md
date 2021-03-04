@@ -5,7 +5,7 @@ The website includes a meta-analysis of surveyed papers, a summary of tasks and 
 
 The website: http://www.treevistasks.info
 
-<img width="1782" alt="Screen Shot 2021-03-03 at 10 38 55 PM" src="https://user-images.githubusercontent.com/26827624/109907875-3eb30380-7c71-11eb-9a7c-a045c30b05d1.png">
+<img width="1762" alt="Screen Shot 2021-03-03 at 10 39 52 PM" src="https://user-images.githubusercontent.com/26827624/109907962-6ace8480-7c71-11eb-9894-797d9578ece9.png">
 
 ## Video Walk Through 
 
