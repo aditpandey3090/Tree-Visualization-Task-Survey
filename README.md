@@ -19,6 +19,12 @@ https://www.youtube.com/watch?v=k4cjVvIznys&ab_channel=AditeyaPandey
 ## List of Tasks and Visual Encodings from Surveyed Tasks
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/26827624/109908218-ddd7fb00-7c71-11eb-9ea7-44a4bacba649.gif)
 
+## Taxonomy and Survey of Tree Visualization Tasks
+
+[Link](https://intervis-projects.ccs.neu.edu/Tree-Visualization-Survey/task-survey-data/)
+<img width="1771" alt="Screen Shot 2021-03-03 at 10 49 15 PM" src="https://user-images.githubusercontent.com/26827624/109908684-b0d81800-7c72-11eb-9412-099427d82f34.png">
+)
+
 
 
 
