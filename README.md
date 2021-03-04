@@ -11,9 +11,13 @@ https://www.youtube.com/watch?v=k4cjVvIznys&ab_channel=AditeyaPandey
 
 ## Surveyed Papers
 
-Link: 
+[Link](https://intervis-projects.ccs.neu.edu/Tree-Visualization-Survey/surveyed-papers/)
 
 <img width="1787" alt="Screen Shot 2021-03-03 at 10 26 50 PM" src="https://user-images.githubusercontent.com/26827624/109907060-8e90cb00-7c6f-11eb-84b4-6392abb2fbd1.png">
+
+## List of Tasks and Visual Encodings from Surveyed Tasks
+
+https://user-images.githubusercontent.com/26827624/109907719-df54f380-7c70-11eb-87d2-b8d0798b47dc.mov
 
 
 
