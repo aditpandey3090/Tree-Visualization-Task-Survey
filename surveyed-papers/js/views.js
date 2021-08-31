@@ -374,6 +374,7 @@ function drawPieChart(data) {
 //================================================================================================================//
 // Latest Table Code
 function appendTable() {
+  console.log("test")
   $("body").append(
     '<div class="w3-row-padding"><table id="vizDataTable" class="table table-bordered" width="100%"></table></div>'
   );
