@@ -19,7 +19,7 @@ async function fetchPaperData() {
 fetchPaperData().then(
   data => {
     const urlParams = new URLSearchParams(window.location.search);
-    const paperId = urlParams.get("id");
+    const paperId = parseInt(urlParams.get("id"));
 
     const surveyData = filterPaperData(data.survey_data, paperId, "Ref_Id");
     const proposedData = filterPaperData(
