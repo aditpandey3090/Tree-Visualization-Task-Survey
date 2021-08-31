@@ -1,7 +1,7 @@
 async function fetchPaperData() {
   const [surveyData, proposedData] = await Promise.all([
     fetchSurveyData(),
-    fetchProposedData(),
+    fetchTaskData(),
   ]);
 
   const generatedSurveyData = {}

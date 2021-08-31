@@ -249,7 +249,7 @@ const images = {
 async function fetchPaperData() {
   const [surveyData, proposedData] = await Promise.all([
     fetchSurveyData(),
-    fetchProposedData(),
+    fetchTaskData(),
   ]);
   return { survey_data: surveyData, proposed_data: proposedData };
 }

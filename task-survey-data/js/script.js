@@ -31,7 +31,7 @@ function openTab(evt, tabName) {
 var mybtn = document.getElementsByClassName("testbtn")[0];
 mybtn.click();
 
-fetchProposedData().then(
+fetchTaskData().then(
   (data) => {
     appendTaskSurveyTable("body");
     createTaskSurveyTable(data);
