@@ -13,6 +13,6 @@ async function fetchSurveyData() {
 }
 
 async function fetchTaskData() {
-  let taskData = $.getJSON("./data/task_data.json");
+  let taskData = $.getJSON("task_data.json");
   return taskData;
 }
