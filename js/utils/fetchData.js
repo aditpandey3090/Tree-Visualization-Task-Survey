@@ -8,11 +8,11 @@
  * );
  */
 async function fetchSurveyData() {
-  let surveyData = $.getJSON("../../data/survey_data.json");
+  let surveyData = $.getJSON("survey_data.json");
   return surveyData;
 }
 
 async function fetchTaskData() {
-  let taskData = $.getJSON("../../data/task_data.json");
+  let taskData = $.getJSON("./data/task_data.json");
   return taskData;
 }
