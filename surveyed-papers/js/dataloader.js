@@ -16,7 +16,7 @@ function fieldInitializer(createdData) {
   let visualizationData = createFrequencyData(createdData, "Year");
   drawLineChart(visualizationData, 500, "Id", "count", "Year", "Year", "Year");
 
-  //
+  // //
   let visualizationDataBC3 = createFrequencyData(createdData, "Type");
   console.log(visualizationDataBC3);
 
@@ -30,7 +30,7 @@ function fieldInitializer(createdData) {
     "# of Papers"
   );
 
-  // //Bar chart data wrangling and visualization creation
+  // // //Bar chart data wrangling and visualization creation
   let visualizationDataBC1 = createFrequencyData(
     createdData,
     "Evaluation_Type"
@@ -46,7 +46,7 @@ function fieldInitializer(createdData) {
   );
   console.log(visualizationDataBC1);
 
-  // //Bar chart data wrangling and visualization creation
+  // // //Bar chart data wrangling and visualization creation
   let visualizationDataBC2 = createMultiValueFreqData(
     createdData,
     "Layouts_Considered"
@@ -61,7 +61,7 @@ function fieldInitializer(createdData) {
     "VisType",
     "# of Techniques"
   );
-  console.log(visualizationDataBC2);
+  // console.log(visualizationDataBC2);
 
   //Moving the code to views.js
   appendTable();

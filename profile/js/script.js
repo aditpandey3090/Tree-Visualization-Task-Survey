@@ -9,21 +9,21 @@ const LAYOUT_DEF = {
   "Symbolic": "SD"
 }
 async function fetchPaperData() {
-  const [surveyData, proposedData] = await Promise.all([
+  const [surveyData, taskData] = await Promise.all([
     fetchSurveyData(),
-    fetchProposedData()
+    fetchTaskData()
   ]);
-  return { survey_data: surveyData, proposed_data: proposedData };
+  return { survey_data: surveyData, task_data: taskData };
 }
 
 fetchPaperData().then(
   data => {
     const urlParams = new URLSearchParams(window.location.search);
-    const paperId = urlParams.get("id");
+    const paperId = parseInt(urlParams.get("id"));
 
     const surveyData = filterPaperData(data.survey_data, paperId, "Ref_Id");
-    const proposedData = filterPaperData(
-      data.proposed_data,
+    const taskData = filterPaperData(
+      data.task_data,
       paperId,
       "PaperId"
     );
@@ -32,7 +32,7 @@ fetchPaperData().then(
       window.location.href = "/";
       alert("Invalid Paper. Redirected to Home Page.");
     }
-    fillInProfilePage(surveyData[0], proposedData);
+    fillInProfilePage(surveyData[0], taskData);
   },
   error => console.log(error)
 );
